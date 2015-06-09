@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *bkg_signup;
 
+@property (weak, nonatomic) IBOutlet UIView *bkg_login;
+
+- (IBAction)buttonLogin:(id)sender;
+- (IBAction)ButtonSignUp:(id)sender;
 
 @end
 
