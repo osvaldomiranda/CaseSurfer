@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D290CD51B281A99007ECC02 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D290CD41B281A99007ECC02 /* Info.plist */; };
 		2D2EBFB51B2787B2009E84EB /* IndexableImageView.h in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBF7F1B27875A009E84EB /* IndexableImageView.h */; };
 		2D2EBFB61B2787B2009E84EB /* IndexableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBF801B27875A009E84EB /* IndexableImageView.m */; };
 		2D2EBFD11B2787B2009E84EB /* MKAnnotationView+WebCache.h in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBEC61B277DE8009E84EB /* MKAnnotationView+WebCache.h */; };
@@ -40,8 +39,8 @@
 		2D2EC0271B2787B2009E84EB /* ImageIO.framework in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D8F141B20964600F72403 /* ImageIO.framework */; };
 		2D2EC0281B2787B2009E84EB /* UIKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A8C0E1AFD631300DBBE6A /* UIKit.framework */; };
 		2D2EC0291B2787B2009E84EB /* CoreFoundation.framework in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A8C0C1AFD630C00DBBE6A /* CoreFoundation.framework */; };
-		2D2EC02A1B2787B2009E84EB /* casesurfer.app in Sources */ = {isa = PBXBuildFile; fileRef = 2D98CCE71AEBDD8C006CB981 /* casesurfer.app */; };
-		2D2EC02B1B2787B2009E84EB /* casesurferTests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = 2D98CD031AEBDD8C006CB981 /* casesurferTests.xctest */; };
+		2D2EC02A1B2787B2009E84EB /* CaseSurfer.app in Sources */ = {isa = PBXBuildFile; fileRef = 2D98CCE71AEBDD8C006CB981 /* CaseSurfer.app */; };
+		2D2EC02B1B2787B2009E84EB /* CaseSurferTests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = 2D98CD031AEBDD8C006CB981 /* CaseSurferTests.xctest */; };
 		2D2EC02E1B27880B009E84EB /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC02D1B27880B009E84EB /* LoadingView.m */; };
 		2D2EC0311B278847009E84EB /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0301B278847009E84EB /* UIAlertView+Block.m */; };
 		2D2EC0341B278886009E84EB /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0331B278886009E84EB /* NSString+Validation.m */; };
@@ -149,7 +148,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D290CD41B281A99007ECC02 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D2EBEC61B277DE8009E84EB /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2D2EBEC71B277DE8009E84EB /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2D2EBEC81B277DE8009E84EB /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -316,9 +314,9 @@
 		2D4D8F141B20964600F72403 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2D8A8C0C1AFD630C00DBBE6A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		2D8A8C0E1AFD631300DBBE6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2D98CCE71AEBDD8C006CB981 /* casesurfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = casesurfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D98CCE71AEBDD8C006CB981 /* CaseSurfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaseSurfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D98CCF21AEBDD8C006CB981 /* casesurfer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = casesurfer.xcdatamodel; sourceTree = "<group>"; };
-		2D98CD031AEBDD8C006CB981 /* casesurferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = casesurferTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D98CD031AEBDD8C006CB981 /* CaseSurferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaseSurferTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,7 +681,6 @@
 		2D98CCDE1AEBDD8C006CB981 = {
 			isa = PBXGroup;
 			children = (
-				2D290CD41B281A99007ECC02 /* Info.plist */,
 				2D2EC1201B27968E009E84EB /* Default-568h@2x.png */,
 				2D98CCE91AEBDD8C006CB981 /* casesurfer */,
 				2D8A8C101AFD632000DBBE6A /* frameworks */,
@@ -694,8 +691,8 @@
 		2D98CCE81AEBDD8C006CB981 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D98CCE71AEBDD8C006CB981 /* casesurfer.app */,
-				2D98CD031AEBDD8C006CB981 /* casesurferTests.xctest */,
+				2D98CCE71AEBDD8C006CB981 /* CaseSurfer.app */,
+				2D98CD031AEBDD8C006CB981 /* CaseSurferTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,9 +712,9 @@
 				2DE2B88A1AEC154900C99255 /* Classes */,
 				2DE2B8761AEBEB4100C99255 /* Externals */,
 				2D2EC06A1B278AD4009E84EB /* ViewController.h */,
-				2D2EC06B1B278AD4009E84EB /* ViewController.m */,
 				2D2EC0E91B2790E6009E84EB /* Definitions.h */,
 				2D2EC07E1B278C66009E84EB /* Main.storyboard */,
+				2D2EC06B1B278AD4009E84EB /* ViewController.m */,
 				2D2EC0671B278AC4009E84EB /* AppDelegate.h */,
 				2D2EC1101B279212009E84EB /* LaunchScreen.xib */,
 				2D2EC0681B278AC4009E84EB /* AppDelegate.m */,
@@ -835,9 +832,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D98CCE61AEBDD8C006CB981 /* casesurfer */ = {
+		2D98CCE61AEBDD8C006CB981 /* CaseSurfer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D98CD0D1AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "casesurfer" */;
+			buildConfigurationList = 2D98CD0D1AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "CaseSurfer" */;
 			buildPhases = (
 				2D98CCE31AEBDD8C006CB981 /* Sources */,
 				2D98CCE41AEBDD8C006CB981 /* Frameworks */,
@@ -847,14 +844,14 @@
 			);
 			dependencies = (
 			);
-			name = casesurfer;
+			name = CaseSurfer;
 			productName = casesurfer;
-			productReference = 2D98CCE71AEBDD8C006CB981 /* casesurfer.app */;
+			productReference = 2D98CCE71AEBDD8C006CB981 /* CaseSurfer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D98CD021AEBDD8C006CB981 /* casesurferTests */ = {
+		2D98CD021AEBDD8C006CB981 /* CaseSurferTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D98CD101AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "casesurferTests" */;
+			buildConfigurationList = 2D98CD101AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "CaseSurferTests" */;
 			buildPhases = (
 				2D98CCFF1AEBDD8C006CB981 /* Sources */,
 				2D98CD001AEBDD8C006CB981 /* Frameworks */,
@@ -865,9 +862,9 @@
 			dependencies = (
 				2D98CD051AEBDD8C006CB981 /* PBXTargetDependency */,
 			);
-			name = casesurferTests;
+			name = CaseSurferTests;
 			productName = casesurferTests;
-			productReference = 2D98CD031AEBDD8C006CB981 /* casesurferTests.xctest */;
+			productReference = 2D98CD031AEBDD8C006CB981 /* CaseSurferTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -885,10 +882,11 @@
 					};
 					2D98CD021AEBDD8C006CB981 = {
 						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 2D98CCE61AEBDD8C006CB981;
 					};
 				};
 			};
-			buildConfigurationList = 2D98CCE21AEBDD8C006CB981 /* Build configuration list for PBXProject "casesurfer" */;
+			buildConfigurationList = 2D98CCE21AEBDD8C006CB981 /* Build configuration list for PBXProject "CaseSurfer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -901,8 +899,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D98CCE61AEBDD8C006CB981 /* casesurfer */,
-				2D98CD021AEBDD8C006CB981 /* casesurferTests */,
+				2D98CCE61AEBDD8C006CB981 /* CaseSurfer */,
+				2D98CD021AEBDD8C006CB981 /* CaseSurferTests */,
 			);
 		};
 /* End PBXProject section */
@@ -944,7 +942,6 @@
 				2D2EC1211B27968E009E84EB /* Default-568h@2x.png in Resources */,
 				2D2EC0FC1B27911B009E84EB /* home_inactive@2x.png in Resources */,
 				2D2EC0E21B2790B0009E84EB /* appFormPassword@3x.png in Resources */,
-				2D290CD51B281A99007ECC02 /* Info.plist in Resources */,
 				2D2EC0E51B2790C3009E84EB /* camera.png in Resources */,
 				2D2EC10B1B27918A009E84EB /* osva.jpg in Resources */,
 				2D2EC0CA1B27906D009E84EB /* Lato-BolIta-webfont.ttf in Resources */,
@@ -1052,8 +1049,8 @@
 				2D2EC0BA1B278FD5009E84EB /* TermsOfUseViewController.m in Sources */,
 				2D2EC0281B2787B2009E84EB /* UIKit.framework in Sources */,
 				2D2EC0291B2787B2009E84EB /* CoreFoundation.framework in Sources */,
-				2D2EC02A1B2787B2009E84EB /* casesurfer.app in Sources */,
-				2D2EC02B1B2787B2009E84EB /* casesurferTests.xctest in Sources */,
+				2D2EC02A1B2787B2009E84EB /* CaseSurfer.app in Sources */,
+				2D2EC02B1B2787B2009E84EB /* CaseSurferTests.xctest in Sources */,
 				2D2EC0A81B278F4D009E84EB /* AlbumsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1070,7 +1067,7 @@
 /* Begin PBXTargetDependency section */
 		2D98CD051AEBDD8C006CB981 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D98CCE61AEBDD8C006CB981 /* casesurfer */;
+			target = 2D98CCE61AEBDD8C006CB981 /* CaseSurfer */;
 			targetProxy = 2D98CD041AEBDD8C006CB981 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1230,6 +1227,7 @@
 				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/casesurfer.app/casesurfer";
 			};
 			name = Debug;
 		};
@@ -1243,13 +1241,14 @@
 				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/casesurfer.app/casesurfer";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D98CCE21AEBDD8C006CB981 /* Build configuration list for PBXProject "casesurfer" */ = {
+		2D98CCE21AEBDD8C006CB981 /* Build configuration list for PBXProject "CaseSurfer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D98CD0B1AEBDD8C006CB981 /* Debug */,
@@ -1258,7 +1257,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D98CD0D1AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "casesurfer" */ = {
+		2D98CD0D1AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "CaseSurfer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D98CD0E1AEBDD8C006CB981 /* Debug */,
@@ -1267,7 +1266,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D98CD101AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "casesurferTests" */ = {
+		2D98CD101AEBDD8C006CB981 /* Build configuration list for PBXNativeTarget "CaseSurferTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D98CD111AEBDD8C006CB981 /* Debug */,
