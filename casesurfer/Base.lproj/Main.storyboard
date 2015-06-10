@@ -2055,7 +2055,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="icon_back.png" id="Djv-aV-DmG">
                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="back:" destination="MNE-qr-hC2" id="fQH-EQ-vWF"/>
+                                                <action selector="cancel:" destination="MNE-qr-hC2" id="zev-BJ-bnP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2089,12 +2089,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="userAvatar" destination="qqn-Ee-EVF" id="oVv-1z-5bI"/>
+                        <outlet property="userAvatar" destination="qqn-Ee-EVF" id="MyT-eX-dGz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0w-j3-D5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="2186"/>
+            <point key="canvasLocation" x="1994" y="2186"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kcZ-la-YKg">

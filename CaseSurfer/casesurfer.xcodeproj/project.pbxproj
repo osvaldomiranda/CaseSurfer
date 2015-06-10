@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D290CD51B281A99007ECC02 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D290CD41B281A99007ECC02 /* Info.plist */; };
+		2D290CD81B282684007ECC02 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D290CD71B282684007ECC02 /* UserViewController.m */; };
 		2D2EBFB51B2787B2009E84EB /* IndexableImageView.h in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBF7F1B27875A009E84EB /* IndexableImageView.h */; };
 		2D2EBFB61B2787B2009E84EB /* IndexableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBF801B27875A009E84EB /* IndexableImageView.m */; };
 		2D2EBFD11B2787B2009E84EB /* MKAnnotationView+WebCache.h in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EBEC61B277DE8009E84EB /* MKAnnotationView+WebCache.h */; };
@@ -82,7 +83,6 @@
 		2D2EC0A21B278F29009E84EB /* GroupMemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0A01B278F29009E84EB /* GroupMemberTableViewCell.m */; };
 		2D2EC0A51B278F44009E84EB /* NewAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0A41B278F44009E84EB /* NewAlbumViewController.m */; };
 		2D2EC0A81B278F4D009E84EB /* AlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0A71B278F4D009E84EB /* AlbumsViewController.m */; };
-		2D2EC0AB1B278F7F009E84EB /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0AA1B278F7F009E84EB /* UserViewController.m */; };
 		2D2EC0B01B278FA6009E84EB /* ListCasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0AD1B278FA6009E84EB /* ListCasesViewController.m */; };
 		2D2EC0B11B278FA6009E84EB /* ListCaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0AF1B278FA6009E84EB /* ListCaseTableViewCell.m */; };
 		2D2EC0B61B278FB1009E84EB /* CaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC0B31B278FB1009E84EB /* CaseTableViewCell.m */; };
@@ -150,6 +150,8 @@
 
 /* Begin PBXFileReference section */
 		2D290CD41B281A99007ECC02 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D290CD61B282684007ECC02 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = CaseSurfer/UserViewController.h; sourceTree = SOURCE_ROOT; };
+		2D290CD71B282684007ECC02 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = CaseSurfer/UserViewController.m; sourceTree = SOURCE_ROOT; };
 		2D2EBEC61B277DE8009E84EB /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2D2EBEC71B277DE8009E84EB /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2D2EBEC81B277DE8009E84EB /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -255,8 +257,6 @@
 		2D2EC0A41B278F44009E84EB /* NewAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAlbumViewController.m; sourceTree = SOURCE_ROOT; };
 		2D2EC0A61B278F4D009E84EB /* AlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsViewController.h; sourceTree = SOURCE_ROOT; };
 		2D2EC0A71B278F4D009E84EB /* AlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsViewController.m; sourceTree = SOURCE_ROOT; };
-		2D2EC0A91B278F7F009E84EB /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = SOURCE_ROOT; };
-		2D2EC0AA1B278F7F009E84EB /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = SOURCE_ROOT; };
 		2D2EC0AC1B278FA6009E84EB /* ListCasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCasesViewController.h; sourceTree = SOURCE_ROOT; };
 		2D2EC0AD1B278FA6009E84EB /* ListCasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCasesViewController.m; sourceTree = SOURCE_ROOT; };
 		2D2EC0AE1B278FA6009E84EB /* ListCaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCaseTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -560,8 +560,8 @@
 		2D58C73E1B08335400205D5C /* User */ = {
 			isa = PBXGroup;
 			children = (
-				2D2EC0A91B278F7F009E84EB /* UserViewController.h */,
-				2D2EC0AA1B278F7F009E84EB /* UserViewController.m */,
+				2D290CD61B282684007ECC02 /* UserViewController.h */,
+				2D290CD71B282684007ECC02 /* UserViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -999,7 +999,6 @@
 				2D2EBFB61B2787B2009E84EB /* IndexableImageView.m in Sources */,
 				2D2EC0511B2789C4009E84EB /* CaseConnect.m in Sources */,
 				2D2EC03F1B27891F009E84EB /* CSNavigationBar.m in Sources */,
-				2D2EC0AB1B278F7F009E84EB /* UserViewController.m in Sources */,
 				2D2EBFD11B2787B2009E84EB /* MKAnnotationView+WebCache.h in Sources */,
 				2D2EBFD21B2787B2009E84EB /* MKAnnotationView+WebCache.m in Sources */,
 				2D2EBFD31B2787B2009E84EB /* SDImageCache.h in Sources */,
@@ -1041,6 +1040,7 @@
 				2D2EC05D1B278A1B009E84EB /* session.m in Sources */,
 				2D2EC02E1B27880B009E84EB /* LoadingView.m in Sources */,
 				2D2EC0651B278A7C009E84EB /* SVHTTPClient.m in Sources */,
+				2D290CD81B282684007ECC02 /* UserViewController.m in Sources */,
 				2D2EC0211B2787B2009E84EB /* CommentTableViewCell.h in Sources */,
 				2D2EC0221B2787B2009E84EB /* CommentTableViewCell.m in Sources */,
 				2D2EC0231B2787B2009E84EB /* CommentViewController.h in Sources */,

@@ -2,16 +2,15 @@
 //  UserViewController.h
 //  casesurfer
 //
-//  Created by Osvaldo on 16-05-15.
+//  Created by Osvaldo on 10-06-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface UserViewController : ViewController
+@interface UserViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
 
-- (IBAction)back:(id)sender;
-
+- (IBAction)cancel:(id)sender;
 @end

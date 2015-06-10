@@ -2,7 +2,7 @@
 //  UserViewController.m
 //  casesurfer
 //
-//  Created by Osvaldo on 16-05-15.
+//  Created by Osvaldo on 10-06-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
@@ -13,28 +13,20 @@
 @end
 
 @implementation UserViewController
-@synthesize userAvatar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [userAvatar.layer setMasksToBounds:YES];
-    [userAvatar.layer setCornerRadius:70.0f];
-
-
-    
+    [self.userAvatar.layer setMasksToBounds:YES];
+    [self.userAvatar.layer setCornerRadius:70.0f];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-
-
-- (IBAction)back:(id)sender {
-      [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)cancel:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

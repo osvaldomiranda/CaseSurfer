@@ -32,12 +32,14 @@
 }
 
 - (IBAction)userAction:(id)sender {
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
    
-    [cController.navigationController setNavigationBarHidden:NO];
+  
     cController.hidesBottomBarWhenPushed = YES;
+    
     [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
     
 }
