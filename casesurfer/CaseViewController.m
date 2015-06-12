@@ -88,7 +88,7 @@
     scrollView = [[HorizontalGrid alloc] initGrid:8 gridHeight:85];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(320,85);
+    scrollView.contentSize =  CGSizeMake(400,85);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -98,7 +98,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 191, 320, 85);
+    scrollView.frame = CGRectMake(0, 191, 400, 85);
     scrollView.gridDelegate = self;
     
     [self.view addSubview:scrollView];

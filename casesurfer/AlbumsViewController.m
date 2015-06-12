@@ -45,10 +45,10 @@
 }
 
 -(void)setScrollViewProperties{
-    scrollView = [[GridScrollView alloc] initGrid:2 spacing:20 gridWidth:320];
+    scrollView = [[GridScrollView alloc] initGrid:2 spacing:35 gridWidth:380];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(320,SCREEN_HEIGHT);
+    scrollView.contentSize =  CGSizeMake(380,SCREEN_HEIGHT);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -58,7 +58,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 65, 320, SCREEN_HEIGHT-60);
+    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-60);
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     scrollView.gridDelegate = self;
     

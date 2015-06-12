@@ -19,12 +19,12 @@
         self.backgroundColor = [UIColor whiteColor];
         loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         
-        loadingIndicator.frame = CGRectMake(145, 10, 30, 30);
+        loadingIndicator.frame = CGRectMake(175, 10, 30, 30);
         loadingIndicator.hidesWhenStopped = NO;
         [self addSubview:loadingIndicator];
         
         loadingMessage = [[UILabel alloc]init];
-        loadingMessage.text = @"Loading";
+        loadingMessage.text = @"";
         loadingMessage.textAlignment = NSTextAlignmentLeft;
         [loadingMessage setFont:[UIFont systemFontOfSize:10.0f]];
         [loadingMessage setTextColor:greenColor];

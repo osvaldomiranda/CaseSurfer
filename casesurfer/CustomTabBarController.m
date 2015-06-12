@@ -56,6 +56,7 @@
         [emptyView setUserInteractionEnabled:TRUE];
         [emptyView setTag:99];
         [self.tabBar addSubview:emptyView];
+        [self.tabBar setBackgroundColor:[UIColor whiteColor]];
         self.tabBar.layer.borderWidth = 0.0f;
         [self.tabBar.layer setBorderColor:(__bridge CGColorRef)([UIColor whiteColor])];
         

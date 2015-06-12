@@ -32,7 +32,7 @@
     UIView *pictureView = [[UIView alloc] init];
     NSString *subTitle =  [indexImage.imageInfo valueForKeyPath:@"name"];
     
-    float scrollBarWidth = 1.8;
+    float scrollBarWidth = 0;
     if ([self.columns integerValue]>2) {
         scrollBarWidth = 10;
     }

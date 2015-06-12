@@ -36,7 +36,7 @@
         cover = [[UIView alloc] init];
         cover.alpha = 0;
         cover.backgroundColor = [UIColor blackColor];
-        cover.frame = CGRectMake(0, 0, 320, screenHeight);
+        cover.frame = CGRectMake(0, 0, 400, screenHeight);
         cover.userInteractionEnabled = TRUE;
         cover.multipleTouchEnabled = FALSE;
         //The setup code (in viewDidLoad in your view controller)
@@ -95,13 +95,20 @@
         [button5 setImage:imageB5 forState:UIControlStateNormal];
         
         
-        
+   /*
         button1.frame = CGRectMake(0  , 0, 64, 50);
         button2.frame = CGRectMake(64 , 0, 64, 50);
         button3.frame = CGRectMake(128, 0, 64, 50);
         button4.frame = CGRectMake(192, 0, 64, 50);
         button5.frame = CGRectMake(256, 0, 64, 50);
- 
+ */
+        
+        button1.frame = CGRectMake(0  , 0, 80, 50);
+        button2.frame = CGRectMake(75 , 0, 80, 50);
+        button3.frame = CGRectMake(155, 0, 80, 50);
+        button4.frame = CGRectMake(235, 0, 80, 50);
+        button5.frame = CGRectMake(300, 0, 80, 50);
+        
         
         [self addSubview:button1];
         [self addSubview:button2];
@@ -229,7 +236,7 @@
 }
 
 -(void) setPosY:(int ) posY{
-    [self setFrame:CGRectMake(0, posY, 320, 50)];
+    [self setFrame:CGRectMake(0, posY, 400, 50)];
 }
 
 @end

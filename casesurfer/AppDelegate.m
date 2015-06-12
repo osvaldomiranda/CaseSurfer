@@ -30,15 +30,6 @@
     
     self.window.rootViewController = navigationController;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 7.1) {
-        id searchBarButton = [UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil];
-        [searchBarButton setTitleTextAttributes:@{UITextAttributeFont:[UIFont systemFontOfSize:13], UITextAttributeTextColor:[UIColor whiteColor]} forState:UIControlStateNormal];
-        [searchBarButton setTitle:@"Cancelar"];
-        
-   
-        
-    }
-    
     
     return YES;
 }
