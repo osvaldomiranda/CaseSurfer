@@ -9,6 +9,7 @@
 #import "BaseApiModel.h"
 #import "Definitions.h"
 #import "session.h"
+#import "UIAlertView+Block.h"
 
 
 @implementation BaseApiModel
@@ -44,6 +45,7 @@
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {
+        [self alertError:error];
         errorBlock(error);
     }];
 }
@@ -67,6 +69,7 @@
     [[CaseConnect sharedCaseSurfer] getDictionaryWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {
+        [self alertError:error];
         errorBlock(error);
     }];
 }
@@ -87,10 +90,17 @@
     [[CaseConnect sharedCaseSurfer] getWithUrl:url params:parameters Success:^(NSArray *items) {
         successBlock(items);
     } Error:^(NSError *error) {
+        [self alertError:error];
         errorBlock(error);
     }];
 }
 
+
+-(void) alertError:(NSError *) Error{
+    
+    [UIAlertView alertViewOopsWithmessage:@"Bad Server Response"];
+    
+}
 
 
 @end

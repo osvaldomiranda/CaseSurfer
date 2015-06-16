@@ -60,7 +60,7 @@
 
 -(void)loadPhotoLibrary{
     
-     UIImage *imageCamera = [UIImage imageNamed:@"app_launch_camera.png"];
+     UIImage *imageCamera = [UIImage imageNamed:@"camera_blue.png"];
     
     [scrollView insertPicture:imageCamera withAssetURL:nil indexImage:nil ];
     

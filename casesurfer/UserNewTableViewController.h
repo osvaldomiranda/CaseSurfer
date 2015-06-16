@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 @property (weak, nonatomic) IBOutlet UITextField *txtRepeatPassword;
+@property (weak, nonatomic) IBOutlet UITextField *txtUserName;
 
 @property (weak, nonatomic) IBOutlet UISwitch *swAgree;
 

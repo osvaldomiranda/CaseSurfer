@@ -141,6 +141,9 @@
 }
 
 - (IBAction)tapAlbum:(id)sender{
+    
+    NSLog(@"ALBUMS %@",self.albums);
+    
     [self hideKeyboard];
     [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:1.0];
     [CBCPicker showPickerWithData: self.albums

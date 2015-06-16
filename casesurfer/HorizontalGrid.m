@@ -73,8 +73,6 @@
     
     self.currentCol = [NSNumber numberWithInt:(int)[self.currentCol integerValue]+1];
     self.addedElements = [NSNumber numberWithInt:(int)[self.addedElements integerValue]+1];
-    
-    
 }
 
 - (void)tapPressCaptured:(UITapGestureRecognizer *)gesture{
@@ -82,35 +80,47 @@
     
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     
-    [assetsLibrary assetForURL:tappedView.assetURL
-                   resultBlock:^(ALAsset *asset){
-                       if (asset != nil){
-                           ALAssetRepresentation *repr = [asset defaultRepresentation];
-                           UIImage *img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
-                           
-                           [tappedView setImage:img];
-                           [gridDelegate selectImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
-                             
+    if (![self isHttp:tappedView.assetURL]) {
+        [assetsLibrary assetForURL:tappedView.assetURL
+                       resultBlock:^(ALAsset *asset){
+                           if (asset != nil){
+                               ALAssetRepresentation *repr = [asset defaultRepresentation];
+                               UIImage *img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
+                               
+                               [tappedView setImage:img];
+                               [gridDelegate selectImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
+                               
+                           }
+                       }failureBlock:^(NSError *error) {
+                           NSLog(@"error: %@", error);
                        }
-                   }failureBlock:^(NSError *error) {
-                       NSLog(@"error: %@", error);
-                   }
-     ];
+         ];
+    } else {
+        [gridDelegate selectImageWithAssetURL:nil indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
+    }
+}
+
+- (BOOL) isHttp: (NSURL *) url{
+    BOOL ishttp = FALSE;
+    NSString *sUrl = [url absoluteString];
+    NSString *firstCharinUrl = [sUrl substringWithRange:NSMakeRange(0, 4)];
+    if ([firstCharinUrl isEqualToString:@"http"]) {
+        ishttp = TRUE;
+    }
+    return ishttp;
 }
 
 
-
-
 - (void) clearGrid{
-    
     self.addedElements = 0;
     self.currentCol = 0;
     self.currentRow = 0;
-    
     for ( UIView *view in self.subviews ) {
         [view removeFromSuperview];
     }
 }
+
+
 
 
 @end

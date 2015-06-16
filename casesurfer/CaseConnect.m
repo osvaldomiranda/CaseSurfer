@@ -85,7 +85,12 @@
       Success:(ChicSuccessArrayBlock)successBlock
         Error:(ChicErrorBlock)errorBlock {
     
+
+    
         [client GET:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+            
+            NSLog(@"Get %@",response);
+            NSLog(@"Get %@",error);
             
             if ([response isKindOfClass:[NSArray class]]) {
                 successBlock(response);
@@ -117,6 +122,9 @@
               Error:(ChicErrorBlock)errorBlock {
     
     [client PUT:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+        
+        NSLog(@"Get %@",response);
+        NSLog(@"Get %@",error);
         
          NSLog(@"PUT %@",response);
         if ([response isKindOfClass:[NSDictionary class]]) {

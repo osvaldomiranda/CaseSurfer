@@ -15,6 +15,7 @@
 #import "UIAlertView+Block.h"
 #import "Definitions.h"
 
+
 @interface UserNewTableViewController ()
 
 @end
@@ -68,6 +69,7 @@
         [UIAlertView alertViewOopsWithmessage:@"You must accept the terms of use."];
     } else {
         NSDictionary *userData = @{@"name": self.txtName.text,
+                                   @"username": self.txtUserName.text,
                                    @"email": self.txtEmail.text,
                                    @"password": self.txtPassword.text,
                                    @"password_confirmation": self.txtRepeatPassword.text};

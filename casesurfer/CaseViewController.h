@@ -16,6 +16,7 @@
 @property (nonatomic, retain) HorizontalGrid *scrollView;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, assign) int caseId;
+@property (nonatomic, strong) NSArray *images;
 
 - (IBAction)comment:(id)sender;
 - (IBAction)back:(id)sender;

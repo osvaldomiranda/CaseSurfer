@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
 #import "FeedCaseTableViewCell.h"
+#import "ShareTableViewCell.h"
 #import "Notification.h"
 #import "Definitions.h"
 
@@ -98,11 +99,29 @@
     
     NSString *caseImageUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"medcase_image"]];
     NSURL *urlCaseImage = [NSURL URLWithString:[caseImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSDictionary *notificable =  [celda valueForKeyPath:@"notificable"];
     
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
     
     if([notificableType isEqualToString:@"Medcase"]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCaseCell"];
+    }
+    
+    if([notificableType isEqualToString:@"Share"]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+        cell.status =  [notificable valueForKeyPath:@"status"];
+        
+        if([cell.status isEqualToString:@"approved"]){
+            cell.btnAcept.hidden = TRUE;
+            cell.btnIgnore.hidden = TRUE;
+        } else{
+            cell.btnAcept.hidden = FALSE;
+            cell.btnIgnore.hidden = FALSE;
+        }
+    }
+    
+    if([notificableType isEqualToString:@"Comment"]){
+        cell.lblMessage.text = [notificable valueForKeyPath:@"message"];
     }
     
     [cell.contentView clearsContextBeforeDrawing];

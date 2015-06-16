@@ -53,7 +53,7 @@
                     action:@selector(actionButton1:)
           forControlEvents:UIControlEventTouchDown];
         button1.backgroundColor = [UIColor whiteColor ];
-        UIImage *imageB1 = [UIImage imageNamed:@"home_active.png"];
+        UIImage *imageB1 = [UIImage imageNamed:@"home_active_blue.png"];
         [button1 setImage:imageB1 forState:UIControlStateNormal];
         
         
@@ -72,7 +72,7 @@
                     action:@selector(actionButton3:)
           forControlEvents:UIControlEventTouchDown];
         button3.backgroundColor = greenColor;
-        UIImage *imageB3 = [UIImage imageNamed:@"plus_inactive.png"];
+        UIImage *imageB3 = [UIImage imageNamed:@"pluss.png"];
         [button3 setImage:imageB3 forState:UIControlStateNormal];
         
         
@@ -153,7 +153,7 @@
             button4.backgroundColor = [UIColor whiteColor ];
             button5.backgroundColor = [UIColor whiteColor ];
             
-            UIImage *imageB1 = [UIImage imageNamed:@"home_active.png"];
+            UIImage *imageB1 = [UIImage imageNamed:@"home_active_blue.png"];
             [button1 setImage:imageB1 forState:UIControlStateNormal];
             currentButton = button;
             break;
@@ -163,7 +163,7 @@
             button2.backgroundColor = selColor;
             button4.backgroundColor = [UIColor whiteColor ];
             button5.backgroundColor = [UIColor whiteColor ];
-            UIImage *imageB2 = [UIImage imageNamed:@"folder_active.png"];
+            UIImage *imageB2 = [UIImage imageNamed:@"folder_active_blue.png"];
             [button2 setImage:imageB2 forState:UIControlStateNormal];
             currentButton = button;
             break;
@@ -174,7 +174,7 @@
             button4.backgroundColor = selColor;
             button5.backgroundColor = [UIColor whiteColor ];
             currentButton = button;
-            UIImage *imageB4 = [UIImage imageNamed:@"group_active.png"];
+            UIImage *imageB4 = [UIImage imageNamed:@"group_active_blue.png"];
             [button4 setImage:imageB4 forState:UIControlStateNormal];
             break;
         }
@@ -184,7 +184,7 @@
             button4.backgroundColor = [UIColor whiteColor ];
             button5.backgroundColor = selColor;
             
-            UIImage *imageB5 = [UIImage imageNamed:@"user_active.png"];
+            UIImage *imageB5 = [UIImage imageNamed:@"user_active_blue.png"];
             [button5 setImage:imageB5 forState:UIControlStateNormal];
             break;
         }

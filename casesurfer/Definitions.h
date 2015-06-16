@@ -1,11 +1,12 @@
-#define BASE_PATH @"http://localhost:3000"
+//#define BASE_PATH @"http://localhost:3000"
+#define BASE_PATH @"http://166.78.5.15/"
 
 #define gray [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0]
 #define darkGray [UIColor colorWithRed:0.39 green:0.43 blue:0.48 alpha:1.0]
 #define backButtonColor [UIColor colorWithRed:0.596 green:0.596 blue:0.596 alpha:1.0]
 
 
-#define greenColor [UIColor colorWithRed:0.09 green:0.69 blue:0.60 alpha:1.0]
+#define greenColor [UIColor colorWithRed:0.26 green:0.55 blue:0.79 alpha:1.0]
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 

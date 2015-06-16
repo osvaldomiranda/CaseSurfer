@@ -9,6 +9,8 @@
 #import "LoginTableViewController.h"
 #import "FeedViewController.h"
 #import "Definitions.h"
+#import "UIAlertView+Block.h"
+#import "NSString+Validation.h"
 
 @interface LoginTableViewController ()
 
@@ -48,16 +50,21 @@
 }
 
 - (IBAction)login:(id)sender {
-    NSDictionary *userData = @{@"email": self.email.text,
-                               @"password": self.password.text};
     
-    NSMutableDictionary *userParams =  @{@"sessions" : userData}.mutableCopy;
-  
-    [self.mySession login:userParams Success:^(NSMutableDictionary *items) {
-         [self whenLogin];
-    } Error:^(NSError *error) {
-        [self accessDenied];
-    }];
+    if (![self.password.text isValidText]) {
+        [UIAlertView alertViewOopsWithmessage:@" "];
+    } else if (![self.email.text isValidEmail]) {
+        [UIAlertView alertViewOopsWithmessage:@"You must place a valid Email."];
+    } else {
+        NSDictionary *userData = @{@"email": self.email.text,
+                                   @"password": self.password.text};
+        NSMutableDictionary *userParams =  @{@"sessions" : userData}.mutableCopy;
+        [self.mySession login:userParams Success:^(NSMutableDictionary *items) {
+            [self whenLogin];
+        } Error:^(NSError *error) {
+            [self accessDenied];
+        }];
+    }
 }
 
 -(void) whenLogin{
@@ -67,6 +74,7 @@
 
 
 -(void) accessDenied{
+    [UIAlertView alertViewOopsWithmessage:@"Invalid email or password."];
 }
 
 @end

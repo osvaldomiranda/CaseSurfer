@@ -52,9 +52,9 @@
     
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
     
-    NSArray *images = [item valueForKeyPath:@"medcase_images"];
+    self.images = [item valueForKeyPath:@"medcase_images"];
     
-    [self fillHorizontalView:images];
+    [self fillHorizontalView:self.images];
     
     
 }
@@ -74,7 +74,7 @@
         UIImageView *coverAlbum = [[UIImageView alloc] init];
         [coverAlbum setImageWithURL:urlImgCase placeholderImage:nil options:0 success:^(UIImage *image, BOOL cached) {
             
-            [scrollView insertPicture:image withAssetURL:nil index:i];
+            [scrollView insertPicture:image withAssetURL:urlImgCase index:i];
             
         } failure:^(NSError *error) {
         }];
@@ -129,9 +129,24 @@
 
 - (void) selectImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl
 {
+    
+    NSDictionary *imageInfo = self.images[indexImage];
+    NSDictionary *img = [imageInfo valueForKeyPath:@"image"];
+    NSDictionary *thumb = [img valueForKeyPath:@"normal"];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [thumb valueForKeyPath:@"url"]];
+    NSURL *urlImgCase = [NSURL URLWithString:[imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    
+    [imageView setImageWithURL:urlImgCase placeholderImage:nil options:0 success:^(UIImage *image, BOOL cached) {
+        
+        [self setSelectedImage:image];
+        [self callLargeImage:self];
+        
+    } failure:^(NSError *error) {
+    }];
   
-    [self setSelectedImage:image];
-    [self callLargeImage:self];
+
   
 }
 #pragma END GridScrollView

@@ -27,7 +27,10 @@
     self.displayImage.contentMode = UIViewContentModeScaleAspectFit;
     self.displayImage.userInteractionEnabled = YES;
     
-    self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.originalImage andRatio:1.0];
+  //  self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.originalImage andRatio:1.0];
+    
+    self.cropper = [[CropInterface alloc]initWithFrame:CGRectMake(0, 0, 316, 430) Image:self.originalImage andRatio:1.0];
+
     self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1];
     [self.displayImage addSubview:self.cropper];
     
@@ -56,7 +59,7 @@
     scrollView = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(320,70);
+    scrollView.contentSize =  CGSizeMake(400,70);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -66,7 +69,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, SCREEN_HEIGHT-80, 320, 70);
+    scrollView.frame = CGRectMake(0, SCREEN_HEIGHT-80, 400, 70);
     scrollView.gridDelegate = self;
     
     [self.view addSubview:scrollView];
@@ -120,11 +123,13 @@
 }
 
 - (IBAction)trashImage:(id)sender{
-    [scrollView clearGrid];
-    [self setImageOriginal:nil];
-    [self.photos removeObjectAtIndex:self.indexImage];
-    [self fillHorizontalView];
     
+    if(self.photos.count > 1){
+        [scrollView clearGrid];
+        [self setImageOriginal:nil];
+        [self.photos removeObjectAtIndex:self.indexImage];
+        [self fillHorizontalView];
+    }
 }
 
 

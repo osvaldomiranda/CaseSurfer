@@ -118,6 +118,7 @@
 
 - (void)shouldLogin{
     
+    [self.navigationController setNavigationBarHidden:TRUE];
     [[self navigationController] pushViewController:[self initViewControllers]
                                            animated:TRUE];
     
