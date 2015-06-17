@@ -21,8 +21,7 @@
 @end
 
 @implementation ViewController
-@synthesize bkg_signup;
-@synthesize bkg_login;
+
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -51,15 +50,15 @@
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:TRUE];
     
-    bkg_signup.layer.cornerRadius = 22;
-    bkg_signup.layer.masksToBounds = YES;
-    bkg_signup.layer.borderColor = [UIColor whiteColor].CGColor;
-    bkg_signup.layer.borderWidth = 2.0f;
+    self.btnSignUp.layer.cornerRadius = 22;
+    self.btnSignUp.layer.masksToBounds = YES;
+    self.btnSignUp.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.btnSignUp.layer.borderWidth = 2.0f;
     
-    bkg_login.layer.cornerRadius = 22;
-    bkg_login.layer.masksToBounds = YES;
-    bkg_login.layer.borderColor = [UIColor whiteColor].CGColor;
-    bkg_login.layer.borderWidth = 2.0f;
+    self.btnLogin.layer.cornerRadius = 22;
+    self.btnLogin.layer.masksToBounds = YES;
+    self.btnLogin.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.btnLogin.layer.borderWidth = 2.0f;
     
     Session *mySession = [[Session alloc] init];
     if ([mySession getToken] != nil ) {
