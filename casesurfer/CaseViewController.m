@@ -30,6 +30,9 @@
     MedCase *medCase = [[MedCase alloc] init];
     
     [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
+        
+         NSLog(@"Items %@ %d",items, self.caseId);
+        
         [self fillCase: items];
     } Error:^(NSError *error) {
         
@@ -42,6 +45,8 @@
 }
 
 -(void) fillCase: (NSMutableDictionary*) item{
+    
+   
     
     self.lblTitle.text = [item valueForKeyPath:@"title"];
     self.lblDescription.text = [item valueForKeyPath:@"description"];
