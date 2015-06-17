@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAlbum;
 @property (weak, nonatomic) IBOutlet UILabel *lblAge;
 @property (nonatomic, retain) NSMutableArray *albums;
+@property (nonatomic, retain) NSMutableArray *albumIds;
 
 - (IBAction)addAlbum:(id)sender;
 - (IBAction)tapGender:(id)sender;

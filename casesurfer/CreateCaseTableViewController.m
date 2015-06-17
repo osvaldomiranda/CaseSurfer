@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.albums = [[NSMutableArray alloc] init];
+    self.albumIds = [[NSMutableArray alloc] init];
     [self loadAlbums];
 }
 
@@ -40,7 +41,9 @@
 -(void) fillAlbumArray:(NSArray *) items{
     for (id album in items  ) {
         NSString *titleAlbum = [album valueForKeyPath:@"name"];
+        NSString *idAlbum = [album valueForKeyPath:@"id"];
         [self.albums addObject:titleAlbum];
+        [self.albumIds addObject:idAlbum];
     }
 }
 
@@ -92,9 +95,10 @@
     } else if(self.selectedAge == nil){
         [UIAlertView alertViewOopsWithmessage:@"You must select an Age."];
     } else {
+        NSInteger row = [self.albums indexOfObjectIdenticalTo:self.selectedAlbum];
         MedCase *medCase = [[MedCase alloc] init];
         medCase.title = self.txtTitle.text;
-        medCase.album_id = @"2";
+        medCase.album_id = self.albumIds[row];
         medCase.patient = self.txtPatient.text;
         medCase.patient_age = self.selectedAge;
         medCase.patient_gender = self.selectedGender;
@@ -141,8 +145,6 @@
 }
 
 - (IBAction)tapAlbum:(id)sender{
-    
-    NSLog(@"ALBUMS %@",self.albums);
     
     [self hideKeyboard];
     [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:1.0];

@@ -94,7 +94,7 @@
     NSString *notificableType = [celda valueForKeyPath:@"notificable_type"];
     NSString *userName = [celda valueForKeyPath:@"user_name"];
     NSString *caseName = [celda valueForKeyPath:@"title"];
-   
+    NSString *caseId = [celda valueForKeyPath:@"medcaseid"];
     
     NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"user_avatar"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -103,7 +103,7 @@
     NSURL *urlCaseImage = [NSURL URLWithString:[caseImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSDictionary *notificable =  [celda valueForKeyPath:@"notificable"];
     
-    NSString *caseId = [notificable valueForKeyPath:@"id"];
+   
     
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
     

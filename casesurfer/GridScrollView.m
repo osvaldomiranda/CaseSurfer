@@ -51,7 +51,11 @@
     }
     int col = ((int)[self.currentCol integerValue] * pictureSize) + ((int)[self.spacing integerValue] * ((int)[self.currentCol integerValue]+1));
     
-    IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image andAssetURL:assetURL andIndex:0];
+  //  IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image andAssetURL:assetURL andIndex:0];
+    
+    IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithUrl:assetURL andImageInfo:indexImage.imageInfo];
+    [indexableImage setImage:image];
+    
     indexableImage.contentMode = UIViewContentModeScaleAspectFit;
     [indexableImage setUserInteractionEnabled:YES];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPressCaptured:)];
@@ -103,6 +107,7 @@
 
 - (void)tapPressCaptured:(UITapGestureRecognizer *)gesture{
     IndexableImageView *tappedView = (IndexableImageView *)[gesture.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
+
     [gridDelegate selectImageWithAssetURL:tappedView.assetURL image:tappedView];
     
     if (tappedView.assetURL) {

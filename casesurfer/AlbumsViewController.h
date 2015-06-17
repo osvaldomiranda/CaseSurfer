@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) GridScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *Albums;
+@property (nonatomic, assign) int selectedAlbumId;
 
 
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;

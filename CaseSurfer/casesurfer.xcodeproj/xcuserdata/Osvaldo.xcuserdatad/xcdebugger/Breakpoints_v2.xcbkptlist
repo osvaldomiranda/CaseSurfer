@@ -1080,11 +1080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CaseViewController.m"
-            timestampString = "456221029.550694"
+            timestampString = "456265609.524626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-callLargeImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1192,12 +1192,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CaseViewController.m"
-            timestampString = "456221029.550694"
+            timestampString = "456265609.524626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "-selectImageWithAssetURL:indexImage:assetUrl:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CBCPicker.h"
+            timestampString = "456255693.787166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "@property (copy) void (^selectBlock) (NSDictionary *selectedItem);"
+            landmarkType = "19">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GridScrollView.m"
+            timestampString = "456265667.218621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-tapPressCaptured:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -67,9 +67,8 @@
 
 #pragma GridScrollView
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
-    
+    self.selectedAlbumId = [[image.imageInfo valueForKeyPath:@"id"] intValue];
     [self callListCasesWithAlbum];
-   
 }
 #pragma END GridScrollView
 
@@ -107,30 +106,7 @@
         } failure:^(NSError *error) {
         }];
     }
-    /*
-    ALAssetsLibrary *assetsLib= [[ALAssetsLibrary alloc] init];
-    [assetsLib enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                                 usingBlock:^(ALAssetsGroup *group, BOOL *stop){
-                                     if (group != nil){
-                                         [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-                                         [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
-                                             if (result != nil){
-                                                 UIImage *img = [UIImage imageWithCGImage:[result thumbnail]];
-                                                 
-                                                 IndexableImageView *imageInfo = [[IndexableImageView alloc] initWithUrl:nil andImageInfo:a];
-                                                 
-                                                 [scrollView insertPicture:img withAssetURL:nil indexImage:imageInfo];
-                                             }
-                                         }];
-                                     }
-                                 } failureBlock:^(NSError *error) {
-                                     NSLog(@"error: %@", error);
-                                 }];
-    
- 
 
-  */
-    
 }
 
 
@@ -150,7 +126,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     ListCasesViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"ListCases"];
-    cController.albumId = 2;
+    cController.albumId = self.selectedAlbumId;
+    
+   
     
     self.hidesBottomBarWhenPushed =  YES;
     [self.navigationController pushViewController:cController animated:YES];

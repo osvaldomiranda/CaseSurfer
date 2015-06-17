@@ -24,18 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
     [self setScrollViewProperties];
-    
     MedCase *medCase = [[MedCase alloc] init];
-    
     [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
-        
-         NSLog(@"Items %@ %d",items, self.caseId);
-        
         [self fillCase: items];
     } Error:^(NSError *error) {
-        
     }];
 }
 

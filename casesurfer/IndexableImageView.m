@@ -22,7 +22,6 @@
 
 - (id)initWithUrl:(NSURL *)urlImage andImageInfo:(NSMutableDictionary *)imageInfo{
     self = [super init];
-  //  [self setImageWithURL:urlImage];
     self.assetURL = urlImage;
     self.imageInfo = imageInfo;
     self.selected = FALSE;
