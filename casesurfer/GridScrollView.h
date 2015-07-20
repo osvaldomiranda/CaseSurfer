@@ -28,4 +28,6 @@
           withAssetURL:(NSURL *)assetURL
             indexImage:(IndexableImageView *) indexImage;
 
+- (void) clearGrid;
+
 @end

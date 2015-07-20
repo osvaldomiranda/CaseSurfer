@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseApiModel.h"
+#import "IndexableImageView.h"
 
 @interface Album : BaseApiModel
 
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) IndexableImageView *image;
+-(void) create;
 @end

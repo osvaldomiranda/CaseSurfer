@@ -30,6 +30,7 @@
         
         NSArray *medCases = [items valueForKeyPath:@"medcases"];
         [self fillImtensArray:medCases];
+        
     } Error:^(NSError *error) {
         
     }];
@@ -65,8 +66,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    int numRows = itemsArray.count;
-    return numRows;
+    return itemsArray.count;
 }
 
 

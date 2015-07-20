@@ -9,6 +9,7 @@
 #import "YouTableViewController.h"
 #import "ViewController.h"
 #import "session.h"
+#import "TermsOfUseViewController.h"
 
 @interface YouTableViewController ()
 
@@ -40,6 +41,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return 7;
+}
+
+- (IBAction)termsOfUse:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    TermsOfUseViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"TermsOfUse"];
+    cController.hidesBottomBarWhenPushed = TRUE;
+    [self.navigationController pushViewController:cController animated:YES];
 }
 
 - (IBAction)logOut:(id)sender {

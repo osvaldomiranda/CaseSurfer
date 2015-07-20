@@ -1,5 +1,6 @@
-//#define BASE_PATH @"http://localhost:3000"
-#define BASE_PATH @"http://166.78.5.15/"
+#define BASE_PATH @"http://localhost:3000"
+//#define BASE_PATH @"http://166.78.5.15/"
+//#define BASE_PATH @"http://162.209.97.79/"
 
 #define gray [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0]
 #define darkGray [UIColor colorWithRed:0.39 green:0.43 blue:0.48 alpha:1.0]

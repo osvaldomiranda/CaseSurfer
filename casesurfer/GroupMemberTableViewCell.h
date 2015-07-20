@@ -11,6 +11,7 @@
 @interface GroupMemberTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 
 
 @end

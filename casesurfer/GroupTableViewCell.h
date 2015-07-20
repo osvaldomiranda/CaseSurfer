@@ -11,7 +11,11 @@
 @interface GroupTableViewCell : UITableViewCell
 
 @property (nonatomic, unsafe_unretained) id callerViewController;
+@property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
+@property (weak, nonatomic) IBOutlet UILabel *lblGroupMembers;
+@property (nonatomic, retain) NSMutableArray *users;
 
 - (IBAction)GroupMembersAction:(id)sender;
+
 
 @end

@@ -134,6 +134,15 @@
     }
 }
 
+- (void) clearGrid{
+    self.addedElements = 0;
+    self.currentCol = 0;
+    self.currentRow = 0;
+    for ( UIView *view in self.subviews ) {
+        [view removeFromSuperview];
+    }
+}
+
 
 
 @end

@@ -25,11 +25,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setScrollViewProperties];
+    self.comments = [[NSArray alloc] init];
     MedCase *medCase = [[MedCase alloc] init];
     [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
         [self fillCase: items];
     } Error:^(NSError *error) {
     }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,23 +41,19 @@
 }
 
 -(void) fillCase: (NSMutableDictionary*) item{
-    
-   
-    
-    self.lblTitle.text = [item valueForKeyPath:@"title"];
-    self.lblDescription.text = [item valueForKeyPath:@"description"];
+    self.txtTitle.text = [item valueForKeyPath:@"title"];
+    self.txtDescription.text = [item valueForKeyPath:@"description"];
     
     NSString *patient = [item valueForKeyPath:@"patient"];
     NSString *gender = [item valueForKeyPath:@"patient_gender"];
     NSString *age = [item valueForKeyPath:@"patient_age"];
     
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
-    
+    self.comments = [item valueForKeyPath:@"comments"];
     self.images = [item valueForKeyPath:@"medcase_images"];
     
+    [self.tblComments reloadData];
     [self fillHorizontalView:self.images];
-    
-    
 }
 
 -(void) fillHorizontalView:(NSArray *) images{
@@ -161,7 +160,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.comments.count;
 }
 
 
@@ -169,7 +168,16 @@
     
     CaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CaseCell"];
     [cell.contentView clearsContextBeforeDrawing];
-
+    
+    NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
+    
+    cell.lblMessage.text  = [celda valueForKeyPath:@"message"];
+    cell.lblUserName.text = [celda valueForKeyPath:@"user_name"];
+    
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
+    NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [cell.imgUser setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
     
     return cell;
 }
@@ -181,6 +189,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     CommentViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Comments"];
+    
+    cController.caseId = self.caseId;
     
     [cController.navigationController setNavigationBarHidden:NO];
     cController.hidesBottomBarWhenPushed = YES;

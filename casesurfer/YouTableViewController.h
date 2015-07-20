@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
 
 - (IBAction)logOut:(id)sender;
+- (IBAction)termsOfUse:(id)sender;
 @end

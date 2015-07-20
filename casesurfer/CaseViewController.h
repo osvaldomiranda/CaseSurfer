@@ -10,13 +10,17 @@
 #import "HorizontalGrid.h"
 
 @interface CaseViewController : UIViewController <horizontalGridDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UITextView *txtTitle;
+@property (weak, nonatomic) IBOutlet UITextView *txtDescription;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblData;
-@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+
 @property (nonatomic, retain) HorizontalGrid *scrollView;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, assign) int caseId;
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSArray *comments;
+@property (weak, nonatomic) IBOutlet UITableView *tblComments;
 
 - (IBAction)comment:(id)sender;
 - (IBAction)back:(id)sender;

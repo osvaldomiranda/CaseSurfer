@@ -8,6 +8,9 @@
 
 #import "CommentViewController.h"
 #import "CommentTableViewCell.h"
+#import "MedCase.h"
+#import "Definitions.h"
+#import "UIImageView+WebCache.h"
 
 @interface CommentViewController ()
 
@@ -16,13 +19,23 @@
 @implementation CommentViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.comments = [[NSArray alloc] init];
+    MedCase *medCase = [[MedCase alloc] init];
+    [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
+        [self fillCase: items];
+    } Error:^(NSError *error) {
+    }];
+}
+
+-(void) fillCase: (NSMutableDictionary*) item{
+    self.comments = [item valueForKeyPath:@"comments"];
+    [self.tblComments reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -35,16 +48,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.comments.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentsCell"];
     [cell.contentView clearsContextBeforeDrawing];
     cell.callerViewController = self;
     
+    NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
+    
+    cell.lblMessage.text  = [celda valueForKeyPath:@"message"];
+    cell.btnUserName.titleLabel.text = [celda valueForKeyPath:@"user_name"];
+    
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
+    NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [cell.imgUserAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
     
     return cell;
 }

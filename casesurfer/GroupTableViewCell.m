@@ -25,6 +25,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GroupMembersViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"GroupMembers"];
+    cController.members = self.users;
+    cController.groupName = self.lblGroupName.text;
     
     [cController.navigationController setNavigationBarHidden:NO];
     cController.hidesBottomBarWhenPushed = YES;

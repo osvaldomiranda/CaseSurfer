@@ -10,6 +10,12 @@
 
 @interface CommentTableViewCell : UITableViewCell
 @property (nonatomic, unsafe_unretained) id callerViewController;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblMessage;
+@property (weak, nonatomic) IBOutlet UIButton *btnUserName;
+@property (weak, nonatomic) IBOutlet UIImageView *imgUserAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblTimeAgo;
+
 - (IBAction)tapUser:(id)sender;
 
 @end

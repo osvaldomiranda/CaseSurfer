@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>133E731F-1818-4F36-8376-9B32E3D49C89</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>casesurfer</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>497BB21431E82B4BEBC9E03FA72BEA866726264C</key>
 		<string>https://github.com/osvaldomiranda/CaseSurfer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>casesurfer/casesurfer.xcodeproj/project.xcworkspace</string>
+	<string>casesurfer/casesurfer.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>497BB21431E82B4BEBC9E03FA72BEA866726264C</key>

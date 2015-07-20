@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IndexableImageView.h"
 
 @interface NewAlbumViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *albumImage;
+@property (nonatomic, retain) IndexableImageView *imageInfo;
+@property (weak, nonatomic) IBOutlet UITextField *txtTitle;
+
+- (IBAction)create:(id)sender;
 - (IBAction)cancel:(id)sender;
 
 @end

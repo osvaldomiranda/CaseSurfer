@@ -42,6 +42,8 @@
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
     NSString *url = [NSString stringWithFormat:@"%@%@.json", @"/", className];
     
+    NSLog(@"Parametros %@",parameters);
+    
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {

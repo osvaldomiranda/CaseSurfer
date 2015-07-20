@@ -9,7 +9,7 @@
 #import "AlbumsViewController.h"
 #import "GridScrollView.h"
 #import "Definitions.h"
-#import "NewAlbumViewController.h"
+#import "rollGridChoseImageViewController.h"
 #import "ListCasesViewController.h"
 #import "Album.h"
 #import "UIImageView+WebCache.h"
@@ -26,16 +26,13 @@
     [super viewDidLoad];
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
-    [self loadAlbums];
-
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:TRUE];
-    
+    [self loadAlbums];
 
 }
 
@@ -111,12 +108,10 @@
 
 
 - (IBAction)addAction:(id)sender {
-    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    NewAlbumViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewAlbum"];
-    
-    
+        
+    rollGridChoseImageViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollGridChose"];
+        
     self.hidesBottomBarWhenPushed =  YES;
     [self.navigationController pushViewController:cController animated:YES];
     self.hidesBottomBarWhenPushed = NO;

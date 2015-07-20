@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoadingView.h"
 
-@interface GroupsViewController : UIViewController
+@interface GroupsViewController : UIViewController{
+    NSMutableArray *itemsArray;
+}
 
+@property (weak, nonatomic) IBOutlet UITableView *groupsTableView;
+@property (nonatomic, assign) BOOL pullRefreshVisible;
+@property (nonatomic, retain) LoadingView *refreshLoadingView;
+
+- (IBAction)editGroup:(id)sender;
+- (IBAction)newGroup:(id)sender;
 
 
 @end

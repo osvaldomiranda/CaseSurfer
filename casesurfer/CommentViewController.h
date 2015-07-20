@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CommentViewController : UIViewController
+
+@property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, assign) int caseId;
+@property (weak, nonatomic) IBOutlet UITableView *tblComments;
+
 - (IBAction)back:(id)sender;
 
 @end

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CaseTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessage;
+@property (weak, nonatomic) IBOutlet UIImageView *imgUser;
+
 
 @end

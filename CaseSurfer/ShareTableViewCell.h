@@ -20,6 +20,7 @@
 @property (weak, nonatomic) NSString *status;
 @property (weak, nonatomic) IBOutlet UIButton *btnAcept;
 @property (weak, nonatomic) IBOutlet UIButton *btnIgnore;
+@property (weak, nonatomic) IBOutlet UILabel *lblTimeAgo;
 
 
 - (IBAction)userAction:(id)sender;
