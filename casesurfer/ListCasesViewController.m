@@ -104,7 +104,7 @@
         thumb = [img valueForKeyPath:@"thumb"];
         break;
     }
-    NSString *caseImageUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [thumb valueForKeyPath:@"url"]];
+    NSString *caseImageUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
     NSURL *urlCaseImage = [NSURL URLWithString:[caseImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     return urlCaseImage;
 }

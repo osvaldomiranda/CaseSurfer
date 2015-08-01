@@ -35,6 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    self.photos = nil;
     [self.navigationController setNavigationBarHidden:TRUE];
 }
 

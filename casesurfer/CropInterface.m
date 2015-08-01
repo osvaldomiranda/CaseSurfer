@@ -54,12 +54,12 @@
         // Initialization code
         self.contentMode = UIViewContentModeScaleAspectFit;
         self.userInteractionEnabled = YES;
-
+        
         // set image to crop
         self.image = image;
         
         ratio = r;
-
+        
         topView = [self newEdgeView];
         bottomView = [self newEdgeView];
         leftView = [self newEdgeView];
@@ -90,7 +90,7 @@
     cropView.layer.borderColor = [[UIColor whiteColor] CGColor];
     cropView.layer.borderWidth = 1.0;
     cropView.backgroundColor = [UIColor clearColor];
-
+    
     self.cropView = cropView;
     [self addSubview:self.cropView];
     
@@ -112,8 +112,8 @@
 }
 
 - (void)setBorderColor:(UIColor *)borderColor {
-  //  _borderColor = borderColor;
-  //  self.cropView.layer.borderColor = _borderColor.CGColor;
+    //  _borderColor = borderColor;
+    //  self.cropView.layer.borderColor = _borderColor.CGColor;
 }
 
 #pragma mark - motion
@@ -268,7 +268,7 @@
             break;
         }
     }
-
+    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -278,7 +278,7 @@
     switch ([allTouches count]){
         case 1: {
             CGPoint touch = [[allTouches anyObject] locationInView:self];
-    
+            
             if (isPanning) {
                 CGPoint touchCurrent = [[allTouches anyObject] locationInView:self];
                 CGFloat x = touchCurrent.x - panTouch.x;

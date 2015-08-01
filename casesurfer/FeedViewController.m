@@ -93,10 +93,10 @@
     NSString *caseId = [celda valueForKeyPath:@"medcaseid"];
     NSString *timeAgo = [celda valueForKeyPath:@"time_ago"];
     
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"user_avatar"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [celda valueForKeyPath:@"user_avatar"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSString *caseImageUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"medcase_image"]];
+    NSString *caseImageUrl = [NSString stringWithFormat:@"%@", [celda valueForKeyPath:@"medcase_image"]];
     NSURL *urlCaseImage = [NSURL URLWithString:[caseImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSDictionary *notificable =  [celda valueForKeyPath:@"notificable"];
     

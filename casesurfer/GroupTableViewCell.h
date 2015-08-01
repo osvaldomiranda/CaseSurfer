@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupMembers;
 @property (nonatomic, retain) NSMutableArray *users;
+@property (nonatomic, retain) NSString *groupId;
 
 - (IBAction)GroupMembersAction:(id)sender;
 

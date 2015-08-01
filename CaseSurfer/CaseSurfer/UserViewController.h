@@ -11,6 +11,13 @@
 @interface UserViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmail;
+@property (weak, nonatomic) IBOutlet UITextField *txtBio;
+@property (weak, nonatomic) IBOutlet UITextField *txtAreasOfInterest;
+
+
 
 - (IBAction)cancel:(id)sender;
 @end

@@ -1,21 +1,19 @@
 //
-//  HorizontalGrid.h
+//  photoGalery.h
 //  casesurfer
 //
-//  Created by Osvaldo on 26-05-15.
+//  Created by Osvaldo on 20-07-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-@protocol horizontalGridDelegate
-
+@protocol photoGaleryDelegate
 - (void)selectImageWithAssetURL:(UIImage *)image  indexImage:(int) indexImage assetUrl:(NSURL *) assetUrl;
-
 @end
 
-@interface HorizontalGrid : UIScrollView
+@interface photoGalery : UIScrollView
 
-@property (nonatomic, retain) id <horizontalGridDelegate> gridDelegate;
+@property (nonatomic, retain) id <photoGaleryDelegate> gridDelegate;
 
 @property (nonatomic, retain) NSNumber *columns;
 @property (nonatomic, retain) NSNumber *spacing;
@@ -33,8 +31,7 @@
 
 - (void) clearGrid;
 
-- (void) replaceImage:(UIImage *) image
-                index:(int)index;
+
 
 
 @end

@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "photoGalery.h"
 
-@interface LargerImageViewController : UIViewController
+@interface LargerImageViewController : UIViewController  <photoGaleryDelegate>
 
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) IBOutlet UIImageView *displayImage;
+
+@property (nonatomic, retain) photoGalery *scrollView;
+@property (nonatomic, strong) NSArray *images;
 
 - (IBAction)back:(id)sender;
 

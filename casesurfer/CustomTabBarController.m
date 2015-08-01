@@ -86,7 +86,6 @@
     
     currentSelectedIndex = newIndex;
     
-     NSLog(@"%@",tViewController);
     [self setSelectedViewController:tViewController];
 }
 

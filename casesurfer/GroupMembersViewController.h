@@ -19,9 +19,10 @@
 @property (nonatomic, retain) LoadingView *refreshLoadingView;
 @property (weak, nonatomic) IBOutlet UITableView *membersTableView;
 @property (nonatomic, assign) NSString *groupName;
+@property (nonatomic, assign) NSString *groupId;
 
+- (IBAction)addMembers:(id)sender;
 - (IBAction)editMembers:(id)sender;
-
 - (IBAction)back:(id)sender;
 
 @end

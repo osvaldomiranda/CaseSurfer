@@ -132,6 +132,9 @@
 		2D2EC1121B279212009E84EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC1101B279212009E84EB /* LaunchScreen.xib */; };
 		2D2EC1211B27968E009E84EB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC1201B27968E009E84EB /* Default-568h@2x.png */; };
 		2D2EC1231B2796CF009E84EB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC1221B2796CF009E84EB /* Info.plist */; };
+		2D32E4E91B694A5700E79F8D /* SearchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E4E81B694A5700E79F8D /* SearchUser.m */; };
+		2D3F7AB51B691E09003455C2 /* SearchUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */; };
+		2D3F7AB81B692AB9003455C2 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */; };
 		2D4D8F151B20964600F72403 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D8F141B20964600F72403 /* ImageIO.framework */; };
 		2D7A076E1B553CFD0031AED4 /* rollGridChoseImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A076D1B553CFD0031AED4 /* rollGridChoseImageViewController.m */; };
 		2D8828B61B2B451100859D13 /* home_active_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8828B51B2B451100859D13 /* home_active_blue@2x.png */; };
@@ -170,8 +173,12 @@
 		2D8DEEEA1B31C28300F5268D /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DEEE41B31C28300F5268D /* Default-Portrait.png */; };
 		2D8DEEEB1B31C28300F5268D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DEEE51B31C28300F5268D /* Default.png */; };
 		2D90C7A71B5C40C5006349A4 /* NewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90C7A61B5C40C5006349A4 /* NewGroupViewController.m */; };
+		2D90C7AA1B5D4077006349A4 /* photoGalery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90C7A91B5D4077006349A4 /* photoGalery.m */; };
 		2D97E7E01B47EABF00590635 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E7DF1B47EABF00590635 /* Group.m */; };
 		2D97E7E31B497C3100590635 /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E7E21B497C3100590635 /* Member.m */; };
+		2D9BF91F1B6BEFF3000725C9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BF91E1B6BEFF3000725C9 /* AboutViewController.m */; };
+		2D9BF9221B6C06F5000725C9 /* linkedin_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BF9211B6C06F5000725C9 /* linkedin_logo.png */; };
+		2D9BF9241B6C070A000725C9 /* twitter_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BF9231B6C070A000725C9 /* twitter_logo.png */; };
 		2DEAB3AF1B2FBF8D005568D5 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3AE1B2FBF8D005568D5 /* ShareTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -340,6 +347,12 @@
 		2D2EC1111B279212009E84EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		2D2EC1201B27968E009E84EB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2D2EC1221B2796CF009E84EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D32E4E71B694A5700E79F8D /* SearchUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchUser.h; path = CaseSurfer/SearchUser.h; sourceTree = SOURCE_ROOT; };
+		2D32E4E81B694A5700E79F8D /* SearchUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchUser.m; path = CaseSurfer/SearchUser.m; sourceTree = SOURCE_ROOT; };
+		2D3F7AB31B691E09003455C2 /* SearchUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchUserTableViewCell.h; path = CaseSurfer/SearchUserTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchUserTableViewCell.m; path = CaseSurfer/SearchUserTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		2D3F7AB61B692AB9003455C2 /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewController.h; path = CaseSurfer/UserTableViewController.h; sourceTree = SOURCE_ROOT; };
+		2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewController.m; path = CaseSurfer/UserTableViewController.m; sourceTree = SOURCE_ROOT; };
 		2D4D8F141B20964600F72403 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2D7A076C1B553CFD0031AED4 /* rollGridChoseImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rollGridChoseImageViewController.h; path = CaseSurfer/rollGridChoseImageViewController.h; sourceTree = SOURCE_ROOT; };
 		2D7A076D1B553CFD0031AED4 /* rollGridChoseImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = rollGridChoseImageViewController.m; path = CaseSurfer/rollGridChoseImageViewController.m; sourceTree = SOURCE_ROOT; };
@@ -380,12 +393,18 @@
 		2D8DEEE51B31C28300F5268D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2D90C7A51B5C40C5006349A4 /* NewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGroupViewController.h; path = CaseSurfer/NewGroupViewController.h; sourceTree = SOURCE_ROOT; };
 		2D90C7A61B5C40C5006349A4 /* NewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewGroupViewController.m; path = CaseSurfer/NewGroupViewController.m; sourceTree = SOURCE_ROOT; };
+		2D90C7A81B5D4077006349A4 /* photoGalery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = photoGalery.h; path = CaseSurfer/photoGalery.h; sourceTree = SOURCE_ROOT; };
+		2D90C7A91B5D4077006349A4 /* photoGalery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = photoGalery.m; path = CaseSurfer/photoGalery.m; sourceTree = SOURCE_ROOT; };
 		2D97E7DE1B47EABF00590635 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = SOURCE_ROOT; };
 		2D97E7DF1B47EABF00590635 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = SOURCE_ROOT; };
 		2D97E7E11B497C3100590635 /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Member.h; path = CaseSurfer/Member.h; sourceTree = SOURCE_ROOT; };
 		2D97E7E21B497C3100590635 /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Member.m; path = CaseSurfer/Member.m; sourceTree = SOURCE_ROOT; };
 		2D98CCE71AEBDD8C006CB981 /* casesurfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = casesurfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D98CCF21AEBDD8C006CB981 /* casesurfer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = casesurfer.xcdatamodel; sourceTree = "<group>"; };
+		2D9BF91D1B6BEFF3000725C9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = CaseSurfer/AboutViewController.h; sourceTree = SOURCE_ROOT; };
+		2D9BF91E1B6BEFF3000725C9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = CaseSurfer/AboutViewController.m; sourceTree = SOURCE_ROOT; };
+		2D9BF9211B6C06F5000725C9 /* linkedin_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedin_logo.png; sourceTree = SOURCE_ROOT; };
+		2D9BF9231B6C070A000725C9 /* twitter_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo.png; sourceTree = SOURCE_ROOT; };
 		2DEAB3AD1B2FBF8D005568D5 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		2DEAB3AE1B2FBF8D005568D5 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -411,6 +430,10 @@
 				2D2EC09E1B278F29009E84EB /* GroupMembersViewController.m */,
 				2D2EC09F1B278F29009E84EB /* GroupMemberTableViewCell.h */,
 				2D2EC0A01B278F29009E84EB /* GroupMemberTableViewCell.m */,
+				2D3F7AB61B692AB9003455C2 /* UserTableViewController.h */,
+				2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */,
+				2D3F7AB31B691E09003455C2 /* SearchUserTableViewCell.h */,
+				2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */,
 			);
 			name = GroupMembers;
 			sourceTree = "<group>";
@@ -568,6 +591,8 @@
 				2D2EC04D1B278999009E84EB /* GridScrollView.m */,
 				2D2EC0491B27898D009E84EB /* HorizontalGrid.h */,
 				2D2EC04A1B27898D009E84EB /* HorizontalGrid.m */,
+				2D90C7A81B5D4077006349A4 /* photoGalery.h */,
+				2D90C7A91B5D4077006349A4 /* photoGalery.m */,
 			);
 			name = photoGrid;
 			sourceTree = "<group>";
@@ -652,6 +677,8 @@
 		2D58C7491B085E6000205D5C /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				2D9BF9231B6C070A000725C9 /* twitter_logo.png */,
+				2D9BF9211B6C06F5000725C9 /* linkedin_logo.png */,
 				2D8DEEDE1B31BE1900F5268D /* logo.png */,
 				2D8828E51B2B581B00859D13 /* patient.png */,
 				2D8828E61B2B581B00859D13 /* patient@2x.png */,
@@ -837,6 +864,7 @@
 				2D58C7631B08F45500205D5C /* TermsOfUse */,
 				2D58C76D1B09080700205D5C /* comment */,
 				2D7B5D0E1B1646DA005CC7BB /* LargeImage */,
+				2D9BF9201B6BF142000725C9 /* About */,
 			);
 			path = casesurfer;
 			sourceTree = "<group>";
@@ -847,6 +875,15 @@
 				2D2EC0831B278E56009E84EB /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D9BF9201B6BF142000725C9 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				2D9BF91D1B6BEFF3000725C9 /* AboutViewController.h */,
+				2D9BF91E1B6BEFF3000725C9 /* AboutViewController.m */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		2DE2B8761AEBEB4100C99255 /* Externals */ = {
@@ -905,6 +942,8 @@
 				2DE2B8811AEBEBA200C99255 /* Connect */,
 				2D4D3F981AF94F290021BE62 /* Api */,
 				2DE2B8891AEC153D00C99255 /* Models */,
+				2D32E4E71B694A5700E79F8D /* SearchUser.h */,
+				2D32E4E81B694A5700E79F8D /* SearchUser.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -998,12 +1037,14 @@
 				2D2EC0F01B279105009E84EB /* folder_active@2x.png in Resources */,
 				2D8828E41B2B580500859D13 /* album@2x.png in Resources */,
 				2D2EC0CE1B27906D009E84EB /* Lato-LigIta-webfont.ttf in Resources */,
+				2D9BF9221B6C06F5000725C9 /* linkedin_logo.png in Resources */,
 				2D8828E81B2B581B00859D13 /* patient@2x.png in Resources */,
 				2D2EC1061B27913E009E84EB /* user_active@2x.png in Resources */,
 				2D2EC0BC1B279019009E84EB /* Images.xcassets in Resources */,
 				2D2EC0FB1B27911B009E84EB /* home_active@2x.png in Resources */,
 				2D8828B81B2B456100859D13 /* home_active_blue.png in Resources */,
 				2D2EC0CB1B27906D009E84EB /* Lato-Hai-webfont.ttf in Resources */,
+				2D9BF9241B6C070A000725C9 /* twitter_logo.png in Resources */,
 				2D8DEEEB1B31C28300F5268D /* Default.png in Resources */,
 				2D2EC0FF1B27911B009E84EB /* icon_back@3x.png in Resources */,
 				2D2EC0DA1B2790B0009E84EB /* app_launch_camera.png in Resources */,
@@ -1101,11 +1142,13 @@
 				2D2EC09C1B278F07009E84EB /* GroupTableViewCell.m in Sources */,
 				2D2EC0481B278975009E84EB /* CustomTabBarController.m in Sources */,
 				2D97E7E01B47EABF00590635 /* Group.m in Sources */,
+				2D3F7AB81B692AB9003455C2 /* UserTableViewController.m in Sources */,
 				2D2EC0601B278A2B009E84EB /* User.m in Sources */,
 				2D2EC0B11B278FA6009E84EB /* ListCaseTableViewCell.m in Sources */,
 				2D2EC05A1B278A0A009E84EB /* Notification.m in Sources */,
 				2D2EC0421B278931009E84EB /* CBCNavigationController.m in Sources */,
 				2D2EBFB51B2787B2009E84EB /* IndexableImageView.h in Sources */,
+				2D32E4E91B694A5700E79F8D /* SearchUser.m in Sources */,
 				2D2EC0661B278A7C009E84EB /* SVHTTPRequest.m in Sources */,
 				2D2EBFB61B2787B2009E84EB /* IndexableImageView.m in Sources */,
 				2D2EC0511B2789C4009E84EB /* CaseConnect.m in Sources */,
@@ -1116,11 +1159,13 @@
 				2D2EC0761B278B32009E84EB /* CreateCaseTableViewController.m in Sources */,
 				2D2EC0781B278B32009E84EB /* CropViewController.m in Sources */,
 				2D2EBFD41B2787B2009E84EB /* SDImageCache.m in Sources */,
+				2D90C7AA1B5D4077006349A4 /* photoGalery.m in Sources */,
 				2D2EBFD51B2787B2009E84EB /* SDImageCacheDelegate.h in Sources */,
 				2D2EBFD61B2787B2009E84EB /* SDWebImageCompat.h in Sources */,
 				2D2EBFD71B2787B2009E84EB /* SDWebImageDecoder.h in Sources */,
 				2D2EBFD81B2787B2009E84EB /* SDWebImageDecoder.m in Sources */,
 				2D2EBFD91B2787B2009E84EB /* SDWebImageDownloader.h in Sources */,
+				2D9BF91F1B6BEFF3000725C9 /* AboutViewController.m in Sources */,
 				2D2EBFDA1B2787B2009E84EB /* SDWebImageDownloader.m in Sources */,
 				2D2EBFDB1B2787B2009E84EB /* SDWebImageDownloaderDelegate.h in Sources */,
 				2D2EC04E1B278999009E84EB /* GridScrollView.m in Sources */,
@@ -1165,6 +1210,7 @@
 				2D2EC0BA1B278FD5009E84EB /* TermsOfUseViewController.m in Sources */,
 				2D2EC0281B2787B2009E84EB /* UIKit.framework in Sources */,
 				2D2EC0291B2787B2009E84EB /* CoreFoundation.framework in Sources */,
+				2D3F7AB51B691E09003455C2 /* SearchUserTableViewCell.m in Sources */,
 				2D2EC02A1B2787B2009E84EB /* casesurfer.app in Sources */,
 				2D2EC0A81B278F4D009E84EB /* AlbumsViewController.m in Sources */,
 			);

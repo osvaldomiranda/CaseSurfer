@@ -86,6 +86,8 @@
     
     NSDictionary *celda = [itemsArray objectAtIndex:indexPath.row];
     NSString *groupName = [celda valueForKeyPath:@"name"];
+    NSString *groupId = [celda valueForKeyPath:@"id"];
+
     
     NSMutableArray *users = [celda valueForKeyPath:@"users"];
     NSString *members;
@@ -101,6 +103,7 @@
     cell.lblGroupMembers.text = members;
     cell.lblGroupName.text = groupName;
     cell.users = users;
+    cell.groupId = groupId;
     
     return cell;
 }

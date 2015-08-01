@@ -25,8 +25,6 @@
                               @"stars": self.stars
                              };
     
-    
-    
     NSError *error;
     NSData *medcaseJson = [NSJSONSerialization dataWithJSONObject:medcase options:kNilOptions error:&error];
     NSString *medcaseString = [[NSString alloc] initWithData:medcaseJson encoding:NSUTF8StringEncoding];
@@ -34,18 +32,11 @@
     medcaseString = [[NSString stringWithFormat:@"%@", medcaseString] stringByReplacingOccurrencesOfString:@":" withString:@"=>"];
     medcaseString = [[NSString stringWithFormat:@"%@", medcaseString] stringByReplacingOccurrencesOfString:@"\"=>" withString:@"\"=>"];
 
-  
-    
-  
     Session *sess = [[Session alloc] init];
-
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH,@"/medcases.json"]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@",@"/medcases.json"]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    
-   
-    
     
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setHTTPShouldHandleCookies:NO];
@@ -60,7 +51,6 @@
     
     // post body
     NSMutableData *body = [NSMutableData data];
-    
     
     // add params (all params are strings)
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -89,8 +79,6 @@
         i++;
     }
     
-
-    
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
     // setting the body of the post to the reqeust
@@ -99,8 +87,6 @@
     // set the content-length
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    
-    
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if(data.length > 0)

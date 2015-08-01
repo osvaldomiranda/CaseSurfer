@@ -62,7 +62,7 @@
     cell.lblMessage.text  = [celda valueForKeyPath:@"message"];
     cell.btnUserName.titleLabel.text = [celda valueForKeyPath:@"user_name"];
     
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [celda valueForKeyPath:@"thumbnail"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     [cell.imgUserAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];

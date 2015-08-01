@@ -10,6 +10,7 @@
 #import "GroupMemberTableViewCell.h"
 #import "Member.h"
 #import "Definitions.h"
+#import "UserTableViewController.h"
 
 @interface GroupMembersViewController ()
 
@@ -26,6 +27,7 @@
     self.refreshLoadingView.hidden = YES;
     self.pullRefreshVisible = NO;
     [self.view addSubview:self.refreshLoadingView];
+    
     [self.navigationController setNavigationBarHidden:TRUE];
     self.membersTableView.separatorColor = [UIColor clearColor];
     itemsArray = [[NSMutableArray alloc] init];
@@ -100,12 +102,12 @@
     NSDictionary *pics = [celda valueForKeyPath:@"profile_pic"];
     NSDictionary *thumb = [pics valueForKeyPath:@"thumb"];
     
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [thumb valueForKeyPath:@"url"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
+    [cell.imageAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
     
     cell.lblUserName.text = [celda valueForKeyPath:@"name"];
-    [cell.imageAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
+   
     
     return cell;
 }
@@ -149,6 +151,16 @@
                     completion:nil];
     self.refreshLoadingView.hidden = hidden;
     [self refrechData];
+}
+
+- (IBAction)addMembers:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"SearchUser"];
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.groupName = self.groupName;
+    cController.groupId = self.groupId;
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
 }
 
 - (IBAction)editMembers:(id)sender {

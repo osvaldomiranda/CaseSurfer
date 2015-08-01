@@ -135,6 +135,7 @@
 }
 
 - (void) clearGrid{
+    row = (int)[self.spacing integerValue];
     self.addedElements = 0;
     self.currentCol = 0;
     self.currentRow = 0;

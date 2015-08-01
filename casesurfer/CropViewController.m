@@ -24,23 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.inCropp = NO;
+     self.okCroppButton.hidden = YES;
+    
     self.displayImage.contentMode = UIViewContentModeScaleAspectFit;
     self.displayImage.userInteractionEnabled = YES;
+    self.displayImage.image = self.originalImage;
     
-  //  self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.originalImage andRatio:1.0];
-    
-    self.cropper = [[CropInterface alloc]initWithFrame:CGRectMake(0, 0, 316, 430) Image:self.originalImage andRatio:1.0];
-
-    self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1];
-    [self.displayImage addSubview:self.cropper];
-    
-    self.indexImage = 1;
+    self.indexImage = 0;
     
     [self setScrollViewProperties];
     [self fillHorizontalView];
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,13 +90,10 @@
                  }
          ];
 
-        
         i++;
     }
     
 }
-
-
 
 
 #pragma GridScrollView
@@ -110,6 +101,8 @@
     
    [self setImageOriginal:image];
     self.indexImage = indexImage;
+    
+    NSLog(@"Indice de la imagen: %d", indexImage);
 }
 #pragma END GridScrollView
 
@@ -118,7 +111,10 @@
 
 -(void) setImageOriginal:(UIImage *) image{
     [self setOriginalImage:image];
-     self.displayImage.image = self.originalImage;
+    
+    [self.cropper removeFromSuperview];
+    self.displayImage.image = self.originalImage;
+    
     
 }
 
@@ -135,6 +131,7 @@
 
 - (IBAction)back:(id)sender {
     [scrollView clearGrid];
+    self.photos = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -148,6 +145,45 @@
     self.hidesBottomBarWhenPushed =  YES;
     [self.navigationController pushViewController:cController animated:YES];
     self.hidesBottomBarWhenPushed = NO;
+}
+
+- (IBAction) SetCroppedImage:(id)sender {
+    
+    
+    if (self.inCropp) {
+        [self.cropper removeFromSuperview];
+        self.displayImage.image = self.originalImage;
+        self.inCropp = NO;
+        self.okCroppButton.hidden = YES;
+    }
+    else{
+        [self.cropper removeFromSuperview];
+        self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.originalImage andRatio:1];
+        self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
+        [self.displayImage addSubview:self.cropper];
+        self.inCropp=YES;
+        self.okCroppButton.hidden = NO;
+    }
+}
+
+- (IBAction) okCroppedImage:(id)sender {
+    
+     self.okCroppButton.hidden = YES;
+    
+     UIImage *croppedImage = [self.cropper getCroppedImage];
+     
+     [self setImageOriginal: croppedImage];
+     IndexableImageView *img = [[IndexableImageView alloc] initWithImage:croppedImage andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
+     [self.photos replaceObjectAtIndex:self.indexImage withObject:img];
+     
+     [scrollView clearGrid];
+     
+     int i=0;
+     for (IndexableImageView *view in self.photos ) {
+     [scrollView insertPicture: view.image withAssetURL:view.assetURL index:i];
+     i++;
+     }
+    
 }
 
 @end

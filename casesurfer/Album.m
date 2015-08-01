@@ -24,7 +24,7 @@
     
     Session *sess = [[Session alloc] init];
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH,@"/albums.json"]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@",@"/albums.json"]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     

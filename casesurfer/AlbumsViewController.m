@@ -32,6 +32,7 @@
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:TRUE];
+    [scrollView clearGrid];
     [self loadAlbums];
 
 }

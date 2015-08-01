@@ -37,4 +37,9 @@ typedef void (^CaseErrorBlock)(NSError *error);
       Success:(CaseSuccessArrayBlock)successBlock
         Error:(CaseErrorBlock)errorBlock;
 
+-(void) update:(int) identifier
+        params:(NSMutableDictionary *) params
+       Success:(CaseSuccessDictionaryBlock)successBlock
+         Error:(CaseErrorBlock)errorBlock;
+
 @end

@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface YouTableViewController : UITableViewController
+
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
 
 - (IBAction)logOut:(id)sender;
 - (IBAction)termsOfUse:(id)sender;
+- (IBAction)about:(id)sender;
+- (IBAction)help:(id)sender;
+- (IBAction)notifications:(id)sender;
+- (IBAction)profile:(id)sender;
+
+
 @end

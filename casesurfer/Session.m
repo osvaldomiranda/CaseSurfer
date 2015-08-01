@@ -19,15 +19,13 @@
     NSString *url = [NSString stringWithFormat:@"/sessions.json"];
     
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:params Success:^(NSMutableDictionary *items) {
-        
         [self saveToken:[items valueForKeyPath:@"auth_token"]];
         [self saveEmail:[items valueForKeyPath:@"email"]];
+        [self saveUserId:[items valueForKeyPath:@"id"]];
         successBlock(items);
-        
     } Error:^(NSError *error) {
         errorBlock(error);
     }];
-    
     return TRUE;
 }
 
@@ -42,6 +40,21 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:email forKey:@"email"];
     [defaults synchronize];
+}
+
+
+-(void)saveUserId:(NSString *) userId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:userId forKey:@"UserId"];
+    [defaults synchronize];
+}
+
+-(NSString *) getUserId{
+    if ((self.userId == nil) || ([self.userId isEqualToString:@""])) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.userId = [defaults objectForKey:@"UserId"];
+    }
+    return self.userId;
 }
 
 -(NSString *) getToken{

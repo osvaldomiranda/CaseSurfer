@@ -63,7 +63,7 @@
         
         NSDictionary *img = [image valueForKeyPath:@"image"];
         NSDictionary *thumb = [img valueForKeyPath:@"thumb"];
-        NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [thumb valueForKeyPath:@"url"]];
+        NSString *imgUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
         NSURL *urlImgCase = [NSURL URLWithString:[imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
    //     IndexableImageView *imageInfo = [[IndexableImageView alloc] initWithUrl:urlImgCase andImageInfo:image];
@@ -130,7 +130,7 @@
     NSDictionary *imageInfo = self.images[indexImage];
     NSDictionary *img = [imageInfo valueForKeyPath:@"image"];
     NSDictionary *thumb = [img valueForKeyPath:@"normal"];
-    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [thumb valueForKeyPath:@"url"]];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
     NSURL *urlImgCase = [NSURL URLWithString:[imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     UIImageView *imageView = [[UIImageView alloc] init];
@@ -174,7 +174,7 @@
     cell.lblMessage.text  = [celda valueForKeyPath:@"message"];
     cell.lblUserName.text = [celda valueForKeyPath:@"user_name"];
     
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [celda valueForKeyPath:@"thumbnail"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     [cell.imgUser setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
@@ -203,6 +203,7 @@
     
     LargerImageViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"LargeImage"];
     
+    cController.images = self.images;
     cController.originalImage = self.selectedImage;
     
     [cController.navigationController setNavigationBarHidden:NO];

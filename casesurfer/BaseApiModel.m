@@ -42,8 +42,6 @@
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
     NSString *url = [NSString stringWithFormat:@"%@%@.json", @"/", className];
     
-    NSLog(@"Parametros %@",parameters);
-    
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {
@@ -62,7 +60,7 @@
     Session *mySession = [[Session alloc] init];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
-    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;;
+    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
     
@@ -98,10 +96,28 @@
 }
 
 
+-(void) update:(int) identifier
+        params:(NSMutableDictionary *) params
+       Success:(CaseSuccessDictionaryBlock)successBlock
+         Error:(CaseErrorBlock)errorBlock
+{
+    Session *mySession = [[Session alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;
+    
+    NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
+    NSString *url = [NSString stringWithFormat:@"%@%@/%d.json", @"/", className, identifier ];
+    [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
+        successBlock(items);
+    } Error:^(NSError *error) {
+        [self alertError:error];
+        errorBlock(error);
+    }];
+}
+
+
 -(void) alertError:(NSError *) Error{
-    
     [UIAlertView alertViewOopsWithmessage:@"Bad Server Response"];
-    
 }
 
 

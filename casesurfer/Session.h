@@ -14,9 +14,12 @@
 
 @property (nonatomic, retain) NSString *token;
 @property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *userId;
 
 -(NSString *) getToken;
 -(NSString *) getEmail;
+-(NSString *) getUserId;
+-(void)saveUserId:(NSString *) userId;
 -(void)saveEmail:(NSString *) email;
 -(void)saveToken:(NSString *) token;
 

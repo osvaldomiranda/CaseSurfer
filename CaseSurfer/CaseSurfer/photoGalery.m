@@ -1,16 +1,16 @@
 //
-//  HorizontalGrid.m
+//  photoGalery.m
 //  casesurfer
 //
-//  Created by Osvaldo on 26-05-15.
+//  Created by Osvaldo on 20-07-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
-#import "HorizontalGrid.h"
+#import "photoGalery.h"
 #import "IndexableImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@implementation HorizontalGrid
+@implementation photoGalery
 
 @synthesize gridDelegate;
 @synthesize row;
@@ -18,7 +18,7 @@
 - (id)initGrid:(int)spacing gridHeight:(int)gridHeight{
     
     self = [super init];
-
+    
     self.spacing = [NSNumber numberWithInt:spacing];
     self.gridHeight = [NSNumber numberWithInt:gridHeight];
     
@@ -33,13 +33,13 @@
 
 - (void) insertPicture:(UIImage *)image
           withAssetURL:(NSURL *)assetURL
-              index:(int ) index
+                 index:(int ) index
 {
-  /*  float scrollBarWidth = 1.8;
-    if ([self.columns integerValue]>2) {
-        scrollBarWidth = 10;
-    }
-    */
+    /*  float scrollBarWidth = 1.8;
+     if ([self.columns integerValue]>2) {
+     scrollBarWidth = 10;
+     }
+     */
     int pictureSize = [self.gridHeight intValue];
     
     if ([self.currentCol integerValue] == [self.columns integerValue]) {
@@ -119,19 +119,6 @@
         [view removeFromSuperview];
     }
 }
-
-- (void) replaceImage:(UIImage *) image
-                index:(int) index
-{
-    int i= 0;
-    for ( IndexableImageView *view in self.subviews ) {
-        i++;
-        if ( index == i) {
-            view.image = image;
-        }
-    }
-}
-
 
 
 
