@@ -48,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:YES];
     
     self.btnSignUp.layer.cornerRadius = 22;
     self.btnSignUp.layer.masksToBounds = YES;
@@ -64,7 +64,19 @@
     if ([mySession getToken] != nil ) {
         [self shouldLogin];
     }
+    
+   NSLog(@"SCEEN %d", [self screen]);
 }
+
+
+-(int) screen {
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    return screenWidth;
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

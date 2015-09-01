@@ -13,6 +13,9 @@
 @interface Album : BaseApiModel
 
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) IndexableImageView *image;
--(void) create;
+@property (nonatomic, retain) UIImage *image;
+-(void) createOrUpdate:(NSString *)albumId action:(NSString *) action;
+-(void) album_shared: (NSMutableDictionary *) params
+             Success:(CaseSuccessArrayBlock)successBlock
+               Error:(CaseErrorBlock)errorBlock;
 @end

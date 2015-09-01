@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseApiModel.h"
+#import "IndexableImageView.h"
 
 @interface User : BaseApiModel
 
-
+-(void) updateProfilePic:(IndexableImageView *)picture;
 
 @end

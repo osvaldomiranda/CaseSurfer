@@ -11,19 +11,14 @@
 @implementation GroupMemberTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
--(void)layoutSubviews
-{
-    [self.imageAvatar.layer setMasksToBounds:YES];
-    [self.imageAvatar.layer setCornerRadius:17.5f];
-}
+
 
 @end

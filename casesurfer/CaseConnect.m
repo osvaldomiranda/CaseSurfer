@@ -67,8 +67,8 @@
     
     [client POST:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
         
-     //   NSLog(@"POST %@",response);
-     //   NSLog(@"POST %@",error);
+        NSLog(@"POST %@",response);
+        NSLog(@"POST %@",error);
         
         if ([response isKindOfClass:[NSDictionary class]]) {
             successBlock(response);
@@ -89,12 +89,11 @@
     
         [client GET:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
             
-       //     NSLog(@"Get %@",response);
-       //     NSLog(@"Get %@",error);
+       //    NSLog(@"Get %@",response);
+       //    NSLog(@"Get %@",error);
             
             if ([response isKindOfClass:[NSArray class]]) {
                 successBlock(response);
-                
             } else {
                 errorBlock(error);
             }
@@ -120,6 +119,7 @@
              params:(NSMutableDictionary *)params
             Success:(ChicSuccessDictionaryBlock)successBlock
               Error:(ChicErrorBlock)errorBlock {
+
     
     [client PUT:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
         
@@ -135,6 +135,23 @@
         }
     }];
 }
+
+- (void) deleteWithUrl:(NSString *)url
+              params:(NSMutableDictionary *)params
+             Success:(ChicSuccessDictionaryBlock)successBlock
+               Error:(ChicErrorBlock)errorBlock {
+    
+    
+    [client DELETE:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+        successBlock(response);
+    }];
+   
+    
+}
+
+
+
+
 
 
 @end

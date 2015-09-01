@@ -10,6 +10,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "Definitions.h"
 #import "CropViewController.h"
+#import "CreateCaseTableViewController.h"
+#import "AvatarTableViewController.h"
+#import "UserViewController.h"
 
 @interface rollGridChoseImageViewController ()
 
@@ -35,6 +38,7 @@
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:TRUE];
+    self.hidesBottomBarWhenPushed =  YES;
 }
 
 -(void)setScrollViewProperties{
@@ -93,30 +97,31 @@
         
         [self selectImage:image];
     }
-    
-    
 }
 
 - (IBAction)takePhoto:(id)sender{
-    
 }
 
 
 -(void) selectImage: (IndexableImageView *) image{
+    
+    [self.delegate onSelectImage:image];
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NewAlbumViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewAlbum"];
-
-    cController.imageInfo = image;
-    self.hidesBottomBarWhenPushed =  YES;
-    [self.navigationController pushViewController:cController animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    if ([self.callerViewController class]== [UserViewController class])
+    {
+        AvatarTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Avatar"];
+        cController.imageInfo = image;
+        self.hidesBottomBarWhenPushed =  YES;
+        [self.navigationController pushViewController:cController animated:YES];
+    } else {
+         
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
-
-
 @end

@@ -18,8 +18,9 @@
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, retain) NSMutableArray *photos;
 
+@property (nonatomic, strong) UIImagePickerController *pickerController;
+
 - (IBAction)back:(id)sender;
-- (IBAction)takePhoto:(id)sender;
 - (IBAction) callCrop:(id)sender;
 
 @end

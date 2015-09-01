@@ -10,29 +10,38 @@
 #import "CaseTableViewCell.h"
 #import "CommentViewController.h"
 #import "Definitions.h"
-#import "LargerImageViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MedCase.h"
 #import "UIImageView+WebCache.h"
+#import "GaleryViewController.h"
+#import "GroupsShareViewController.h"
+#import "ShareUsersTableViewController.h"
+#import "ShareViewController.h"
+#import "CommentTableViewCell.h"
+#import "session.h"
+#import "Mosaic.h"
+#import "Utilities.h"
+
 
 @interface CaseViewController ()
 
 @end
 
 @implementation CaseViewController
-@synthesize scrollView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setScrollViewProperties];
-    self.comments = [[NSArray alloc] init];
-    MedCase *medCase = [[MedCase alloc] init];
-    [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
-        [self fillCase: items];
-    } Error:^(NSError *error) {
-    }];
-    
+    self.comments = [[NSMutableArray alloc] init];
+    self.scrollPrueba.contentSize =  CGSizeMake(self.scrollPrueba.contentSize.width, 950);
+    self.scrollPrueba.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
+}
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self readData];
+    [self.tblComments reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,119 +49,127 @@
   
 }
 
+
+-(void) readData{
+    MedCase *medCase = [[MedCase alloc] init];
+    [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
+        [self fillCase: items];
+    } Error:^(NSError *error) {
+    }];
+}
+
+
 -(void) fillCase: (NSMutableDictionary*) item{
     self.txtTitle.text = [item valueForKeyPath:@"title"];
     self.txtDescription.text = [item valueForKeyPath:@"description"];
-    
     NSString *patient = [item valueForKeyPath:@"patient"];
     NSString *gender = [item valueForKeyPath:@"patient_gender"];
     NSString *age = [item valueForKeyPath:@"patient_age"];
-    
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
     self.comments = [item valueForKeyPath:@"comments"];
     self.images = [item valueForKeyPath:@"medcase_images"];
+    self.ownerUser = [[item valueForKeyPath:@"user_id"] intValue];
     
-    [self.tblComments reloadData];
-    [self fillHorizontalView:self.images];
-}
-
--(void) fillHorizontalView:(NSArray *) images{
+    Session *session= [[Session alloc] init];
+    int myId =  [session.getUserId intValue];
     
-    int i = 0;
-    for (NSDictionary *image in images) {
-        
-        NSDictionary *img = [image valueForKeyPath:@"image"];
-        NSDictionary *thumb = [img valueForKeyPath:@"thumb"];
-        NSString *imgUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
-        NSURL *urlImgCase = [NSURL URLWithString:[imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        
-   //     IndexableImageView *imageInfo = [[IndexableImageView alloc] initWithUrl:urlImgCase andImageInfo:image];
-        
-        UIImageView *coverAlbum = [[UIImageView alloc] init];
-        [coverAlbum setImageWithURL:urlImgCase placeholderImage:nil options:0 success:^(UIImage *image, BOOL cached) {
-            
-            [scrollView insertPicture:image withAssetURL:urlImgCase index:i];
-            
-        } failure:^(NSError *error) {
-        }];
-        
-        i++;
+    if (myId == self.ownerUser) {
+        self.shareButton.hidden = NO;
+    } else{
+        self.shareButton.hidden = YES;
     }
- 
+    
+    [self setMosaic];
+    [self.tblComments reloadData];
 }
 
--(void)setScrollViewProperties{
-    scrollView = [[HorizontalGrid alloc] initGrid:8 gridHeight:85];
+-(void) setMosaic{
+    CGRect mosaicFrame = CGRectMake(45, 150, 230, 345);
+    if ([self.images count]<3) {
+        mosaicFrame = CGRectMake(75, 150, 230, 345);
+    }
+    Mosaic *mosaicView = [[Mosaic alloc] initMosaic:self.images frameView: mosaicFrame];
     
-    scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(400,85);
-    scrollView.pagingEnabled = NO;
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = YES;
-    scrollView.alwaysBounceVertical = NO;
-    scrollView.alwaysBounceHorizontal = NO;
-    scrollView.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
-    scrollView.maximumZoomScale = 1;
-    scrollView.minimumZoomScale = 1;
-    scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 191, 400, 85);
-    scrollView.gridDelegate = self;
+    UIButton *clearButton = [[UIButton alloc] init];
+    [clearButton addTarget:self action:@selector(largeImage:) forControlEvents:UIControlEventTouchUpInside];
+    [clearButton setTitleColor:[UIColor clearColor]forState:UIControlStateNormal];
+    [clearButton setBackgroundColor:[UIColor clearColor]];
+    clearButton.frame = mosaicView.frame;
     
-    [self.view addSubview:scrollView];
-}
-
--(void)loadPhotoLibrary{
-    
-     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-    [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
-                                 usingBlock:^(ALAssetsGroup *group, BOOL *stop){
-                                     if (group != nil){
-                                         [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-                                         [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
-                                             if (result != nil){
-                                                 UIImage *img = [UIImage imageWithCGImage:[result thumbnail]];
-                                                 [scrollView insertPicture:img withAssetURL:[result valueForProperty:ALAssetPropertyAssetURL] index:0];
-                                             }
-                                         }];
-                                     }
-                                 } failureBlock:^(NSError *error) {
-                                     NSLog(@"error: %@", error);
-                                 }];
+    [self.scrollPrueba addSubview:mosaicView];
+    [self.scrollPrueba addSubview:clearButton];
 }
 
 
 
-#pragma GridScrollView
 
-- (void) selectImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl
-{
+- (IBAction)comment:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CommentViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Comments"];
+    cController.caseId = self.caseId;
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
+}
+
+- (IBAction)callLargeImage:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    GaleryViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Galery"];
+    cController.images = self.images;
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
+}
+
+
+- (IBAction)largeImage:(id)sender {
+    [self callLargeImage:self];
+}
+
+- (IBAction)share:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ShareViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Share"];
     
-    NSDictionary *imageInfo = self.images[indexImage];
-    NSDictionary *img = [imageInfo valueForKeyPath:@"image"];
-    NSDictionary *thumb = [img valueForKeyPath:@"normal"];
-    NSString *imgUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
-    NSURL *urlImgCase = [NSURL URLWithString:[imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    cController.caseId = self.caseId;
     
-    UIImageView *imageView = [[UIImageView alloc] init];
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
     
-    [imageView setImageWithURL:urlImgCase placeholderImage:nil options:0 success:^(UIImage *image, BOOL cached) {
-        
-        [self setSelectedImage:image];
-        [self callLargeImage:self];
-        
-    } failure:^(NSError *error) {
-    }];
+  /*  NSString *string = @"Organize, share and discuss medical cases, A web and mobile AppCaseSurfer";
+    NSURL *Url = [NSURL URLWithString:[@"http://casesurfer.com/" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   
-
-  
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[string, Url] applicationActivities:nil];
+    
+    NSArray *excludeActivities = @[UIActivityTypePostToWeibo,
+                                   UIActivityTypePrint,
+                                   UIActivityTypeCopyToPasteboard,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo,
+                                   UIActivityTypePostToTencentWeibo,
+                                   UIActivityTypeAirDrop];;
+    
+    activityViewController.excludedActivityTypes = excludeActivities;
+    
+    [self.navigationController presentViewController:activityViewController
+                                       animated:YES
+                                     completion:^{
+                                        
+                                     }];
+   */
 }
-#pragma END GridScrollView
 
 
 
-#pragma Table View
+
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
-    return 55;
+    NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
+    return [self textH:[celda valueForKeyPath:@"message"]] + 50;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -165,53 +182,41 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CaseCell"];
+    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentsCell"];
     [cell.contentView clearsContextBeforeDrawing];
+    cell.callerViewController = self;
     
     NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
     
-    cell.lblMessage.text  = [celda valueForKeyPath:@"message"];
-    cell.lblUserName.text = [celda valueForKeyPath:@"user_name"];
-    
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [celda valueForKeyPath:@"thumbnail"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",DEV_BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    [cell.imgUser setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
+    [cell.imgUserAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
+    cell.lblUserName.text = [celda valueForKeyPath:@"user_name"];
+    
+
+    Utilities *util = [[Utilities alloc] init];
+    cell.txtMessage.text  = [celda valueForKeyPath:@"message"];
+    cell.txtMessage.frame = CGRectMake(11, 50, [util screenWidth] -20, [self textH:[celda valueForKeyPath:@"message"]] -25 );
+    
+    for ( UIView *view in cell.subviews ) {
+        if (view.tag == 1) {
+            [view removeFromSuperview];
+        }
+    }
+    UIView *sep = [util addSeparator:[self textH:[celda valueForKeyPath:@"message"]]+40];
+    [cell addSubview:sep];
     
     return cell;
 }
 
-#pragma END Table View
 
-
-- (IBAction)comment:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    CommentViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Comments"];
-    
-    cController.caseId = self.caseId;
-    
-    [cController.navigationController setNavigationBarHidden:NO];
-    cController.hidesBottomBarWhenPushed = YES;
-    [[self navigationController] pushViewController:cController animated:YES];
+- (int) textH: (NSString *) text
+{
+    Utilities *util = [[Utilities alloc] init];
+    float height = [util labelHeightWith:text width:300 font:[UIFont systemFontOfSize:14.0]];
+    return height+40;
 }
 
-- (IBAction)callLargeImage:(id)sender {
-    
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    LargerImageViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"LargeImage"];
-    
-    cController.images = self.images;
-    cController.originalImage = self.selectedImage;
-    
-    [cController.navigationController setNavigationBarHidden:NO];
-    cController.hidesBottomBarWhenPushed = YES;
-    [[self navigationController] pushViewController:cController animated:YES];
-}
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 @end

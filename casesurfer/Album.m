@@ -11,7 +11,7 @@
 #import "Definitions.h"
 
 @implementation Album
--(void) create {
+-(void) createOrUpdate:(NSString *)albumId action:(NSString *) action  {
     
     NSDictionary *album = @{@"name": self.title};
     
@@ -24,7 +24,10 @@
     
     Session *sess = [[Session alloc] init];
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@",@"/albums.json"]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH, @"/albums.json"]];
+    if ([action isEqualToString: @"update"]) {
+         url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH, @"/albums/update.json"]];
+    }
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
@@ -53,16 +56,25 @@
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"album"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"%@\r\n",albumString] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // add params (all params are strings)
     
-   
-        NSData *imageData = UIImageJPEGRepresentation(self.image.image, 1.0);
-        if (imageData) {
-            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@; filename=imageName.jpg\r\n", @"cover"] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:imageData];
-            [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-        }
+    if ([action isEqualToString:@"update"]) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"id"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@\r\n",albumId] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    
+    NSLog(@"IMAGE %@",self.image);
+    NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@; filename=imageName.jpg\r\n", @"cover"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -85,5 +97,29 @@
     }];
     
 }
+
+-(void) album_shared: (NSMutableDictionary *) params
+      Success:(CaseSuccessArrayBlock)successBlock
+        Error:(CaseErrorBlock)errorBlock
+{
+    
+    Session *mySession = [[Session alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters = @{@"auth_token": [mySession getToken]}.mutableCopy;
+    [parameters addEntriesFromDictionary:params];
+    
+    NSString *url = [NSString stringWithFormat:@"/albums_shared/show.json"];
+    
+    [[CaseConnect sharedCaseSurfer] getWithUrl:url params:parameters Success:^(NSMutableArray *items) {
+        successBlock(items);
+    } Error:^(NSError *error) {
+         errorBlock(error);
+    }];
+    
+}
+
+
+
+
 
 @end

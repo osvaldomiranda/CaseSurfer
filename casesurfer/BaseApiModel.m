@@ -103,16 +103,42 @@
 {
     Session *mySession = [[Session alloc] init];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;
+    parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
+    [parameters addEntriesFromDictionary:params];
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
-    NSString *url = [NSString stringWithFormat:@"%@%@/%d.json", @"/", className, identifier ];
+    NSString *url = [NSString stringWithFormat:@"/%@/update.json", className ];
+    
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {
         [self alertError:error];
         errorBlock(error);
     }];
+}
+
+
+-(void) delete:(int) identifier
+        params:(NSMutableDictionary *) params
+       Success:(CaseSuccessDictionaryBlock)successBlock
+         Error:(CaseErrorBlock)errorBlock
+{
+    Session *mySession = [[Session alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
+    [parameters addEntriesFromDictionary:params];
+    
+    NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
+    NSString *url = [NSString stringWithFormat:@"/%@/%d.json", className, identifier ];
+    
+    [[CaseConnect sharedCaseSurfer] deleteWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
+        successBlock(items);
+    } Error:^(NSError *error) {
+        [self alertError:error];
+        errorBlock(error);
+    }];
+ 
 }
 
 

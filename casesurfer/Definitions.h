@@ -1,10 +1,16 @@
 //#define BASE_PATH @"http://localhost:3000"
-//#define BASE_PATH @"http://166.78.5.15/"
+//#define DEV_BASE_PATH @"http://localhost:3000"
+
+#define DEV_BASE_PATH @""
 #define BASE_PATH @"http://162.209.97.79/"
+
 
 #define gray [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0]
 #define darkGray [UIColor colorWithRed:0.39 green:0.43 blue:0.48 alpha:1.0]
 #define backButtonColor [UIColor colorWithRed:0.596 green:0.596 blue:0.596 alpha:1.0]
+
+#define graySep [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1.0]
+#define grayShadowSep [UIColor colorWithRed:0.87 green:0.87 blue:0.89 alpha:1.0]
 
 
 #define greenColor [UIColor colorWithRed:0.26 green:0.55 blue:0.79 alpha:1.0]

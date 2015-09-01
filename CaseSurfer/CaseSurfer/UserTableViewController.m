@@ -25,14 +25,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationController setNavigationBarHidden:NO];
+    [self setRightButton];
     
     self.clearsSelectionOnViewWillAppear = YES;
     self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    
     itemsArray = [[NSMutableArray alloc] init];
     self.filteredUserArray  = [[NSMutableArray alloc] init];
     self.usersArray  = [[NSMutableArray alloc] init];
-    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    self.usersToAdd = [[NSMutableArray alloc] init];
+    
     
     [self refrechData];
     
@@ -42,15 +46,22 @@
     [super didReceiveMemoryWarning];
 }
 
+
+- (void) setRightButton{
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"+Done"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(done:)];
+    [self.navigationItem setRightBarButtonItem:item animated:YES];
+}
+ 
+
 -(void) refrechData{
     NSMutableDictionary *userParams =  @{}.mutableCopy;
     User *user = [[User alloc] initWithParams:userParams];
     
     [user index:userParams Success:^(NSArray *items) {
         [self fillImtensArray:items];
-        
-        NSLog(@"users: %@",items);
-        
     } Error:^(NSError *error) {
     }];
 }
@@ -62,7 +73,8 @@
         
         NSString *name = [item valueForKeyPath:@"name"];
         NSString *idUser = [item valueForKeyPath:@"id"];
-        SearchUser *sUser = [[SearchUser alloc] initWithName:name andId:idUser];
+        NSString *username = [item valueForKeyPath:@"username"];
+        SearchUser *sUser = [[SearchUser alloc] initWithName:name andId:idUser username:username];
         [self.filteredUserArray addObject:sUser];
         [self.usersArray addObject:sUser];
     }
@@ -84,7 +96,7 @@
         return self.filteredUserArray.count;
     }
     else {
-         return itemsArray.count+1;
+         return itemsArray.count;
     }
 }
 
@@ -109,8 +121,7 @@
         
     } else {
         
-        if (indexPath.row>0) {
-            celda = [itemsArray objectAtIndex:indexPath.row-1];
+            celda = [itemsArray objectAtIndex:indexPath.row];
             
             NSDictionary *ppic= [celda valueForKeyPath:@"profile_pic"];
             NSDictionary *profile_pic = [ppic valueForKeyPath:@"profile_pic"];
@@ -119,12 +130,7 @@
             
             cell.lblUserName.text = [celda valueForKeyPath:@"name"];
             cell.lblDone.text = @"";
-        }
-        else{
-            cell.lblUserName.text = [NSString stringWithFormat:@"Add Members to %@"  ,self.groupName];
-            cell.lblDone.text = @"Done";
-            url = @"";
-        }
+    
     }
    
     NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", url];
@@ -139,63 +145,72 @@
 
 
 
-#pragma mark - TableView Delegate
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (indexPath.row>0) {
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        else {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    } else {
-        if (tableView != self.searchDisplayController.searchResultsTableView){
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+    NSDictionary *celda;
+    NSString *userId;
+    NSString *userName;
+    NSString *name;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        SearchUser *sUser = [self.filteredUserArray objectAtIndex:indexPath.row];
+        userId = sUser.idUser;
+        userName = sUser.username;
+        name = sUser.name;
+    }
+    else {
+        celda = [itemsArray objectAtIndex:indexPath.row];
+        name = [celda valueForKeyPath:@"name"];
+        userId = [celda valueForKeyPath:@"id"];
+        userName = [celda valueForKeyPath:@"username"];
     }
     
-
-    
+    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self adduserToGroup:userId userName:userName name:name];
+        if (tableView == self.searchDisplayController.searchResultsTableView) {
+            [self done:self];
+        }
+    }
 }
+
 -(NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (indexPath.row>0) {
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        else {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
+    NSDictionary *celda;
+    NSString *userId;
+    NSString *userName;
+    NSString *name;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        SearchUser *sUser = [self.filteredUserArray objectAtIndex:indexPath.row];
+        userId = sUser.idUser;
+        userName = sUser.username;
+        name = sUser.name;
     }
-
+    else {
+        celda = [itemsArray objectAtIndex:indexPath.row];
+        name = [celda valueForKeyPath:@"name"];
+        userId = [celda valueForKeyPath:@"id"];
+        userName = [celda valueForKeyPath:@"username"];
+    }
+    
+    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self removeUserToGroup:userId userName:userName name:name];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     return indexPath;
-
 }
-
-
-
--(void) addMember {
- /*
-    NSDictionary *groupData = @{@"name": self.txtGroupName.text, @"group_user_ids": @""};
-    
-    NSMutableDictionary *groupParams =  @{@"group" : groupData}.mutableCopy;
-    
-    Group *group = [[Group alloc] initWithParams:groupParams];
-    
-    
-    
-    [group save:groupParams withSession:YES Success:^(NSMutableDictionary *items) {
-        
-    
-        
-    } Error:^(NSError *error) {
-    }];
-*/
-}
-
+#pragma mark - TableView Delegate
 
 
 #pragma mark Content Filtering
@@ -218,6 +233,75 @@
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     return YES;
 }
+
+
+- (void)adduserToGroup:(NSString *)userId userName:(NSString *)userName name:(NSString *)name {
+    SearchUser *sUser = [[SearchUser alloc] initWithName:name andId:userId username:userName];
+    [self addUserToArray:sUser];
+}
+
+- (void) addUserToArray:(SearchUser *)user{
+    BOOL find=false;
+    for (SearchUser *u in self.usersToAdd) {
+        if (u.idUser == user.idUser) {
+            find = true;
+        }
+    }
+    if (!find) {
+        [self.usersToAdd addObject:user];
+    }
+}
+
+- (void)removeUserToGroup:(NSString *)userId userName:(NSString *)userName name:(NSString *)name {
+    SearchUser *sUser = [[SearchUser alloc] initWithName:name andId:userId username:userName];
+    [self delUserToArray:sUser];
+}
+
+- (void) delUserToArray:(SearchUser *)user{
+    int i = 0;
+    for (SearchUser *u in self.usersToAdd) {
+        if (u.idUser == user.idUser) {
+            [self.usersToAdd removeObjectAtIndex:i];
+        }
+        i++;
+    }
+}
+
+- (IBAction)done:(id)sender{
+    if (self.usersToAdd.count>0)  {
+        
+        NSString *receivers = [self getReceivers];
+        NSMutableDictionary *shareData = @{@"group_user_ids": receivers,
+                                           }.mutableCopy;
+        NSMutableDictionary *medcaseParams =  @{@"group" : shareData}.mutableCopy;
+        
+        Group *group = [[Group alloc] init];
+        [group update:self.groupId params:medcaseParams Success:^(NSMutableDictionary *items) {
+            [self.navigationController popViewControllerAnimated:TRUE];
+        } Error:^(NSError *error) {
+            
+        }];
+    }
+ //   {"utf8"=>"✓", "authenticity_token"=>"afJrGhc0rZmyvHRdtnMI/DWsw5y+V904czuBPwV2qSM=", "group"=>{"group_user_ids"=>"[osva2] - osva2"}, "commit"=>"Add members", "id"=>"1"}
+}
+
+
+-(NSString *) getReceivers {
+    NSString *receiv = @"";
+    int i=0;
+    for (SearchUser *user in self.usersToAdd) {
+        if(i==0){
+            receiv = [NSString stringWithFormat:@"[%@] - %@", user.username, user.username];
+        }
+        else{
+            receiv = [NSString stringWithFormat:@"%@,[%@] - %@",receiv, user.username, user.username];
+        }
+        i++;
+    }
+    return receiv;
+}
+
+
 
 
 

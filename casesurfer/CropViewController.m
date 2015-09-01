@@ -111,18 +111,15 @@
 
 -(void) setImageOriginal:(UIImage *) image{
     [self setOriginalImage:image];
-    
     [self.cropper removeFromSuperview];
     self.displayImage.image = self.originalImage;
-    
-    
 }
 
 - (IBAction)trashImage:(id)sender{
-    
-    if(self.photos.count > 1){
+    if((self.photos.count > 1) && (self.indexImage < self.photos.count) ){
         [scrollView clearGrid];
         [self setImageOriginal:nil];
+        NSLog(@"INDEX %d", self.indexImage);
         [self.photos removeObjectAtIndex:self.indexImage];
         [self fillHorizontalView];
     }
@@ -148,8 +145,6 @@
 }
 
 - (IBAction) SetCroppedImage:(id)sender {
-    
-    
     if (self.inCropp) {
         [self.cropper removeFromSuperview];
         self.displayImage.image = self.originalImage;

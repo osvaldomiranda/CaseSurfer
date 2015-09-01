@@ -11,6 +11,7 @@
 @interface SearchUser : NSObject
 @property (nonatomic, copy) NSString *idUser;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *username;
 
-- (id)initWithName:(NSString *)name andId:(NSString *)idUser;
+- (id)initWithName:(NSString *)name andId:(NSString *)idUser  username:(NSString *)username;
 @end

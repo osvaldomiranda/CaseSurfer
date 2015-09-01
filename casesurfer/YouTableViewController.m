@@ -15,6 +15,7 @@
 #import "session.h"
 #import "UIImageView+WebCache.h"
 #import "Definitions.h"
+#import "UserViewController.h"
 
 @interface YouTableViewController ()
 
@@ -28,11 +29,24 @@
     [self.avatarImage.layer setMasksToBounds:YES];
     [self.avatarImage.layer setCornerRadius:55.0f];
     
+    [self refrechData];
+    
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+ 
+    [self refrechData];
+    
+}
+
+-(void) refrechData {
     Session *mySession = [[Session alloc] init];
     User *myUser = [[User alloc] init];
     
     int myUserId = [mySession.getUserId intValue] ;
-    
     [myUser find:myUserId Success:^(NSMutableDictionary *items) {
         [self fillUserAvatar:items];
     } Error:^(NSError *error) {
@@ -43,7 +57,7 @@
     NSDictionary *p = [items valueForKeyPath:@"profile_pic"];
     NSDictionary *pics = [p valueForKeyPath:@"profile_pic"];
     NSDictionary *thumb = [pics valueForKeyPath:@"normal"];
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@", DEV_BASE_PATH,[thumb valueForKeyPath:@"url"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [self.avatarImage setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
 }
@@ -86,6 +100,10 @@
 }
 
 - (IBAction)profile:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
+    cController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cController animated:YES];
 }
 
 - (IBAction)logOut:(id)sender {

@@ -30,4 +30,8 @@
 
 - (void) clearGrid;
 
+- (void) startEditMode;
+
+- (void) endEditMode;
+
 @end

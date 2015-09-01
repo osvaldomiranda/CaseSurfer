@@ -15,9 +15,10 @@
 @property (nonatomic, retain) GridScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *Albums;
 @property (nonatomic, assign) int selectedAlbumId;
-
+@property (nonatomic, assign) bool inEdit;
 
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 
 - (IBAction)addAction:(id)sender;
+- (IBAction)edit:(id)sender;
 @end

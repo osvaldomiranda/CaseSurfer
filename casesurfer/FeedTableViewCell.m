@@ -32,28 +32,19 @@
 }
 
 - (IBAction)userAction:(id)sender {
-    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
-   
-  
+    cController.userId = self.userId;
     cController.hidesBottomBarWhenPushed = YES;
-    
     [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
-    
 }
 
 - (IBAction)caseAction:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     CaseViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Case"];
     cController.caseId = self.caseId;
-    
     [cController.navigationController setNavigationBarHidden:NO];
     cController.hidesBottomBarWhenPushed = YES;
     [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
-    
-    
 }
 @end

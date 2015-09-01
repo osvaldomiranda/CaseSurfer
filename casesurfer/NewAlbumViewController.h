@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "IndexableImageView.h"
+#import "rollGridChoseImageViewController.h"
 
-@interface NewAlbumViewController : UIViewController
+@interface NewAlbumViewController : UIViewController <selectImageDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *albumImage;
-@property (nonatomic, retain) IndexableImageView *imageInfo;
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
+@property (nonatomic, retain) IndexableImageView *imageInfo;
+@property (nonatomic, assign) int albumId;
 
 - (IBAction)create:(id)sender;
 - (IBAction)cancel:(id)sender;
+- (IBAction)selectImage:(id)sender;
 
 @end

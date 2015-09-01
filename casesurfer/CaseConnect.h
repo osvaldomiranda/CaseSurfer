@@ -17,6 +17,10 @@ typedef void (^ChicErrorBlock)(NSError *error);
 
 + (id)sharedCaseSurfer;
 
+- (void) putWithUrl:(NSString *)url
+             params:(NSMutableDictionary *)params
+            Success:(ChicSuccessDictionaryBlock)successBlock
+              Error:(ChicErrorBlock)errorBlock;
 
 - (void) postWithUrl:(NSString *)url
               params:(NSMutableDictionary *)params
@@ -33,5 +37,10 @@ typedef void (^ChicErrorBlock)(NSError *error);
                        params:(NSMutableDictionary *)params
                       Success:(ChicSuccessDictionaryBlock)successBlock
                         Error:(ChicErrorBlock)errorBlock;
+
+- (void) deleteWithUrl:(NSString *)url
+                params:(NSMutableDictionary *)params
+               Success:(ChicSuccessDictionaryBlock)successBlock
+                 Error:(ChicErrorBlock)errorBlock;
 
 @end

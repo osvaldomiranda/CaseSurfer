@@ -46,9 +46,13 @@
         row = (pictureSize * (int)[self.currentRow integerValue]) + (int)([self.spacing integerValue] * ([self.currentRow integerValue]+1));
         
         if (subTitle) {
-            row = row+35;
+            row = row + (35*[self.currentRow intValue]);
+
         }
     }
+    
+
+    
     int col = ((int)[self.currentCol integerValue] * pictureSize) + ((int)[self.spacing integerValue] * ((int)[self.currentCol integerValue]+1));
     
   //  IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image andAssetURL:assetURL andIndex:0];
@@ -71,6 +75,9 @@
     int expectedSize = (rows)*pictureSize + (rows+2)*(int)[self.spacing integerValue];
     if(self.contentSize.height < expectedSize){
         self.contentSize =  CGSizeMake(self.contentSize.width, expectedSize);
+        if (subTitle) {
+            self.contentSize =  CGSizeMake(self.contentSize.width, expectedSize + (35*[self.currentRow intValue]));
+        }
     }
     
     [pictureView addSubview:indexableImage];
@@ -83,6 +90,12 @@
         
         NSString *caseCount =  [indexImage.imageInfo valueForKeyPath:@"cases"];
         NSString *createdAt =  [indexImage.imageInfo valueForKeyPath:@"created"];
+        if (createdAt==nil) {
+            NSDate *now = [NSDate date];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            createdAt = [formatter stringFromDate:now];
+        }
         
         UILabel *subT = [[UILabel alloc] initWithFrame:CGRectMake(5, pictureSize +18, pictureSize, 15)];
         [subT setText: [NSString stringWithFormat:@" %@ | Cases %@", createdAt, caseCount]];
@@ -103,6 +116,9 @@
     [self setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     self.currentCol = [NSNumber numberWithInt:(int)[self.currentCol integerValue]+1];
     self.addedElements = [NSNumber numberWithInt:(int)[self.addedElements integerValue]+1];
+    if (subTitle) {
+        self.contentSize =  CGSizeMake(self.contentSize.width,self.contentSize.height + 20);
+    }
 }
 
 - (void)tapPressCaptured:(UITapGestureRecognizer *)gesture{
@@ -112,7 +128,7 @@
     
     if (tappedView.assetURL) {
         if (!tappedView.selected) {
-            UIImage *selImg = [UIImage imageNamed:@"check.png"];
+            UIImage *selImg = [UIImage imageNamed:@"icon_check.png"];
             UIImageView *selectedImg = [[UIImageView alloc] initWithImage:selImg];
             selectedImg.frame = CGRectMake(tappedView.frame.size.width-20, tappedView.frame.size.height-20, 15, 15);
             [tappedView addSubview:selectedImg];
@@ -142,8 +158,40 @@
     for ( UIView *view in self.subviews ) {
         [view removeFromSuperview];
     }
+     self.contentSize =  CGSizeMake(self.contentSize.width, 0);
 }
 
+- (void) startEditMode{
+    
+    for ( UIView *view in self.subviews ) {
+        UIImage *selImg = [UIImage imageNamed:@"icon_delete.png"];
+        UIImageView *selectedImg = [[UIImageView alloc] initWithImage:selImg];
+        selectedImg.frame = CGRectMake(view.frame.size.width-35, 5, 30, 30);
+        [view addSubview:selectedImg];
+    }
+    
+
+}
+
+- (void) endEditMode {
+    
+    for ( UIView *viewP in self.subviews ) {
+        int i = 0;
+        for (id view in [viewP subviews]) {
+            if ([view isKindOfClass:[UIImageView class]] && i>0){
+                [UIView animateWithDuration:0.5f
+                                      delay:0.0f
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{[view setAlpha:0.0f];}
+                                 completion:^(BOOL finished) {[view removeFromSuperview];}];
+            }
+            i++;
+        }
+        
+    }
+    
+    
+}
 
 
 @end

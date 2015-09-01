@@ -42,4 +42,9 @@ typedef void (^CaseErrorBlock)(NSError *error);
        Success:(CaseSuccessDictionaryBlock)successBlock
          Error:(CaseErrorBlock)errorBlock;
 
+-(void) delete:(int) identifier
+        params:(NSMutableDictionary *) params
+       Success:(CaseSuccessDictionaryBlock)successBlock
+         Error:(CaseErrorBlock)errorBlock;
+
 @end

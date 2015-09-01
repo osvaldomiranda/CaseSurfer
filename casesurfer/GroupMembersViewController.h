@@ -11,15 +11,13 @@
 #import "LoadingView.h"
 
 @interface GroupMembersViewController : UIViewController{
-    NSMutableArray *itemsArray;
+    NSMutableArray *membersArray;
 }
 
-@property (nonatomic, retain) NSMutableArray *members;
+@property (weak, nonatomic) IBOutlet UITableView *membersTableView;
+@property (nonatomic, assign) int groupId;
 @property (nonatomic, assign) BOOL pullRefreshVisible;
 @property (nonatomic, retain) LoadingView *refreshLoadingView;
-@property (weak, nonatomic) IBOutlet UITableView *membersTableView;
-@property (nonatomic, assign) NSString *groupName;
-@property (nonatomic, assign) NSString *groupId;
 
 - (IBAction)addMembers:(id)sender;
 - (IBAction)editMembers:(id)sender;

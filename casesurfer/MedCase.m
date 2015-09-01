@@ -34,7 +34,7 @@
 
     Session *sess = [[Session alloc] init];
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@",@"/medcases.json"]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH,@"/medcases.json"]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
@@ -92,7 +92,7 @@
         if(data.length > 0)
         {
             NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-                     NSLog(@"%@",resp);
+                     NSLog(@"RESP %@",resp);
   //          successBlock(resp);
         }
     }];

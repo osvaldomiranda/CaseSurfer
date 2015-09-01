@@ -93,21 +93,23 @@
         
         UIImage *imageB5 = [UIImage imageNamed:@"user_inactive.png"];
         [button5 setImage:imageB5 forState:UIControlStateNormal];
+       
         
-        
-   /*
-        button1.frame = CGRectMake(0  , 0, 64, 50);
-        button2.frame = CGRectMake(64 , 0, 64, 50);
-        button3.frame = CGRectMake(128, 0, 64, 50);
-        button4.frame = CGRectMake(192, 0, 64, 50);
-        button5.frame = CGRectMake(256, 0, 64, 50);
- */
-        
-        button1.frame = CGRectMake(0  , 0, 80, 50);
-        button2.frame = CGRectMake(75 , 0, 80, 50);
-        button3.frame = CGRectMake(155, 0, 80, 50);
-        button4.frame = CGRectMake(235, 0, 80, 50);
-        button5.frame = CGRectMake(300, 0, 80, 50);
+        if ([self screen]== 320) {
+            button1.frame = CGRectMake(0  , 0, 64, 50);
+            button2.frame = CGRectMake(64 , 0, 64, 50);
+            button3.frame = CGRectMake(128, 0, 64, 50);
+            button4.frame = CGRectMake(192, 0, 64, 50);
+            button5.frame = CGRectMake(256, 0, 64, 50);
+        }
+        else {
+            button1.frame = CGRectMake(0  , 0, 80, 50);
+            button2.frame = CGRectMake(75 , 0, 80, 50);
+            button3.frame = CGRectMake(155, 0, 80, 50);
+            button4.frame = CGRectMake(235, 0, 80, 50);
+            button5.frame = CGRectMake(300, 0, 80, 50);
+        }
+
         
         
         [self addSubview:button1];
@@ -121,6 +123,13 @@
     return self;
 }
 
+-(int) screen {
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    return screenWidth;
+}
 
 
 //The event handling method

@@ -12,9 +12,12 @@
     NSMutableArray *itemsArray;
 }
 
-@property (nonatomic, assign) NSString *groupId;
+@property (nonatomic, assign) int groupId;
 @property (nonatomic, assign) NSString *groupName;
 @property (weak, nonatomic) IBOutlet UISearchBar *seachBar;
 @property (strong,nonatomic) NSMutableArray *usersArray;
 @property (strong,nonatomic) NSMutableArray *filteredUserArray;
+
+@property (strong,nonatomic) NSMutableArray *usersToAdd;
+
 @end

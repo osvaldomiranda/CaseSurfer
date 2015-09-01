@@ -8,9 +8,10 @@
 
 #import "GroupMembersViewController.h"
 #import "GroupMemberTableViewCell.h"
-#import "Member.h"
 #import "Definitions.h"
 #import "UserTableViewController.h"
+#import "Group.h"
+#import "Group_user.h"
 
 @interface GroupMembersViewController ()
 
@@ -21,20 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle: self.groupName];
-    
     self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 64, 400, 60)];
     self.refreshLoadingView.hidden = YES;
     self.pullRefreshVisible = NO;
     [self.view addSubview:self.refreshLoadingView];
+    self.membersTableView.allowsMultipleSelectionDuringEditing = NO;
     
-    [self.navigationController setNavigationBarHidden:TRUE];
-    self.membersTableView.separatorColor = [UIColor clearColor];
-    itemsArray = [[NSMutableArray alloc] init];
-    [self refrechData];
-    
-   // self.membersTableView.allowsMultipleSelectionDuringEditing = NO;
-   
+    membersArray = [[NSMutableArray alloc] init];
     
 }
 
@@ -43,90 +37,41 @@
    
 }
 
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:TRUE];
+    [self refrechData];
+    
 }
 
-
 -(void) refrechData{
-    [self fillImtensArray:self.members];
-  /*
     NSMutableDictionary *groupParams =  @{}.mutableCopy;
-    Member *members = [[Member alloc] initWithParams:groupParams];
-    
-    [members index:groupParams Success:^(NSArray *items) {
-        
-        NSLog(@"Members %@",items);
-        
-        [self fillImtensArray:items];
+    Group *groups = [[Group alloc] initWithParams:groupParams];
+    [groups find:self.groupId Success:^(NSMutableDictionary *items) {
+       [self fillImtensArray: [items valueForKeyPath:@"users"]];
         if (self.pullRefreshVisible) {
             [self loadingViewVisible:NO];
         }
     } Error:^(NSError *error) {
     }];
-  */
 }
 
 -(void) fillImtensArray:(NSArray *) items{
-    [itemsArray removeAllObjects];
+    [membersArray removeAllObjects];
     for (NSMutableDictionary *item in items) {
-        [itemsArray addObject:item];
+        [membersArray addObject:item];
     }
     [self.membersTableView reloadData];
 }
 
-
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
-    return 55;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return itemsArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    GroupMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupMember"];
-    [cell.contentView clearsContextBeforeDrawing];
-    
-    NSDictionary *celda = [itemsArray objectAtIndex:indexPath.row];
-    
-    NSDictionary *pics = [celda valueForKeyPath:@"profile_pic"];
-    NSDictionary *thumb = [pics valueForKeyPath:@"thumb"];
-    
-    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@", [thumb valueForKeyPath:@"url"]];
-    NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [cell.imageAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
-    
-    cell.lblUserName.text = [celda valueForKeyPath:@"name"];
-   
-    
-    return cell;
-}
-
-
-
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-  /*  if (scrollView.contentOffset.y < -20){
+    if (scrollView.contentOffset.y < -20){
         if (!self.pullRefreshVisible){
             [self loadingViewVisible:YES];
         }
     }
-   */
 }
 
 
@@ -153,22 +98,98 @@
     [self refrechData];
 }
 
-- (IBAction)addMembers:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UserTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"SearchUser"];
-    [cController.navigationController setNavigationBarHidden:NO];
-    cController.groupName = self.groupName;
-    cController.groupId = self.groupId;
-    cController.hidesBottomBarWhenPushed = YES;
-    [[self navigationController] pushViewController:cController animated:YES];
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
+    return 55;
 }
 
-- (IBAction)editMembers:(id)sender {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return membersArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GroupMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupMember"];
+    [cell.contentView clearsContextBeforeDrawing];
+    
+    NSDictionary *celda = [membersArray objectAtIndex:indexPath.row];
+    NSDictionary *pics = [celda valueForKeyPath:@"profile_pic"];
+    NSDictionary *thumb = [pics valueForKeyPath:@"thumb"];
+    
+    NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@", DEV_BASE_PATH, [thumb valueForKeyPath:@"url"]];
+    NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [cell.imageAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"normal_default.png"]];
+    cell.lblUserName.text = [celda valueForKeyPath:@"name"];
+    
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView: (UITableView *)tableView editingStyleForRowAtIndexPath: (NSIndexPath *)indexPath {
+
+    return UITableViewCellEditingStyleDelete;
+    
+}
+
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (IBAction)editMembers:(id)sender{
     if (self.membersTableView.isEditing) {
         [self.membersTableView setEditing: NO animated: YES];
     } else{
         [self.membersTableView setEditing: YES animated: YES];
     }
+}
+
+- (void) endEdit{
+    if (self.membersTableView.isEditing) {
+        [self.membersTableView setEditing: NO animated: YES];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *celda = [membersArray objectAtIndex:indexPath.row];
+    NSString *idUser = [celda valueForKeyPath:@"id"];
+    
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"ELiminar");
+
+        [self deleteGroupUser:self.groupId idUser:[idUser intValue]];
+    }
+}
+
+- (IBAction)addMembers:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"SearchUser"];
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.groupId = self.groupId;
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
+}
+
+-(void) deleteGroupUser:(int) idGroup idUser:(int) idUser{
+    NSMutableDictionary *groupParams =  @{@"group_id" : [NSString stringWithFormat:@"%d", idGroup],
+                                          @"user_id" : [NSString stringWithFormat:@"%d", idUser]
+                                          }.mutableCopy;
+    Group_user *groupUser = [[Group_user alloc] init];
+    [groupUser delete:1 params:groupParams Success:^(NSMutableDictionary *items) {
+        [self refrechData];
+        [self.membersTableView reloadData];
+    } Error:^(NSError *error) {
+    }];
 }
 
 

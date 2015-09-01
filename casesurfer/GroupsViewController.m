@@ -19,15 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setToptButtons];
+    
     self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 64, 400, 60)];
     self.refreshLoadingView.hidden = YES;
     self.pullRefreshVisible = NO;
     [self.view addSubview:self.refreshLoadingView];
-    [self.navigationController setNavigationBarHidden:TRUE];
     self.groupsTableView.separatorColor = [UIColor clearColor];
     itemsArray = [[NSMutableArray alloc] init];
     self.groupsTableView.allowsMultipleSelectionDuringEditing = NO;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,10 +39,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self endEdit];
     [self refrechData];
 }
 
+
+- (void) setToptButtons{
+    UIBarButtonItem *lItem = [[UIBarButtonItem alloc] initWithTitle:@"Add"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(newGroup:)];
+    
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(editGroup:)];
+    
+    [self.navigationItem setLeftBarButtonItem:lItem animated:YES];
+    [self.navigationItem setRightBarButtonItem:rItem animated:YES];
+}
 
 -(void) refrechData{
     NSMutableDictionary *groupParams =  @{}.mutableCopy;
@@ -76,18 +93,15 @@
     return itemsArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupCell"];
-    [cell.contentView clearsContextBeforeDrawing];
-    
     [cell.contentView clearsContextBeforeDrawing];
     [cell setCallerViewController:self];
     
+    
     NSDictionary *celda = [itemsArray objectAtIndex:indexPath.row];
     NSString *groupName = [celda valueForKeyPath:@"name"];
-    NSString *groupId = [celda valueForKeyPath:@"id"];
-
+    int groupId = [[celda valueForKeyPath:@"id"] intValue];;
     
     NSMutableArray *users = [celda valueForKeyPath:@"users"];
     NSString *members;
@@ -102,7 +116,6 @@
     
     cell.lblGroupMembers.text = members;
     cell.lblGroupName.text = groupName;
-    cell.users = users;
     cell.groupId = groupId;
     
     return cell;
@@ -141,13 +154,19 @@
     self.refreshLoadingView.hidden = hidden;
     [self refrechData];
 }
+
 - (IBAction)editGroup:(id)sender {
     if (self.groupsTableView.isEditing) {
         [self.groupsTableView setEditing: NO animated: YES];
     } else{
         [self.groupsTableView setEditing: YES animated: YES];
     }
-    
+}
+
+- (void) endEdit{
+    if (self.groupsTableView.isEditing) {
+        [self.groupsTableView setEditing: NO animated: YES];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -155,17 +174,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *celda = [itemsArray objectAtIndex:indexPath.row];
+    int groupId = [[celda valueForKeyPath:@"id"] intValue];;
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"ELiminar");
-        [self.groupsTableView setEditing: NO animated: YES];
+        [self deleteGroup:groupId];
     }
 }
 
+-(void) deleteGroup:(int) idGroup{
+    NSMutableDictionary *groupParams =  @{}.mutableCopy;
+    Group *group = [[Group alloc] initWithParams:groupParams];
+    [group delete:idGroup params:groupParams Success:^(NSMutableDictionary *items) {
+        [self refrechData];
+        [self.groupsTableView reloadData];
+    } Error:^(NSError *error) {
+    }];
+}
+
 - (IBAction)newGroup:(id)sender {
+    [self endEdit];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     NewGroupViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewGroup"];
-    
     [cController.navigationController setNavigationBarHidden:NO];
     cController.hidesBottomBarWhenPushed = YES;
     [[self navigationController] pushViewController:cController animated:YES];

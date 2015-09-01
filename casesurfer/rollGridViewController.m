@@ -29,14 +29,16 @@
     [super viewDidLoad];
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
-    [self loadPhotoLibrary];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    self.photos = nil;
     [self.navigationController setNavigationBarHidden:TRUE];
+    self.photos = nil;
+    [scrollView clearGrid];
+    [self loadPhotoLibrary];
 }
 
 -(void)setScrollViewProperties{
@@ -86,27 +88,44 @@
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
     
     if(!assetURL){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CAMERA"
-                                                        message:@"not available in the simulator"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [self takePhoto];
     }else{
         [self addImageToArray:image];
-        
-        NSLog(@"CAntidad de fotos %lu",(unsigned long)self.photos.count);
     }
     
     
 }
 #pragma END GridScrollView
 
-
-
-- (IBAction)takePhoto:(id)sender{
- 
+- (void)takePhoto{
+    [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
+    
 }
+
+- (void)showImagePicker:(UIImagePickerControllerSourceType)sourceType
+{
+    self.pickerController = [[UIImagePickerController alloc] init];
+    self.pickerController.navigationBarHidden = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+        [self.pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [[self navigationController]  presentViewController:self.pickerController animated:YES completion:nil];
+        self.pickerController.showsCameraControls = YES;
+        
+    }else{
+        #if TARGET_IPHONE_SIMULATOR
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CAMERA"
+                                                        message:@"not available in the simulator"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        #endif
+    }
+}
+
+
 
 - (IBAction) callCrop:(id)sender{
     

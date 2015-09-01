@@ -13,8 +13,7 @@
 @property (nonatomic, unsafe_unretained) id callerViewController;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupMembers;
-@property (nonatomic, retain) NSMutableArray *users;
-@property (nonatomic, retain) NSString *groupId;
+@property (nonatomic, assign) int groupId;
 
 - (IBAction)GroupMembersAction:(id)sender;
 

@@ -14,6 +14,7 @@
 @property (nonatomic, assign) int caseId;
 @property (weak, nonatomic) IBOutlet UITableView *tblComments;
 
-- (IBAction)back:(id)sender;
+
+- (IBAction)send:(id)sender;
 
 @end

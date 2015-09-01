@@ -10,10 +10,11 @@
 
 @implementation SearchUser
 
-- (id)initWithName:(NSString *)name andId:(NSString *)idUser {
+- (id)initWithName:(NSString *)name andId:(NSString *)idUser  username:(NSString *)username {
     self = [super init];
     self.name = name;
     self.idUser = idUser;
+    self.username = username;
     return self;
 }
 

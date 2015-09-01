@@ -23,10 +23,11 @@
 @property (nonatomic, retain) NSMutableArray *albums;
 @property (nonatomic, retain) NSMutableArray *albumIds;
 
-- (IBAction)addAlbum:(id)sender;
+
 - (IBAction)tapGender:(id)sender;
 - (IBAction)tapAlbum:(id)sender;
 - (IBAction)tapAge:(id)sender;
 - (IBAction)createCase:(id)sender;
+- (IBAction)createAlbum:(id)sender;
 
 @end

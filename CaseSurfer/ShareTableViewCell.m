@@ -9,6 +9,8 @@
 #import "ShareTableViewCell.h"
 #import "UserViewController.h"
 #import "CaseViewController.h"
+#import "Share.h"
+#import "Notification.h"
 
 @implementation ShareTableViewCell
 
@@ -31,6 +33,7 @@
 - (IBAction)userAction:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
+    cController.userId = self.userId;
     cController.hidesBottomBarWhenPushed = YES;
     [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
 }
@@ -45,10 +48,23 @@
 }
 
 - (IBAction)aceptAction:(id)sender{
-
+    NSDictionary *shareData = @{@"medcase_id":[NSString stringWithFormat:@"%d", self.caseId] ,
+                                @"status": @"approved"
+                                  };
+    NSMutableDictionary *shareParams =  @{@"share" : shareData}.mutableCopy;
+    Share *share = [[Share alloc] initWithParams:shareParams];
+    [share update:[self.notificableId intValue] params:shareParams Success:^(NSMutableDictionary *items) {
+    } Error:^(NSError *error) {
+    }];
 }
+
+
 - (IBAction)ignoreAction:(id)sender{
-    
+    NSMutableDictionary *notificationParams =  @{}.mutableCopy;
+    Notification *notification = [[Notification alloc] initWithParams:notificationParams];
+    [notification delete:[self.notificationId intValue] params:notificationParams Success:^(NSMutableDictionary *items) {
+    } Error:^(NSError *error) {
+    }];
 }
 
 @end

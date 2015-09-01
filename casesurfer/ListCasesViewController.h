@@ -14,8 +14,10 @@
 
 @property (nonatomic, assign) int albumId;
 @property (weak, nonatomic) IBOutlet UITableView *listCaseTableView;
-@property (weak, nonatomic) IBOutlet UINavigationItem *albumName;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 - (IBAction)back:(id)sender;
-
+- (IBAction)editCase:(id)sender;
+- (IBAction)editAlbum:(id)sender;
 @end

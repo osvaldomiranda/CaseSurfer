@@ -14,6 +14,7 @@
 #import "Definitions.h"
 #import "Album.h"
 #import "UIAlertView+Block.h"
+#import "rollGridChoseImageViewController.h"
 
 
 @interface CreateCaseTableViewController ()
@@ -39,6 +40,8 @@
 }
 
 -(void) fillAlbumArray:(NSArray *) items{
+    [self.albumIds removeAllObjects];
+    [self.albums removeAllObjects];
     for (id album in items  ) {
         NSString *titleAlbum = [album valueForKeyPath:@"name"];
         NSString *idAlbum = [album valueForKeyPath:@"id"];
@@ -55,6 +58,7 @@
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:FALSE];
+    [self loadAlbums];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -76,10 +80,6 @@
     return 9;
 }
 
-- (IBAction)addAlbum:(id)sender {
-
-    
-}
 
 - (IBAction)createCase:(id)sender {
     if (![self.txtTitle.text isValidText]) {
@@ -110,8 +110,17 @@
         [self.navigationController setNavigationBarHidden:TRUE];
         [[NSNotificationCenter defaultCenter] postNotificationName:loginObserver
                                                             object:nil];
-        
     }
+}
+
+- (IBAction)createAlbum:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    rollGridChoseImageViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollGridChose"];
+    cController.callerViewController = self;
+    self.hidesBottomBarWhenPushed =  YES;
+    [self.navigationController pushViewController:cController animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (void) hideKeyboard {
@@ -145,7 +154,6 @@
 }
 
 - (IBAction)tapAlbum:(id)sender{
-    
     [self hideKeyboard];
     [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:1.0];
     [CBCPicker showPickerWithData: self.albums
