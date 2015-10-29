@@ -11,7 +11,10 @@
 
 @interface CaseViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *txtTitle;
-@property (weak, nonatomic) IBOutlet UITextView *txtDescription;
+
+@property (weak, nonatomic) IBOutlet UILabel *txtDescription;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *lblData;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, assign) int caseId;
@@ -19,12 +22,16 @@
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSMutableArray *comments;
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
+@property (nonatomic, strong) NSMutableDictionary *medCase;
 @property (weak, nonatomic) IBOutlet UIView *firstView;
 
+
+- (IBAction)descript:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblComments;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollPrueba;
+
 
 - (IBAction)comment:(id)sender;
 - (IBAction)share:(id)sender;

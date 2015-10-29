@@ -39,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setStateUploading];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,8 +65,6 @@
     if ([mySession getToken] != nil ) {
         [self shouldLogin];
     }
-    
-   NSLog(@"SCEEN %d", [self screen]);
 }
 
 
@@ -80,8 +79,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     
-    
+}
+
+-(void) setStateUploading{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"NO" forKey:@"uploading"];
+    [defaults synchronize];
 }
 
 - (IBAction)buttonLogin:(id)sender {

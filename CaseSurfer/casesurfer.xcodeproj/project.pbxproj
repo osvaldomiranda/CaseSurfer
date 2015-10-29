@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D0682BF1B28C4A500013343 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0682BE1B28C4A500013343 /* camera@2x.png */; };
+		2D1EBCC61BDE6A2400244175 /* SetNotificationTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EBCC51BDE6A2400244175 /* SetNotificationTableViewC.m */; };
 		2D241D441B7E67DD0025FE8D /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D241D431B7E67DD0025FE8D /* Share.m */; };
 		2D241D471B7E8E1C0025FE8D /* GroupsShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D241D461B7E8E1C0025FE8D /* GroupsShareViewController.m */; };
 		2D241D4A1B7E91AA0025FE8D /* GroupsShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D241D491B7E91AA0025FE8D /* GroupsShareTableViewCell.m */; };
@@ -145,7 +146,13 @@
 		2D3C5C501B71484600A082C8 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C5C4F1B71484600A082C8 /* WebViewController.m */; };
 		2D3F7AB51B691E09003455C2 /* SearchUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */; };
 		2D3F7AB81B692AB9003455C2 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */; };
+		2D41084C1BA5D49C00F1F65A /* rollUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41084B1BA5D49C00F1F65A /* rollUpdateViewController.m */; };
+		2D4BD0D01BA3487200F02754 /* UpdateCaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4BD0CF1BA3487200F02754 /* UpdateCaseTableView.m */; };
+		2D4C28EB1BC8140A00E1D70A /* ListCaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4C28EA1BC8140A00E1D70A /* ListCaseTableViewController.m */; };
+		2D4C28EE1BCA636D00E1D70A /* SearchCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4C28ED1BCA636D00E1D70A /* SearchCase.m */; };
 		2D4D8F151B20964600F72403 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D8F141B20964600F72403 /* ImageIO.framework */; };
+		2D50505E1BA9F7C000193E1D /* UploadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D50505D1BA9F7C000193E1D /* UploadingView.m */; };
+		2D5B32D41BC7612B007D9F27 /* CaseDescripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B32D31BC7612B007D9F27 /* CaseDescripViewController.m */; };
 		2D66167B1B9521D500B1C5E1 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D66167A1B9521D500B1C5E1 /* Utilities.m */; };
 		2D7A076E1B553CFD0031AED4 /* rollGridChoseImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A076D1B553CFD0031AED4 /* rollGridChoseImageViewController.m */; };
 		2D85DD881B758E540034BD77 /* AvatarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85DD871B758E540034BD77 /* AvatarTableViewController.m */; };
@@ -192,6 +199,8 @@
 		2D9BF91F1B6BEFF3000725C9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BF91E1B6BEFF3000725C9 /* AboutViewController.m */; };
 		2D9BF9221B6C06F5000725C9 /* linkedin_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BF9211B6C06F5000725C9 /* linkedin_logo.png */; };
 		2D9BF9241B6C070A000725C9 /* twitter_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BF9231B6C070A000725C9 /* twitter_logo.png */; };
+		2DB1D0AD1BC5A9F600E1FF3C /* arroworder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1D0AB1BC5A9F600E1FF3C /* arroworder.png */; };
+		2DB1D0AE1BC5A9F600E1FF3C /* arroworder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1D0AC1BC5A9F600E1FF3C /* arroworder@2x.png */; };
 		2DC4C3E51B880ED400DF32AD /* Mosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC4C3E41B880ED400DF32AD /* Mosaic.m */; };
 		2DEAB3AF1B2FBF8D005568D5 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3AE1B2FBF8D005568D5 /* ShareTableViewCell.m */; };
 		2DF1924A1B70F72C00C0CBC1 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF192491B70F72C00C0CBC1 /* ProfileTableViewController.m */; };
@@ -199,6 +208,8 @@
 
 /* Begin PBXFileReference section */
 		2D0682BE1B28C4A500013343 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = SOURCE_ROOT; };
+		2D1EBCC41BDE6A2400244175 /* SetNotificationTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetNotificationTableViewC.h; path = CaseSurfer/SetNotificationTableViewC.h; sourceTree = SOURCE_ROOT; };
+		2D1EBCC51BDE6A2400244175 /* SetNotificationTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetNotificationTableViewC.m; path = CaseSurfer/SetNotificationTableViewC.m; sourceTree = SOURCE_ROOT; };
 		2D241D421B7E67DD0025FE8D /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Share.h; path = CaseSurfer/Share.h; sourceTree = SOURCE_ROOT; };
 		2D241D431B7E67DD0025FE8D /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Share.m; path = CaseSurfer/Share.m; sourceTree = SOURCE_ROOT; };
 		2D241D451B7E8E1C0025FE8D /* GroupsShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupsShareViewController.h; path = CaseSurfer/GroupsShareViewController.h; sourceTree = SOURCE_ROOT; };
@@ -388,7 +399,19 @@
 		2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchUserTableViewCell.m; path = CaseSurfer/SearchUserTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		2D3F7AB61B692AB9003455C2 /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewController.h; path = CaseSurfer/UserTableViewController.h; sourceTree = SOURCE_ROOT; };
 		2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewController.m; path = CaseSurfer/UserTableViewController.m; sourceTree = SOURCE_ROOT; };
+		2D41084A1BA5D49C00F1F65A /* rollUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rollUpdateViewController.h; path = CaseSurfer/rollUpdateViewController.h; sourceTree = SOURCE_ROOT; };
+		2D41084B1BA5D49C00F1F65A /* rollUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = rollUpdateViewController.m; path = CaseSurfer/rollUpdateViewController.m; sourceTree = SOURCE_ROOT; };
+		2D4BD0CE1BA3487200F02754 /* UpdateCaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateCaseTableView.h; path = CaseSurfer/UpdateCaseTableView.h; sourceTree = SOURCE_ROOT; };
+		2D4BD0CF1BA3487200F02754 /* UpdateCaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateCaseTableView.m; path = CaseSurfer/UpdateCaseTableView.m; sourceTree = SOURCE_ROOT; };
+		2D4C28E91BC8140A00E1D70A /* ListCaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCaseTableViewController.h; path = CaseSurfer/ListCaseTableViewController.h; sourceTree = SOURCE_ROOT; };
+		2D4C28EA1BC8140A00E1D70A /* ListCaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCaseTableViewController.m; path = CaseSurfer/ListCaseTableViewController.m; sourceTree = SOURCE_ROOT; };
+		2D4C28EC1BCA636D00E1D70A /* SearchCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCase.h; path = CaseSurfer/SearchCase.h; sourceTree = SOURCE_ROOT; };
+		2D4C28ED1BCA636D00E1D70A /* SearchCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCase.m; path = CaseSurfer/SearchCase.m; sourceTree = SOURCE_ROOT; };
 		2D4D8F141B20964600F72403 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2D50505C1BA9F7C000193E1D /* UploadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadingView.h; path = CaseSurfer/UploadingView.h; sourceTree = SOURCE_ROOT; };
+		2D50505D1BA9F7C000193E1D /* UploadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadingView.m; path = CaseSurfer/UploadingView.m; sourceTree = SOURCE_ROOT; };
+		2D5B32D21BC7612B007D9F27 /* CaseDescripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseDescripViewController.h; path = CaseSurfer/CaseDescripViewController.h; sourceTree = SOURCE_ROOT; };
+		2D5B32D31BC7612B007D9F27 /* CaseDescripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseDescripViewController.m; path = CaseSurfer/CaseDescripViewController.m; sourceTree = SOURCE_ROOT; };
 		2D6616791B9521D500B1C5E1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = CaseSurfer/Utilities.h; sourceTree = SOURCE_ROOT; };
 		2D66167A1B9521D500B1C5E1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = CaseSurfer/Utilities.m; sourceTree = SOURCE_ROOT; };
 		2D7A076C1B553CFD0031AED4 /* rollGridChoseImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rollGridChoseImageViewController.h; path = CaseSurfer/rollGridChoseImageViewController.h; sourceTree = SOURCE_ROOT; };
@@ -446,6 +469,8 @@
 		2D9BF91E1B6BEFF3000725C9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = CaseSurfer/AboutViewController.m; sourceTree = SOURCE_ROOT; };
 		2D9BF9211B6C06F5000725C9 /* linkedin_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedin_logo.png; sourceTree = SOURCE_ROOT; };
 		2D9BF9231B6C070A000725C9 /* twitter_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo.png; sourceTree = SOURCE_ROOT; };
+		2DB1D0AB1BC5A9F600E1FF3C /* arroworder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arroworder.png; sourceTree = SOURCE_ROOT; };
+		2DB1D0AC1BC5A9F600E1FF3C /* arroworder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arroworder@2x.png"; sourceTree = SOURCE_ROOT; };
 		2DC4C3E31B880ED400DF32AD /* Mosaic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mosaic.h; path = CaseSurfer/Mosaic.h; sourceTree = SOURCE_ROOT; };
 		2DC4C3E41B880ED400DF32AD /* Mosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Mosaic.m; path = CaseSurfer/Mosaic.m; sourceTree = SOURCE_ROOT; };
 		2DEAB3AD1B2FBF8D005568D5 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -567,8 +592,21 @@
 			children = (
 				2D2EC02C1B27880B009E84EB /* LoadingView.h */,
 				2D2EC02D1B27880B009E84EB /* LoadingView.m */,
+				2D50505C1BA9F7C000193E1D /* UploadingView.h */,
+				2D50505D1BA9F7C000193E1D /* UploadingView.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		2D4BD0D11BA34A4C00F02754 /* UpdateCase */ = {
+			isa = PBXGroup;
+			children = (
+				2D4BD0CE1BA3487200F02754 /* UpdateCaseTableView.h */,
+				2D4BD0CF1BA3487200F02754 /* UpdateCaseTableView.m */,
+				2D41084A1BA5D49C00F1F65A /* rollUpdateViewController.h */,
+				2D41084B1BA5D49C00F1F65A /* rollUpdateViewController.m */,
+			);
+			name = UpdateCase;
 			sourceTree = "<group>";
 		};
 		2D4D3F981AF94F290021BE62 /* Api */ = {
@@ -708,6 +746,8 @@
 			children = (
 				2D2EC0851B278E71009E84EB /* YouTableViewController.h */,
 				2D2EC0861B278E71009E84EB /* YouTableViewController.m */,
+				2D1EBCC41BDE6A2400244175 /* SetNotificationTableViewC.h */,
+				2D1EBCC51BDE6A2400244175 /* SetNotificationTableViewC.m */,
 			);
 			name = You;
 			sourceTree = "<group>";
@@ -738,6 +778,10 @@
 				2D2EC0AD1B278FA6009E84EB /* ListCasesViewController.m */,
 				2D2EC0AE1B278FA6009E84EB /* ListCaseTableViewCell.h */,
 				2D2EC0AF1B278FA6009E84EB /* ListCaseTableViewCell.m */,
+				2D5B32D21BC7612B007D9F27 /* CaseDescripViewController.h */,
+				2D5B32D31BC7612B007D9F27 /* CaseDescripViewController.m */,
+				2D4C28E91BC8140A00E1D70A /* ListCaseTableViewController.h */,
+				2D4C28EA1BC8140A00E1D70A /* ListCaseTableViewController.m */,
 			);
 			name = Case;
 			sourceTree = "<group>";
@@ -745,6 +789,8 @@
 		2D58C7491B085E6000205D5C /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				2DB1D0AB1BC5A9F600E1FF3C /* arroworder.png */,
+				2DB1D0AC1BC5A9F600E1FF3C /* arroworder@2x.png */,
 				2D287C6B1B867A5D0061753F /* icon_check.png */,
 				2D287C6C1B867A5D0061753F /* icon_delete.png */,
 				2D9BF9231B6C070A000725C9 /* twitter_logo.png */,
@@ -861,6 +907,8 @@
 				2D32E4E81B694A5700E79F8D /* SearchUser.m */,
 				2D241D581B7F73AC0025FE8D /* SearchGroup.h */,
 				2D241D591B7F73AC0025FE8D /* SearchGroup.m */,
+				2D4C28EC1BCA636D00E1D70A /* SearchCase.h */,
+				2D4C28ED1BCA636D00E1D70A /* SearchCase.m */,
 			);
 			name = SearchUsers;
 			sourceTree = "<group>";
@@ -949,7 +997,9 @@
 				2D2EC0681B278AC4009E84EB /* AppDelegate.m */,
 				2D2EC0BB1B279019009E84EB /* Images.xcassets */,
 				2D98CCF11AEBDD8C006CB981 /* casesurfer.xcdatamodeld */,
+				2D58C7481B084BDD00205D5C /* Case */,
 				2D8A8C0B1AFD5FD300DBBE6A /* CreateCase */,
+				2D4BD0D11BA34A4C00F02754 /* UpdateCase */,
 				2D98CCEA1AEBDD8C006CB981 /* Supporting Files */,
 				2D4F7FAC1B00F77F00743CC5 /* You */,
 				2DE2B88E1AEC1B5800C99255 /* UserNew */,
@@ -960,7 +1010,6 @@
 				2D85DD821B757DC30034BD77 /* rollGridChoseImage */,
 				2D4F7FA81B00E8C700743CC5 /* Albums */,
 				2D58C73E1B08335400205D5C /* User */,
-				2D58C7481B084BDD00205D5C /* Case */,
 				2D58C7631B08F45500205D5C /* TermsOfUse */,
 				2D58C76D1B09080700205D5C /* comment */,
 				2D7B5D0E1B1646DA005CC7BB /* LargeImage */,
@@ -1140,6 +1189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB1D0AE1BC5A9F600E1FF3C /* arroworder@2x.png in Resources */,
 				2D8828B61B2B451100859D13 /* home_active_blue@2x.png in Resources */,
 				2D2EC0F01B279105009E84EB /* folder_active@2x.png in Resources */,
 				2D8828E41B2B580500859D13 /* album@2x.png in Resources */,
@@ -1148,6 +1198,7 @@
 				2D8828E81B2B581B00859D13 /* patient@2x.png in Resources */,
 				2D2EC1061B27913E009E84EB /* user_active@2x.png in Resources */,
 				2D2EC0BC1B279019009E84EB /* Images.xcassets in Resources */,
+				2DB1D0AD1BC5A9F600E1FF3C /* arroworder.png in Resources */,
 				2D2EC0FB1B27911B009E84EB /* home_active@2x.png in Resources */,
 				2D8828B81B2B456100859D13 /* home_active_blue.png in Resources */,
 				2D2EC0CB1B27906D009E84EB /* Lato-Hai-webfont.ttf in Resources */,
@@ -1235,6 +1286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1EBCC61BDE6A2400244175 /* SetNotificationTableViewC.m in Sources */,
 				2D2EC0951B278EE0009E84EB /* FeedTableViewCell.m in Sources */,
 				2DEAB3AF1B2FBF8D005568D5 /* ShareTableViewCell.m in Sources */,
 				2D2EC08A1B278EAD009E84EB /* UserNewTableViewController.m in Sources */,
@@ -1278,8 +1330,10 @@
 				2D2EBFD61B2787B2009E84EB /* SDWebImageCompat.h in Sources */,
 				2D2EBFD71B2787B2009E84EB /* SDWebImageDecoder.h in Sources */,
 				2D2EBFD81B2787B2009E84EB /* SDWebImageDecoder.m in Sources */,
+				2D5B32D41BC7612B007D9F27 /* CaseDescripViewController.m in Sources */,
 				2D2EBFD91B2787B2009E84EB /* SDWebImageDownloader.h in Sources */,
 				2D9BF91F1B6BEFF3000725C9 /* AboutViewController.m in Sources */,
+				2D50505E1BA9F7C000193E1D /* UploadingView.m in Sources */,
 				2D2EBFDA1B2787B2009E84EB /* SDWebImageDownloader.m in Sources */,
 				2D2EBFDB1B2787B2009E84EB /* SDWebImageDownloaderDelegate.h in Sources */,
 				2D2EC04E1B278999009E84EB /* GridScrollView.m in Sources */,
@@ -1289,7 +1343,9 @@
 				2D2EBFDD1B2787B2009E84EB /* SDWebImageManager.m in Sources */,
 				2D241D571B7EEB650025FE8D /* ShareViewController.m in Sources */,
 				2D2EBFDE1B2787B2009E84EB /* SDWebImageManagerDelegate.h in Sources */,
+				2D41084C1BA5D49C00F1F65A /* rollUpdateViewController.m in Sources */,
 				2D2EC0A11B278F29009E84EB /* GroupMembersViewController.m in Sources */,
+				2D4C28EB1BC8140A00E1D70A /* ListCaseTableViewController.m in Sources */,
 				2D241D601B7FBE3C0025FE8D /* Comment.m in Sources */,
 				2D2EBFDF1B2787B2009E84EB /* SDWebImagePrefetcher.h in Sources */,
 				2D2EC0B71B278FB1009E84EB /* CaseViewController.m in Sources */,
@@ -1328,7 +1384,9 @@
 				2D85DD881B758E540034BD77 /* AvatarTableViewController.m in Sources */,
 				2D241D441B7E67DD0025FE8D /* Share.m in Sources */,
 				2D2EC0B01B278FA6009E84EB /* ListCasesViewController.m in Sources */,
+				2D4C28EE1BCA636D00E1D70A /* SearchCase.m in Sources */,
 				2D2EC0271B2787B2009E84EB /* ImageIO.framework in Sources */,
+				2D4BD0D01BA3487200F02754 /* UpdateCaseTableView.m in Sources */,
 				2D2EC0BA1B278FD5009E84EB /* TermsOfUseViewController.m in Sources */,
 				2D2EC0281B2787B2009E84EB /* UIKit.framework in Sources */,
 				2D2EC0291B2787B2009E84EB /* CoreFoundation.framework in Sources */,
@@ -1459,6 +1517,7 @@
 				"OTHER_LDFLAGS[sdk=iphonesimulator8.3]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1480,6 +1539,7 @@
 				"OTHER_LDFLAGS[sdk=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

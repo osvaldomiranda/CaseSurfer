@@ -19,7 +19,10 @@
 
 
 - (id)initWithImage:(UIImage *)image andAssetURL:(NSURL *)assetURL andIndex:(NSNumber *) index;
+- (id)initWithImage:(UIImage *)image andUrl:(NSURL *)urlImage andImageInfo:(NSMutableDictionary *)imageInfo;
 
 - (id)initWithUrl:(NSURL *)urlImage andImageInfo:(NSMutableDictionary *)imageInfo;
+
+
 
 @end

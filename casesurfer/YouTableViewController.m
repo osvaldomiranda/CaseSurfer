@@ -16,6 +16,7 @@
 #import "UIImageView+WebCache.h"
 #import "Definitions.h"
 #import "UserViewController.h"
+#import "SetNotificationTableViewC.h"
 
 @interface YouTableViewController ()
 
@@ -76,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 7;
+    return 6;
 }
 
 - (IBAction)termsOfUse:(id)sender {
@@ -97,6 +98,10 @@
 }
 
 - (IBAction)notifications:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SetNotificationTableViewC *cController = [storyBoard instantiateViewControllerWithIdentifier:@"SetNotifications"];
+    cController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cController animated:YES];
 }
 
 - (IBAction)profile:(id)sender {

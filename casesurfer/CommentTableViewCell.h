@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgUserAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblTimeAgo;
 @property (weak, nonatomic) IBOutlet UITextView *txtMessage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewHeightConstraint;
 
 - (IBAction)tapUser:(id)sender;
 

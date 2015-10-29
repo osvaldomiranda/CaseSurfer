@@ -23,13 +23,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    
+    
+ //   CGSize superviewSize = self.albumImage.superview.frame.size;
+ //   self.albumImage.center     = CGPointMake((superviewSize.width / 2), (superviewSize.height / 2));
+    
     
     if (self.albumId != nil) {
         [self setAlbum];
     }
     
     
+    [self setToptButtons];
     [self setSelectedImage: self.imageInfo];
 }
 
@@ -40,8 +45,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     self.hidesBottomBarWhenPushed =  YES;
 }
+
+- (void) setToptButtons{
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(create:)];
+
+    [self.navigationItem setRightBarButtonItem:rItem animated:YES];
+}
+
 
 -(void) setAlbum{
     Album *album=[[Album alloc] init];

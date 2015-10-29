@@ -25,7 +25,9 @@
     [super viewDidLoad];
     
     self.inCropp = NO;
-     self.okCroppButton.hidden = YES;
+    self.okCroppButton.hidden = YES;
+    
+    self.photosUpload = [[NSMutableArray alloc] init];
     
     self.displayImage.contentMode = UIViewContentModeScaleAspectFit;
     self.displayImage.userInteractionEnabled = YES;
@@ -45,7 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 
@@ -84,6 +86,16 @@
                              [self setImageOriginal:_img];
                          }
                          [scrollView insertPicture:_img withAssetURL:img.assetURL index:i];
+                         
+                         UIImage *imagePrev = _img;
+                         int a = imagePrev.size.height*640/imagePrev.size.width  ;
+                         UIImage *imageFinal = [self imageWithImage:_img convertToSize: CGSizeMake(640,a )];
+                         
+                         img.image = imageFinal;
+                         
+                         [self.photosUpload addObject:img];
+                         
+                         
                      }
                  }failureBlock:^(NSError *error) {
                      NSLog(@"error: %@", error);
@@ -95,18 +107,15 @@
     
 }
 
-
 #pragma GridScrollView
 - (void)selectImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
     
+   
+    
    [self setImageOriginal:image];
     self.indexImage = indexImage;
-    
-    NSLog(@"Indice de la imagen: %d", indexImage);
 }
 #pragma END GridScrollView
-
-
 
 
 -(void) setImageOriginal:(UIImage *) image{
@@ -119,7 +128,6 @@
     if((self.photos.count > 1) && (self.indexImage < self.photos.count) ){
         [scrollView clearGrid];
         [self setImageOriginal:nil];
-        NSLog(@"INDEX %d", self.indexImage);
         [self.photos removeObjectAtIndex:self.indexImage];
         [self fillHorizontalView];
     }
@@ -137,7 +145,7 @@
     
     CreateCaseTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewCase"];
     
-    [cController setPhotos: self.photos];
+    [cController setPhotos: self.photosUpload];
     
     self.hidesBottomBarWhenPushed =  YES;
     [self.navigationController pushViewController:cController animated:YES];
@@ -169,7 +177,7 @@
      
      [self setImageOriginal: croppedImage];
      IndexableImageView *img = [[IndexableImageView alloc] initWithImage:croppedImage andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
-     [self.photos replaceObjectAtIndex:self.indexImage withObject:img];
+     [self.photosUpload replaceObjectAtIndex:self.indexImage withObject:img];
      
      [scrollView clearGrid];
      
@@ -180,5 +188,17 @@
      }
     
 }
+
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    
+    return destImage;
+}
+
 
 @end

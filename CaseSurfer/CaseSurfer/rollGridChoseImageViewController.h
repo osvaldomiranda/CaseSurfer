@@ -28,8 +28,11 @@
 
 @property (nonatomic, assign) id<selectImageDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
+@property (nonatomic, strong) UIImagePickerController *pickerController;
 
 - (IBAction)back:(id)sender;
-- (IBAction)takePhoto:(id)sender;
+
 
 @end

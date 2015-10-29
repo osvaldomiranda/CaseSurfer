@@ -219,7 +219,7 @@
 
 -(IBAction)actionButton3:(id)sender{
     [self setBackgroundButtons:3];
-    
+
     UIViewController *vController = [[delegate obtainViewController] navigationController];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     rollGridViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollGrid"];
@@ -227,6 +227,7 @@
     vController.hidesBottomBarWhenPushed =  YES;
     [vController.navigationController pushViewController:cController animated:YES];
     vController.hidesBottomBarWhenPushed =  NO;
+
 }
 
 -(IBAction)actionButton4:(id)sender{

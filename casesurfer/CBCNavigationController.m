@@ -17,16 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+     self.navigationBar.translucent = NO;
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: greenColor,
+                                               NSFontAttributeName: [UIFont systemFontOfSize:17.0]
+                                               };
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController{
     if (self = [super initWithRootViewController:rootViewController]) {
+        [self setValues:rootViewController];
         
     }
     return self;
@@ -36,6 +41,16 @@
 {
     [super pushViewController:viewController animated:animated];
     
+    [self setValues:viewController];
+
+}
+
+- (void)popCurrentViewController
+{
+    [self popViewControllerAnimated:YES];
+}
+
+-(void) setValues:(UIViewController *)viewController {
     if ([self.viewControllers indexOfObject:viewController] != NSNotFound &&
         [self.viewControllers indexOfObject:viewController] > 0){
         [self.navigationBar setBackgroundColor: [UIColor whiteColor]];
@@ -52,11 +67,6 @@
                                                    NSFontAttributeName: [UIFont systemFontOfSize:17.0]
                                                    };
     }
-}
-
-- (void)popCurrentViewController
-{
-    [self popViewControllerAnimated:YES];
 }
 
 @end

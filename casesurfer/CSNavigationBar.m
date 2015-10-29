@@ -14,10 +14,12 @@
 -(void)layoutSubviews
 {
     [self setBackgroundColor: [UIColor whiteColor]];
-
-    self.titleTextAttributes = @{NSForegroundColorAttributeName: darkGray,
-                                 NSFontAttributeName:[UIFont fontWithName:@"Lato-Regular" size:17]
-                                };
+    self.translucent = NO;
+   
+    //config title
+    self.titleTextAttributes = @{NSForegroundColorAttributeName: greenColor,
+                                               NSFontAttributeName: [UIFont systemFontOfSize:17.0]
+                                               };
   
   
 

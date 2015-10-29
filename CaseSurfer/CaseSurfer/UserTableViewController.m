@@ -114,6 +114,8 @@
     
     NSString *url;
     
+    NSLog(@"GIGUALDAD  %d, tableView %@, result %@",tableView == self.searchDisplayController.searchResultsTableView,tableView, self.searchDisplayController.searchResultsTableView);
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         SearchUser *sUser = [self.filteredUserArray objectAtIndex:indexPath.row];
         cell.lblUserName.text = sUser.name;
@@ -217,7 +219,6 @@
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     [self.filteredUserArray removeAllObjects];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",searchText];
-    NSLog(@"Users Array %@",self.usersArray);
     self.filteredUserArray = [NSMutableArray arrayWithArray:[self.usersArray filteredArrayUsingPredicate:predicate]];
 }
 

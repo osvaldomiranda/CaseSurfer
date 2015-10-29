@@ -23,10 +23,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(uploadingStart)
+                                                 name:upLoadingObserver
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(uploadingEnd)
+                                                 name:EndUpLoadingObserver
+                                               object:nil];
+    
     self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 400, 60)];
     self.refreshLoadingView.hidden = YES;
     self.pullRefreshVisible = NO;
     [self.view addSubview:self.refreshLoadingView];
+    
+    
+    self.upLoadingView = [[UploadingView alloc] initWithFrame:CGRectMake(0, 0, 400, 60)];
+    self.upLoadingView.hidden = YES;
+    self.uploadingVisible = NO;
+    [self.view addSubview:self.upLoadingView];
+    
+    
+    self.page = 1;
+    
+    
     feedTableView.separatorColor = [UIColor clearColor];
     itemsArray = [[NSMutableArray alloc] init];
     [self refrechData];
@@ -39,31 +61,55 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:NO];
+    
 }
 
 
-
 -(void) refrechData{
-    NSMutableDictionary *notificationParams =  @{}.mutableCopy;
+    NSNumber *p= [[NSNumber alloc] initWithInt:self.page];
+    NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
     Notification *notification = [[Notification alloc] initWithParams:notificationParams];
-
+    
+   // [self fillImtensArray:[self loadNotificationsCache]];
+    
     [notification index:notificationParams Success:^(NSArray *items) {
+        [self saveNotificationsCache:items];
+        
+        NSLog(@"Norificaciones : %@", items);
+        
         [self fillImtensArray:items];
         if (self.pullRefreshVisible) {
             [self loadingViewVisible:NO];
         }
     } Error:^(NSError *error) {
     }];
+    
+    
+    [self showUploadingView];
 }
 
+- (void) showUploadingView{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uploading = [defaults objectForKey:@"uploading"];
+    if ([uploading isEqualToString:@"YES"]) {
+        [self upLoadingViewVisible:YES];
+    } else {
+        [self upLoadingViewVisible:NO];
+    }
+}
 -(void) fillImtensArray:(NSArray *) items{
-    
-    [itemsArray removeAllObjects];
+    //[itemsArray removeAllObjects];
+    bool exist = false;
     for (NSMutableDictionary *item in items) {
-    
-        [itemsArray addObject:item];
-  
+        exist = false;
+        for (NSMutableDictionary *iarray in itemsArray) {
+            if ([item valueForKeyPath:@"id"] == [iarray valueForKeyPath:@"id"] ) {
+                exist = true;
+            }
+        }
+        if (!exist) {
+             [itemsArray addObject:item];
+        }
     }
     [feedTableView reloadData];
 }
@@ -131,14 +177,29 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
         cell.status =  [notificable valueForKeyPath:@"status"];
         
+        int sender = [[notificable valueForKey:@"sender_id"] intValue];
+
+        int uId = [[self.session getUserId] intValue] ;
+        
         if([cell.status isEqualToString:@"approved"]){
             cell.btnAcept.hidden = TRUE;
             cell.btnIgnore.hidden = TRUE;
             cell.lblWantToShare.text = @"Shared";
+            if (uId == sender){
+               cell.lblWantToShare.text = @"Accept your share";
+            }
         } else{
-            cell.btnAcept.hidden = FALSE;
-            cell.btnIgnore.hidden = FALSE;
-            cell.lblWantToShare.text = @"Wants to Share";
+            if (uId != sender) {
+                cell.btnAcept.hidden = FALSE;
+                cell.btnIgnore.hidden = FALSE;
+                cell.lblWantToShare.text = @"Wants to Share";
+            }
+            else{
+                cell.btnAcept.hidden = TRUE;
+                cell.btnIgnore.hidden = TRUE;
+                cell.lblWantToShare.text = @"You send Share";
+            }
+
         }
     }
     
@@ -147,7 +208,10 @@
         Utilities *util = [[Utilities alloc] init];
         
         cell.txtMessage.text = [notificable valueForKeyPath:@"message"];
-        cell.txtMessage.frame = CGRectMake(11, 50, [util screenWidth] -20, [self textH:[notificable valueForKeyPath:@"message"]] -25 );
+        [cell.txtMessage sizeToFit];
+        [cell.txtMessage setScrollEnabled:NO];
+        cell.TextViewHeightConstraint.constant = [self textH:[notificable valueForKeyPath:@"message"]] -25 ;
+        cell.TextViewWidthConstraint.constant = [util screenWidth] -20 ;
     
         for ( UIView *view in cell.subviews ) {
             if (view.tag == 1) {
@@ -183,11 +247,40 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.y < -20){
+    if (scrollView.contentOffset.y < -30){
         if (!self.pullRefreshVisible){
-            [self loadingViewVisible:YES];
+            if (!self.uploadingVisible) {
+                [self loadingViewVisible:YES];
+            }
         }
     }
+    
+    
+    //next page
+    CGFloat refreshPoint = scrollView.frame.size.height * 6;
+    CGFloat distanceFromBottom = scrollView.contentSize.height - scrollView.contentOffset.y;
+    
+    if(distanceFromBottom < refreshPoint)
+    {
+        [self nextPage];
+    }
+}
+
+-(void) nextPage{
+    self.page++;
+    NSNumber *p= [[NSNumber alloc] initWithInt:self.page];
+    NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
+    Notification *notification = [[Notification alloc] initWithParams:notificationParams];
+    
+    [notification index:notificationParams Success:^(NSArray *items) {
+        [self saveNotificationsCache:items];
+        
+        NSLog(@"Norificaciones : %@", items);
+        
+        [self fillImtensArray:items];
+        } Error:^(NSError *error) {
+    }];
+    
 }
 
 
@@ -212,6 +305,60 @@
                     completion:nil];
     self.refreshLoadingView.hidden = hidden;
     [self refrechData];
+}
+
+-(void) saveNotificationsCache:(NSArray *) items{
+    
+ //   NSLog(@"DEFAULT %@",items);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+ //   [defaults setObject:items forKey:@"notifications"];
+    [defaults synchronize];
+}
+
+-(NSArray *) loadNotificationsCache{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *items = [defaults objectForKey:@"notifications"];
+    return items;
+}
+
+- (void) uploadingStart{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"YES" forKey:@"uploading"];
+    [defaults synchronize];
+}
+
+- (void) uploadingEnd{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"NO" forKey:@"uploading"];
+    [defaults synchronize];
+    [self upLoadingViewVisible:NO];
+    [self refrechData];
+}
+
+-(void) upLoadingViewVisible:(BOOL) visible{
+    BOOL hidden; int viewMove=0;
+    if (visible) {
+        if (!self.uploadingVisible) {
+            hidden = NO;
+            viewMove = 60;
+            self.uploadingVisible =TRUE;
+            self.upLoadingView.hidden = hidden;
+        }
+    } else {
+        if (self.uploadingVisible) {
+            hidden = YES; viewMove = 0;
+            self.uploadingVisible =FALSE;
+            self.upLoadingView.hidden = hidden;
+        }
+    }
+    [self.upLoadingView startLoadingIndicator];
+    
+    [UIView animateWithDuration:0.35f animations:^{
+        self.viewWidthConstraint.constant = viewMove;
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 
 

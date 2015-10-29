@@ -20,6 +20,16 @@
     return self;
 }
 
+- (id)initWithImage:(UIImage *)image andUrl:(NSURL *)urlImage andImageInfo:(NSMutableDictionary *)imageInfo;{
+    self = [super init];
+    self.image = image;
+    self.assetURL = urlImage;
+    self.index = [imageInfo valueForKeyPath:@"id"];
+    self.imageInfo = imageInfo;
+    self.selected = FALSE;
+    return self;
+}
+
 - (id)initWithUrl:(NSURL *)urlImage andImageInfo:(NSMutableDictionary *)imageInfo{
     self = [super init];
     self.assetURL = urlImage;

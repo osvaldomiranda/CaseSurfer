@@ -1,16 +1,23 @@
 //
-//  rollGridViewController.h
-//  Cranberry
+//  rollUpdateViewController.h
+//  casesurfer
 //
-//  Created by Osvaldo on 23-01-15.
+//  Created by Osvaldo on 13-09-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+@protocol rollUpdateDelegate
 
-@interface rollGridViewController : UIViewController <GridScrollViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+- (void)selectImages:(NSMutableArray *)images;
+
+@end
+
+@interface rollUpdateViewController : UIViewController <GridScrollViewDelegate>
+
+@property (nonatomic, retain) id<rollUpdateDelegate> delegate;
 
 @property (nonatomic, retain) GridScrollView *scrollView;
 @property (nonatomic, assign) UIImage *imageFull;
@@ -22,6 +29,6 @@
 @property (nonatomic, strong) UIImagePickerController *pickerController;
 
 - (IBAction)back:(id)sender;
-- (IBAction) callCrop:(id)sender;
+
 
 @end

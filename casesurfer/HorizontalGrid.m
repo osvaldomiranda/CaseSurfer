@@ -35,11 +35,6 @@
           withAssetURL:(NSURL *)assetURL
               index:(int ) index
 {
-  /*  float scrollBarWidth = 1.8;
-    if ([self.columns integerValue]>2) {
-        scrollBarWidth = 10;
-    }
-    */
     int pictureSize = [self.gridHeight intValue];
     
     if ([self.currentCol integerValue] == [self.columns integerValue]) {
@@ -88,6 +83,7 @@
                                UIImage *img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
                                
                                [tappedView setImage:img];
+                              
                                [gridDelegate selectImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
                                
                            }
@@ -131,6 +127,39 @@
         }
     }
 }
+
+- (void) startEditMode{
+    
+    for ( UIView *view in self.subviews ) {
+        UIImage *selImg = [UIImage imageNamed:@"icon_delete.png"];
+        UIImageView *selectedImg = [[UIImageView alloc] initWithImage:selImg];
+        selectedImg.frame = CGRectMake(view.frame.size.width-25, 5, 20, 20);
+        [view addSubview:selectedImg];
+    }
+    
+    
+}
+
+- (void) endEditMode {
+    
+    for ( UIView *viewP in self.subviews ) {
+        int i = 0;
+        for (id view in [viewP subviews]) {
+            if ([view isKindOfClass:[UIImageView class]] && i>0){
+                [UIView animateWithDuration:0.5f
+                                      delay:0.0f
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{[view setAlpha:0.0f];}
+                                 completion:^(BOOL finished) {[view removeFromSuperview];}];
+            }
+            i++;
+        }
+        
+    }
+    
+    
+}
+
 
 
 

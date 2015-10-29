@@ -21,6 +21,8 @@
 #import "session.h"
 #import "Mosaic.h"
 #import "Utilities.h"
+#import "UpdateCaseTableView.h"
+#import "CaseDescripViewController.h"
 
 
 @interface CaseViewController ()
@@ -34,6 +36,8 @@
     self.comments = [[NSMutableArray alloc] init];
     self.scrollPrueba.contentSize =  CGSizeMake(self.scrollPrueba.contentSize.width, 950);
     self.scrollPrueba.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
+    
+   
 }
 
 
@@ -49,10 +53,20 @@
   
 }
 
+- (void) setToptButtons{
+
+        UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(editCase:)];
+        [self.navigationItem setRightBarButtonItem:rItem animated:YES];
+ 
+}
 
 -(void) readData{
     MedCase *medCase = [[MedCase alloc] init];
     [medCase find:self.caseId Success:^(NSMutableDictionary *items) {
+        self.medCase = items;
         [self fillCase: items];
     } Error:^(NSError *error) {
     }];
@@ -75,6 +89,7 @@
     
     if (myId == self.ownerUser) {
         self.shareButton.hidden = NO;
+        [self setToptButtons];
     } else{
         self.shareButton.hidden = YES;
     }
@@ -84,9 +99,12 @@
 }
 
 -(void) setMosaic{
-    CGRect mosaicFrame = CGRectMake(45, 150, 230, 345);
+    
+    int x = (SCREEN_WIDTH / 2) - 115 ;
+    
+    CGRect mosaicFrame = CGRectMake(x -30 , 150, 230, 345);
     if ([self.images count]<3) {
-        mosaicFrame = CGRectMake(75, 150, 230, 345);
+        mosaicFrame = CGRectMake(x , 150, 230, 345);
     }
     Mosaic *mosaicView = [[Mosaic alloc] initMosaic:self.images frameView: mosaicFrame];
     
@@ -197,8 +215,10 @@
 
     Utilities *util = [[Utilities alloc] init];
     cell.txtMessage.text  = [celda valueForKeyPath:@"message"];
-    cell.txtMessage.frame = CGRectMake(11, 50, [util screenWidth] -20, [self textH:[celda valueForKeyPath:@"message"]] -25 );
-    
+    [cell.txtMessage sizeToFit];
+    [cell.txtMessage setScrollEnabled:NO];
+    cell.TextViewHeightConstraint.constant = [self textH:[celda valueForKeyPath:@"message"]] -25 ;
+
     for ( UIView *view in cell.subviews ) {
         if (view.tag == 1) {
             [view removeFromSuperview];
@@ -218,5 +238,23 @@
     return height+40;
 }
 
+- (IBAction)editCase:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UpdateCaseTableView *cController = [storyBoard instantiateViewControllerWithIdentifier:@"UpdateCase"];
+    cController.medCase = self.medCase;
+    cController.photos = self.images;
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
+}
 
+
+- (IBAction)descript:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CaseDescripViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"CaseDescript"];
+  
+   
+    cController.descripText = self.txtDescription.text;
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
+}
 @end

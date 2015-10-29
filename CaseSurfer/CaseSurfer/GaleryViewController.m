@@ -47,7 +47,7 @@
     CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
     CGFloat minScale = MIN(scaleWidth, scaleHeight);
     self.scrollView.minimumZoomScale = minScale;
-    self.scrollView.maximumZoomScale = 3.0f;
+    self.scrollView.maximumZoomScale = 2.0f;
     self.scrollView.zoomScale = minScale;
     [self centerScrollViewContents];
  
@@ -121,23 +121,21 @@
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.zoomScrollView addGestureRecognizer:doubleTapZoomRecognizer];
-    
-    UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
-    twoFingerTapRecognizer.numberOfTapsRequired = 1;
-    twoFingerTapRecognizer.numberOfTouchesRequired = 2;
-    [self.zoomScrollView addGestureRecognizer:twoFingerTapRecognizer];
 }
 
 
 #pragma Zoom
 
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {
-    CGFloat newZoomScale = self.scrollView.zoomScale / 1.5f;
+    CGFloat newZoomScale = self.scrollView.zoomScale / 3.0f;
     newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
     [self.zoomScrollView setZoomScale:newZoomScale animated:YES];
 }
 
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
+    
+    CGPoint location = [recognizer locationInView:recognizer.view];
+    
     CGRect rectToZoomTo ;
     if (self.inZoom) {
         self.inZoom = NO;
@@ -156,14 +154,13 @@
             }
             i++;
         }
-        rectToZoomTo = CGRectMake(100, 100, 100,100  );
+        rectToZoomTo = CGRectMake(location.x+2 -(self.page*SCREEN_WIDTH), location.y-60, 0,0  );
         self.zoomScrollView.hidden = NO;
         self.scrollView.hidden = YES;
         [self.zoomScrollView zoomToRect:rectToZoomTo animated:YES];
     }
-    
-    
 }
+
 
 
 

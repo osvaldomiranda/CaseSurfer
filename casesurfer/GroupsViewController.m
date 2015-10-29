@@ -22,7 +22,7 @@
     
     [self setToptButtons];
     
-    self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 64, 400, 60)];
+    self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 400, 60)];
     self.refreshLoadingView.hidden = YES;
     self.pullRefreshVisible = NO;
     [self.view addSubview:self.refreshLoadingView];

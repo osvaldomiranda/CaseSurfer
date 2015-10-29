@@ -25,4 +25,5 @@
 
 
 -(void) create;
+-(void) edit;
 @end

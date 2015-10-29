@@ -32,6 +32,7 @@
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
     [self loadPhotoLibrary];
+    [self.lblTitle setTextColor:greenColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,20 +88,49 @@
 
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
     if(!assetURL){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CAMERA"
-                                                        message:@"not available in the simulator"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [self takePhoto];
     }else{
-        
         [self selectImage:image];
     }
 }
 
-- (IBAction)takePhoto:(id)sender{
+- (void)takePhoto{
+    [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
+    
 }
+
+
+- (void)showImagePicker:(UIImagePickerControllerSourceType)sourceType
+{
+    self.pickerController = [[UIImagePickerController alloc] init];
+    self.pickerController.navigationBarHidden = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+        [self.pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [[self navigationController]  presentViewController:self.pickerController animated:YES completion:nil];
+        self.pickerController.showsCameraControls = YES;
+        
+    }else{
+#if TARGET_IPHONE_SIMULATOR
+        NSDictionary *info = [NSDictionary dictionaryWithObject:[UIImage imageNamed:@"caseImage.jpg"]
+                                                         forKey:@"UIImagePickerControllerOriginalImage"];
+        [self imagePickerController:nil didFinishPickingMediaWithInfo:info];
+        
+#endif
+    }
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary *)info{
+    
+    if (info) {
+        UIImage *img = [info valueForKeyPath:@"UIImagePickerControllerOriginalImage"];
+        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+        [scrollView clearGrid];
+        [self loadPhotoLibrary];
+    }
+}
+
 
 
 -(void) selectImage: (IndexableImageView *) image{

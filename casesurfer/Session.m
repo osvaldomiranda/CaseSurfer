@@ -77,6 +77,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"token"];
     [defaults synchronize];
+    [defaults removeObjectForKey:@"notifications"];
+    [defaults synchronize];
 }
 
 

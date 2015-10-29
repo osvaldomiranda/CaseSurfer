@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setToptButtons];
 
 }
 
@@ -28,6 +29,15 @@
 
 }
 
+
+- (void) setToptButtons{
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(createGroup:)];
+   
+    [self.navigationItem setRightBarButtonItem:rItem animated:YES];
+}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

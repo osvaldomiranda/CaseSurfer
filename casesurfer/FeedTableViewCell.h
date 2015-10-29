@@ -20,6 +20,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *txtMessage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewWidthConstraint;
 
 @property (weak, nonatomic) NSString *status;
 @property (weak, nonatomic) IBOutlet UIButton *btnAcept;

@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) HorizontalGrid *scrollView;
 @property (nonatomic, assign) NSMutableArray *photos;
+@property (nonatomic, retain) NSMutableArray *photosUpload;
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) IBOutlet UIImageView *displayImage;
 @property (nonatomic, strong) UIImage *originalImage;

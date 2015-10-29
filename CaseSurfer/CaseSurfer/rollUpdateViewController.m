@@ -1,22 +1,21 @@
 //
-//  rollGridViewController.m
-//  Cranberry
+//  rollUpdateViewController.m
+//  casesurfer
 //
-//  Created by Osvaldo on 23-01-15.
+//  Created by Osvaldo on 13-09-15.
 //  Copyright (c) 2015 Osvaldo Antonio Miranda Silva. All rights reserved.
 //
 
-#import "rollGridViewController.h"
+#import "rollUpdateViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "Definitions.h"
 #import "CropViewController.h"
 
-
-@interface rollGridViewController ()
+@interface rollUpdateViewController ()
 
 @end
 
-@implementation rollGridViewController
+@implementation rollUpdateViewController
 
 @synthesize scrollView;
 @synthesize assetsLibrary;
@@ -29,8 +28,7 @@
     [super viewDidLoad];
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
-    
-    
+    [self setToptButtons];
     [self.lblTitle setTextColor:greenColor];
     
 }
@@ -38,12 +36,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:YES];
     self.photos = nil;
     [scrollView clearGrid];
     [self loadPhotoLibrary];
 }
 
+- (void) setToptButtons{
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(done:)];
+    
+    [self.navigationItem setRightBarButtonItem:rItem animated:YES];
+}
 
 -(void)setScrollViewProperties{
     scrollView = [[GridScrollView alloc] initGrid:4 spacing:5 gridWidth:380];
@@ -59,7 +64,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-60);
+    scrollView.frame = CGRectMake(0, 0, 380, SCREEN_HEIGHT-60);
     scrollView.gridDelegate = self;
     
     [self.view addSubview:scrollView];
@@ -67,7 +72,7 @@
 
 -(void)loadPhotoLibrary{
     
-     UIImage *imageCamera = [UIImage imageNamed:@"camera_blue.png"];
+    UIImage *imageCamera = [UIImage imageNamed:@"camera_blue.png"];
     
     [scrollView insertPicture:imageCamera withAssetURL:nil indexImage:nil ];
     
@@ -91,8 +96,6 @@
 #pragma GridScrollView
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
     
-  
-    
     if(!assetURL){
         [self takePhoto];
     }else{
@@ -106,10 +109,11 @@
     
 }
 
+
+
 - (void)showImagePicker:(UIImagePickerControllerSourceType)sourceType
 {
     self.pickerController = [[UIImagePickerController alloc] init];
-    self.pickerController.delegate = self;
     self.pickerController.navigationBarHidden = YES;
     
     if ([UIImagePickerController isSourceTypeAvailable:sourceType])
@@ -119,61 +123,48 @@
         self.pickerController.showsCameraControls = YES;
         
     }else{
-        #if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
         NSDictionary *info = [NSDictionary dictionaryWithObject:[UIImage imageNamed:@"caseImage.jpg"]
                                                          forKey:@"UIImagePickerControllerOriginalImage"];
         [self imagePickerController:nil didFinishPickingMediaWithInfo:info];
-        #endif
+
+#endif
     }
 }
-
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary *)info{
     
     if (info) {
-        
-        UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *img = [info valueForKeyPath:@"UIImagePickerControllerOriginalImage"];
         UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
         [scrollView clearGrid];
-
         [self loadPhotoLibrary];
-        
-  /*      UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" IMAGE "
-                                                        message:@" Se guardó imagen"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-    */    
-        
     }
 }
 
 
-- (IBAction) callCrop:(id)sender{
+
+- (IBAction) done:(id)sender{
     
     if (self.photos.count > 0) {
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        CropViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"CropView"];
-        
-        [cController setPhotos: self.photos];
-        
-        self.hidesBottomBarWhenPushed =  YES;
-        [self.navigationController pushViewController:cController animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self.delegate selectImages:self.photos];
+        [self.navigationController popViewControllerAnimated:YES];
     }
-
+    
 }
 
 
 
 -(void) addImageToArray: (IndexableImageView *) image{
     
+    UIImage *imagePrev = image.image;
+    int a = imagePrev.size.height*640/imagePrev.size.width  ;
+    UIImage *imageFinal = [self imageWithImage:image.image convertToSize: CGSizeMake(640,a )];
+    
+    image.image = imageFinal;
+    
     if (!self.photos) self.photos = [[NSMutableArray alloc] init];
-    if (self.photos.count < 10) {
+    if (self.photos.count <= 10) {
         [self.photos addObject:image];
     }else{
         [self alertMore];
@@ -194,9 +185,15 @@
                                           otherButtonTitles:nil];
     alert.tag = 1;
     [alert show];
-    [self callCrop:self];
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
 
 
 

@@ -121,7 +121,10 @@ UIView *commentView;
     cell.lblUserName.text = [celda valueForKeyPath:@"user_name"];
     
     Utilities *util = [[Utilities alloc] init];
-    cell.txtMessage.frame = CGRectMake(11, 50, [util screenWidth] -20, [self textH:[celda valueForKeyPath:@"message"]] -25 );
+    
+    [cell.txtMessage sizeToFit];
+    [cell.txtMessage setScrollEnabled:NO];
+    cell.TextViewHeightConstraint.constant = [self textH:[celda valueForKeyPath:@"message"]] -25 ;
     
     for ( UIView *view in cell.subviews ) {
         if (view.tag == 1) {

@@ -13,6 +13,7 @@
 #import "ListCasesViewController.h"
 #import "Album.h"
 #import "UIImageView+WebCache.h"
+#import "ListCaseTableViewController.h"
 
 @interface AlbumsViewController ()
 
@@ -27,14 +28,16 @@
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
     self.inEdit = NO;
+    self.ordered = false;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:YES];
     [scrollView clearGrid];
+    self.selectedAlbumId = 0;
     [self loadAlbums];
 
 }
@@ -44,11 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(void)setScrollViewProperties{
-    scrollView = [[GridScrollView alloc] initGrid:2 spacing:35 gridWidth:380];
+    scrollView = [[GridScrollView alloc] initGrid:2 spacing:35 gridWidth:SCREEN_WIDTH];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(380,SCREEN_HEIGHT);
+    scrollView.contentSize =  CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -58,7 +63,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-60);
+    scrollView.frame = CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT-100);
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     scrollView.gridDelegate = self;
     
@@ -86,6 +91,12 @@
     } Error:^(NSError *error) {
     }];
     
+    if (self.ordered) {
+        params =  @{@"order_by":@"name"}.mutableCopy;
+    }
+    else {
+        params =  @{}.mutableCopy;
+    }
     
     [myAlbum index:params Success:^(NSArray *items) {
         [self fillAlbumArray: items];
@@ -94,6 +105,32 @@
     
 
     
+}
+
+- (IBAction)order:(id)sender{
+    [scrollView clearGrid];
+    if (self.ordered) {
+        self.ordered = false;
+    }
+    else {
+        self.ordered = true;
+    }
+    [self loadAlbums];
+}
+
+- (IBAction)search:(id)sender {
+    self.selectedAlbumId = 9999;
+    [self callList];
+}
+
+- (void) callList{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ListCaseTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"ListCaseTable"];
+    cController.albumId = self.selectedAlbumId;
+    self.hidesBottomBarWhenPushed =  YES;
+    [self.navigationController pushViewController:cController animated:NO];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 -(void) fillAlbumArray:(NSArray *) items{
@@ -153,14 +190,8 @@
 }
 
 - (void) callListCasesWithAlbum{
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    ListCasesViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"ListCases"];
-    cController.albumId = self.selectedAlbumId;
-    self.hidesBottomBarWhenPushed =  YES;
-    [self.navigationController pushViewController:cController animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-    
+
+    [self callList];
 }
 
 - (IBAction)edit:(id)sender {
@@ -195,8 +226,6 @@
 }
 
 -(void) deleteAlbum{
-    NSLog(@"ELIMINAR %d",self.selectedAlbumId );
-    
     NSMutableDictionary *albumParams = @{}.mutableCopy;
     Album *album = [[Album alloc] init];
     

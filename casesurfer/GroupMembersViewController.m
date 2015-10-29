@@ -40,9 +40,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self setToptButtons];
     [self refrechData];
     
+}
+
+- (void) setToptButtons{
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(editMembers:)];
+    
+    [self.navigationItem setRightBarButtonItem:rItem animated:YES];
 }
 
 -(void) refrechData{

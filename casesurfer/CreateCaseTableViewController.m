@@ -32,7 +32,7 @@
 
 -(void) loadAlbums{
     Album *myAlbum = [[Album alloc] init];
-    NSMutableDictionary *params =  @{}.mutableCopy;
+    NSMutableDictionary *params = @{@"order_by":@"name"}.mutableCopy;
     [myAlbum index:params Success:^(NSArray *items) {
         [self fillAlbumArray: items];
     } Error:^(NSError *error) {
@@ -108,7 +108,12 @@
         [medCase create];
         
         [self.navigationController setNavigationBarHidden:TRUE];
+        
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:loginObserver
+                                                            object:nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:upLoadingObserver
                                                             object:nil];
     }
 }
@@ -174,7 +179,7 @@
     [self hideKeyboard];
     [self performSelector:@selector(scrollTableView) withObject:nil afterDelay:1.0];
     [CBCPicker showPickerWithData: AGES
-                     selectedItem:self.selectedAlbum
+                     selectedItem:@"30"
                          onCanvas:self.parentViewController.view
                          onSelect:^(NSString *selectedItem) {
                              self.selectedAge = selectedItem;

@@ -36,5 +36,9 @@
 - (void) replaceImage:(UIImage *) image
                 index:(int)index;
 
+- (void) startEditMode;
+
+- (void) endEditMode;
+
 
 @end

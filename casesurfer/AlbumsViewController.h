@@ -16,9 +16,12 @@
 @property (nonatomic, retain) NSMutableArray *Albums;
 @property (nonatomic, assign) int selectedAlbumId;
 @property (nonatomic, assign) bool inEdit;
+@property (nonatomic, assign) bool ordered;
 
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 
 - (IBAction)addAction:(id)sender;
 - (IBAction)edit:(id)sender;
+- (IBAction)order:(id)sender;
+- (IBAction)search:(id)sender;
 @end
