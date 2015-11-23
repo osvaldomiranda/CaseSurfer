@@ -2,7 +2,7 @@
 //#define DEV_BASE_PATH @"http://localhost:3000"
 
 #define DEV_BASE_PATH @""
-#define BASE_PATH @"http://www.casesurfer.com/"
+#define BASE_PATH @"http://www.casesurfer.com"
 
 
 #define gray [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0]

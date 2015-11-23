@@ -75,8 +75,6 @@
     [notification index:notificationParams Success:^(NSArray *items) {
         [self saveNotificationsCache:items];
         
-        NSLog(@"Norificaciones : %@", items);
-        
         [self fillImtensArray:items];
         if (self.pullRefreshVisible) {
             [self loadingViewVisible:NO];
@@ -111,8 +109,23 @@
              [itemsArray addObject:item];
         }
     }
+    [self orderArray:itemsArray];
     [feedTableView reloadData];
 }
+
+- (void) orderArray:(NSMutableArray *) arr{
+    NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    
+    NSArray *descriptors = [NSArray arrayWithObjects:hopProfileDescriptor, nil];
+    NSArray *sortedArrayOfDictionaries = [arr sortedArrayUsingDescriptors:descriptors];
+    
+    [itemsArray removeAllObjects];
+    for (NSMutableDictionary *item in sortedArrayOfDictionaries) {
+        [itemsArray addObject:item];
+    }
+
+}
+
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
     int height = 90;
@@ -184,9 +197,9 @@
         if([cell.status isEqualToString:@"approved"]){
             cell.btnAcept.hidden = TRUE;
             cell.btnIgnore.hidden = TRUE;
-            cell.lblWantToShare.text = @"Shared";
+            cell.lblWantToShare.text = @"Shared case with you";
             if (uId == sender){
-               cell.lblWantToShare.text = @"Accept your share";
+               cell.lblWantToShare.text = @"Accepted your case";
             }
         } else{
             if (uId != sender) {

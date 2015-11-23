@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -132,7 +133,7 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="widthClass=compact" ambiguous="YES">
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="68" y="11" width="98" height="22"/>
                                 </variation>
                             </view>
@@ -390,13 +391,13 @@
                             <tableViewSection id="6D3-vw-iyx">
                                 <cells>
                                     <tableViewCell alpha="0.29999999999999999" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="HBI-yh-GaC">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HBI-yh-GaC" id="Ggp-NX-oPZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K43-E4-m7T">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K43-E4-m7T">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DWT-Ko-5ck">
@@ -455,13 +456,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="2Lk-uy-FdG">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="52" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Lk-uy-FdG" id="UaD-dn-d6T">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5Z-Kn-ZMN">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5Z-Kn-ZMN">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xli-hK-bjH">
@@ -520,13 +521,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="U9B-rL-6u5">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="104" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U9B-rL-6u5" id="09B-I2-MDQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abO-fD-Io7">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abO-fD-Io7">
                                                     <rect key="frame" x="15" y="5" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email_inactive.png" translatesAutoresizingMaskIntoConstraints="NO" id="TUo-Mz-kKL" customClass="IndexableImageView">
@@ -587,13 +588,13 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="p6S-SA-CB1">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="156" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6S-SA-CB1" id="6JZ-vK-oSr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jaE-1X-EF6">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jaE-1X-EF6">
                                                     <rect key="frame" x="15" y="4" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="appFormPassword.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vht-tU-MP6">
@@ -652,13 +653,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="sV7-am-41i">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="208" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sV7-am-41i" id="InR-nT-Pwm">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uv4-De-UB8">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uv4-De-UB8">
                                                     <rect key="frame" x="15" y="3" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="appFormPassword.png" translatesAutoresizingMaskIntoConstraints="NO" id="fAC-M9-b6v">
@@ -717,10 +718,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="I7O-rO-aQF">
-                                        <rect key="frame" x="0.0" y="347" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="260" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I7O-rO-aQF" id="EyA-vT-jxg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0cd-Eg-kr0">
@@ -743,13 +744,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="PSX-E8-YEi">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="312" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PSX-E8-YEi" id="pbe-N9-bbC">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gh9-U3-cRM">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gh9-U3-cRM">
                                                     <rect key="frame" x="15" y="3" width="290" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" alpha="0.64999999999999969" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11i-Qz-bEe">
@@ -821,10 +822,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="0Ni-uA-XLp">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="364" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ni-uA-XLp" id="65r-Ft-Oga">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNL-bF-Ge2">
@@ -885,7 +886,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fzY-q5-ccN">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fzY-q5-ccN">
                                 <rect key="frame" x="16" y="2" width="288" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Terms and Conditions.
@@ -998,7 +999,7 @@ If you have any questions about these Terms, please contact us.
                         <viewControllerLayoutGuide type="bottom" id="mnr-1b-5fx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S0e-u8-8hw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gCg-C7-HkO">
@@ -1380,7 +1381,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="tCP-fv-o4O"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="Groups" id="PVD-if-OGp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qza-d9-hUB">
@@ -1390,10 +1391,10 @@ about a case.</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="91" id="Dod-O6-nI7" customClass="GroupTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="22" width="0.0" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dod-O6-nI7" id="7XT-E8-aSp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYA-Hm-s2x">
@@ -1408,7 +1409,7 @@ about a case.</string>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="group_inactive.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aao-WT-gPl">
                                                     <rect key="frame" x="26" y="12" width="33" height="47"/>
                                                 </imageView>
-                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXd-GW-Y8Y">
+                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXd-GW-Y8Y">
                                                     <rect key="frame" x="0.0" y="84" width="320" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1425,7 +1426,7 @@ about a case.</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p6-v2-pCc">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p6-v2-pCc">
                                                     <rect key="frame" x="0.0" y="77" width="320" height="7"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1442,7 +1443,7 @@ about a case.</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEC-iE-7Xd">
+                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEC-iE-7Xd">
                                                     <rect key="frame" x="0.0" y="76" width="320" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1582,9 +1583,10 @@ about a case.</string>
                             <tableViewSection id="UCu-cF-KfN">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="UuL-V6-aJa">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UuL-V6-aJa" id="BIa-GR-MMx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="KOK-Es-h5T">
@@ -1650,10 +1652,10 @@ about a case.</string>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="AgN-21-mSs">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="127" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AgN-21-mSs" id="mW9-AK-rge">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xg6-lZ-4VS">
@@ -1722,13 +1724,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="5tA-Et-o7p">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="187" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5tA-Et-o7p" id="xwv-xw-Ex7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYi-7a-iQJ">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYi-7a-iQJ">
                                                     <rect key="frame" x="15" y="2" width="290" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCb-XC-5mu">
@@ -1791,10 +1793,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="43" id="NFP-oo-tMe">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="247" width="600" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFP-oo-tMe" id="QfD-o6-ROc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zII-dZ-4Rp">
@@ -1860,10 +1862,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="43" id="LxW-tL-W40">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="290" width="600" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LxW-tL-W40" id="lOP-bS-ukZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-JR-pJY">
@@ -1929,10 +1931,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="UAe-pY-uW9">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="333" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UAe-pY-uW9" id="Doq-Ha-J9b">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQC-V5-xiF">
@@ -2026,22 +2028,22 @@ about a case.</string>
                             <tableViewSection id="KEo-ZG-Elw">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="0ov-FU-Y3S">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ov-FU-Y3S" id="JSb-7B-Wa7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="t6v-Me-kWd">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="52" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t6v-Me-kWd" id="9aD-3H-wBC">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-QF-iLb">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-QF-iLb">
                                                     <rect key="frame" x="15" y="5" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email_inactive.png" translatesAutoresizingMaskIntoConstraints="NO" id="q7O-6d-PFg" customClass="IndexableImageView">
@@ -2102,13 +2104,13 @@ about a case.</string>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="Ybo-cS-Rnd">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="104" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ybo-cS-Rnd" id="2K8-hm-MqH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYm-FX-Egb">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYm-FX-Egb">
                                                     <rect key="frame" x="15" y="4" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="appFormPassword.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oyy-H7-VGT">
@@ -2167,22 +2169,22 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="y1H-Vy-MhL">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="156" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y1H-Vy-MhL" id="imV-Fd-Kre">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="0uZ-HQ-GjX">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="208" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0uZ-HQ-GjX" id="aAl-nz-CxU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fnl-xY-W5r">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fnl-xY-W5r">
                                                     <rect key="frame" x="15" y="3" width="290" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" alpha="0.64999997615814209" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wN-gi-9Ps">
@@ -2290,7 +2292,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="lWR-CI-TeN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="899-mk-Nv5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cba-Dz-aju">
@@ -2300,10 +2302,10 @@ about a case.</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedTableViewCell" rowHeight="90" id="WR3-ab-JXr" customClass="FeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="22" width="0.0" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WR3-ab-JXr" id="Ltg-fn-o0x">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXD-fe-i2B">
@@ -2554,10 +2556,10 @@ about a case.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShareTableViewCell" rowHeight="209" id="0HR-ba-VzG" customClass="ShareTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="112" width="0.0" height="209"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0HR-ba-VzG" id="2p8-mB-luE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-zN-ijU">
@@ -2631,7 +2633,8 @@ about a case.</string>
                                                             <exclude reference="dds-UV-YTr"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="201" y="8" width="84" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="1P1-99-tDB"/>
                                                             <include reference="dds-UV-YTr"/>
@@ -2658,7 +2661,8 @@ about a case.</string>
                                                             <exclude reference="i1m-dJ-rQW"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="202" y="42" width="84" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="HFr-U3-aNn"/>
                                                             <include reference="i1m-dJ-rQW"/>
@@ -2704,7 +2708,8 @@ about a case.</string>
                                                             <exclude reference="r34-SV-sh8"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="85" y="65" width="138" height="128"/>
                                                         <mask key="constraints">
                                                             <include reference="owH-rc-jiK"/>
                                                             <include reference="r34-SV-sh8"/>
@@ -2778,10 +2783,10 @@ about a case.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCaseCell" rowHeight="295" id="edP-0C-JRg" customClass="FeedCaseTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="321" width="0.0" height="295"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edP-0C-JRg" id="F0u-0q-v7N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="295"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqR-JF-xtV">
@@ -2835,7 +2840,8 @@ about a case.</string>
                                                             <exclude reference="veX-hc-Q2V"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="210" y="10" width="79" height="19"/>
                                                         <mask key="constraints">
                                                             <include reference="3eC-P5-x5g"/>
                                                             <include reference="veX-hc-Q2V"/>
@@ -2893,7 +2899,8 @@ about a case.</string>
                                                             <exclude reference="XsJ-nD-yGO"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="54" y="87" width="197" height="182"/>
                                                         <mask key="constraints">
                                                             <include reference="D4o-DY-GGh"/>
                                                             <include reference="XsJ-nD-yGO"/>
@@ -3018,7 +3025,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="73t-Nw-AUa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="biv-rD-DR6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWO-KF-KQB">
@@ -3250,15 +3257,17 @@ about a case.</string>
             <objects>
                 <tableViewController storyboardIdentifier="Avatar" title="Avatar" id="ypC-0g-Aai" customClass="AvatarTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8nG-Lp-lzf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="two-ud-G5I">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="284" id="7kt-8k-f0A">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="284"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7kt-8k-f0A" id="b5i-Kq-BdK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="284"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pFv-5K-3Ef">
@@ -3558,15 +3567,15 @@ about a case.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lKx-07-nLf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lKx-07-nLf">
                                 <rect key="frame" x="0.0" y="52" width="320" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCaseCell" rowHeight="112" id="VuU-cB-IdF" customClass="ListCaseTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="102"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VuU-cB-IdF" id="q6c-95-WkG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZrF-nW-6KX">
@@ -3593,7 +3602,7 @@ about a case.</string>
                                                         <action selector="caseAction:" destination="VuU-cB-IdF" eventType="touchUpInside" id="TtW-Si-FkX"/>
                                                     </connections>
                                                 </button>
-                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1s-p5-JQI">
+                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1s-p5-JQI">
                                                     <rect key="frame" x="0.0" y="111" width="320" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -3610,7 +3619,7 @@ about a case.</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-OC-qL1">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-OC-qL1">
                                                     <rect key="frame" x="0.0" y="104" width="320" height="7"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -3627,7 +3636,7 @@ about a case.</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRC-km-G5v">
+                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRC-km-G5v">
                                                     <rect key="frame" x="0.0" y="103" width="320" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -3763,7 +3772,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="nLc-HK-XrT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cbf-5Z-ObA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACu-zB-6qi">
@@ -3814,7 +3823,7 @@ about a case.</string>
                                                         <rect key="frame" x="0.0" y="22" width="320" height="84"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4E-dA-g2m" id="z9x-Jd-iJX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYu-dr-bXA">
@@ -3853,7 +3862,7 @@ about a case.</string>
                                                                         <rect key="frame" x="55" y="7" width="314" height="21"/>
                                                                     </variation>
                                                                 </label>
-                                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu," textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-Sv-Mpx">
+                                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu," textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-Sv-Mpx">
                                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
@@ -4148,7 +4157,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="i1q-M1-lJR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="k7h-n8-wr4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="odM-o3-hAE">
@@ -4231,7 +4240,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="eXH-Av-9fl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2hK-zL-w3z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="118" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-EP-ia4">
@@ -4243,7 +4252,7 @@ about a case.</string>
                                         <rect key="frame" x="0.0" y="22" width="320" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hpg-R7-hIE" id="Fla-0z-6U6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zx7-2R-KpG">
@@ -4676,8 +4685,7 @@ about a case.</string>
                                                 <exclude reference="vR5-3f-4So"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="120" y="12" width="150" height="140"/>
+                                        <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="NQc-N6-4V1"/>
                                                 <include reference="vR5-3f-4So"/>
@@ -4734,32 +4742,32 @@ about a case.</string>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Cp6-1i-G8q"/>
-                                        <exclude reference="1dm-8I-yDi"/>
-                                        <exclude reference="IrP-qT-Fym"/>
-                                        <exclude reference="1Eh-zF-rXf"/>
-                                        <exclude reference="oUV-ng-xsA"/>
-                                        <exclude reference="8mH-e7-dMh"/>
-                                        <exclude reference="Q1B-6g-AVt"/>
-                                        <exclude reference="Xgu-RU-PtI"/>
-                                        <exclude reference="aQC-HW-UwW"/>
                                         <exclude reference="BC5-Bp-13v"/>
                                         <exclude reference="HD1-bu-orw"/>
+                                        <exclude reference="Xgu-RU-PtI"/>
+                                        <exclude reference="aQC-HW-UwW"/>
+                                        <exclude reference="8mH-e7-dMh"/>
+                                        <exclude reference="Q1B-6g-AVt"/>
+                                        <exclude reference="1dm-8I-yDi"/>
+                                        <exclude reference="IrP-qT-Fym"/>
+                                        <exclude reference="Ou3-Oj-q2P"/>
+                                        <exclude reference="hmb-n0-dtm"/>
+                                        <exclude reference="VJ1-yd-R1w"/>
+                                        <exclude reference="jWA-JT-vpS"/>
+                                        <exclude reference="DCl-It-vjU"/>
+                                        <exclude reference="EdX-gV-MB4"/>
                                         <exclude reference="62b-Ws-QIV"/>
                                         <exclude reference="E4I-XV-Izc"/>
                                         <exclude reference="Y0E-Ew-7qp"/>
                                         <exclude reference="59s-7E-3Sh"/>
                                         <exclude reference="Dkh-1q-k1f"/>
                                         <exclude reference="gmw-NK-vn0"/>
-                                        <exclude reference="Ou3-Oj-q2P"/>
-                                        <exclude reference="hmb-n0-dtm"/>
-                                        <exclude reference="nhz-bL-5T3"/>
-                                        <exclude reference="VJ1-yd-R1w"/>
-                                        <exclude reference="jWA-JT-vpS"/>
-                                        <exclude reference="DCl-It-vjU"/>
-                                        <exclude reference="EdX-gV-MB4"/>
                                         <exclude reference="5NM-Bf-aXp"/>
                                         <exclude reference="RyS-rZ-Hcr"/>
                                         <exclude reference="ZBp-ax-msE"/>
+                                        <exclude reference="nhz-bL-5T3"/>
+                                        <exclude reference="1Eh-zF-rXf"/>
+                                        <exclude reference="oUV-ng-xsA"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -4778,32 +4786,32 @@ about a case.</string>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Cp6-1i-G8q"/>
-                                        <include reference="1dm-8I-yDi"/>
-                                        <include reference="IrP-qT-Fym"/>
-                                        <include reference="1Eh-zF-rXf"/>
-                                        <include reference="oUV-ng-xsA"/>
-                                        <include reference="8mH-e7-dMh"/>
-                                        <include reference="Q1B-6g-AVt"/>
-                                        <include reference="Xgu-RU-PtI"/>
-                                        <include reference="aQC-HW-UwW"/>
                                         <include reference="BC5-Bp-13v"/>
                                         <include reference="HD1-bu-orw"/>
+                                        <include reference="Xgu-RU-PtI"/>
+                                        <include reference="aQC-HW-UwW"/>
+                                        <include reference="8mH-e7-dMh"/>
+                                        <include reference="Q1B-6g-AVt"/>
+                                        <include reference="1dm-8I-yDi"/>
+                                        <include reference="IrP-qT-Fym"/>
+                                        <include reference="Ou3-Oj-q2P"/>
+                                        <include reference="hmb-n0-dtm"/>
+                                        <include reference="VJ1-yd-R1w"/>
+                                        <include reference="jWA-JT-vpS"/>
+                                        <include reference="DCl-It-vjU"/>
+                                        <include reference="EdX-gV-MB4"/>
                                         <include reference="62b-Ws-QIV"/>
                                         <include reference="E4I-XV-Izc"/>
                                         <include reference="Y0E-Ew-7qp"/>
                                         <include reference="59s-7E-3Sh"/>
                                         <include reference="Dkh-1q-k1f"/>
                                         <include reference="gmw-NK-vn0"/>
-                                        <include reference="Ou3-Oj-q2P"/>
-                                        <include reference="hmb-n0-dtm"/>
-                                        <include reference="nhz-bL-5T3"/>
-                                        <include reference="VJ1-yd-R1w"/>
-                                        <include reference="jWA-JT-vpS"/>
-                                        <include reference="DCl-It-vjU"/>
-                                        <include reference="EdX-gV-MB4"/>
                                         <include reference="5NM-Bf-aXp"/>
                                         <include reference="RyS-rZ-Hcr"/>
                                         <include reference="ZBp-ax-msE"/>
+                                        <include reference="nhz-bL-5T3"/>
+                                        <include reference="1Eh-zF-rXf"/>
+                                        <include reference="oUV-ng-xsA"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -4863,7 +4871,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="OYQ-6n-7sO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bdv-ml-iWx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exE-lZ-Umc">
@@ -4983,11 +4991,11 @@ about a case.</string>
                                 <exclude reference="fSA-vp-Cmh"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6fe-KC-Kji"/>
                                 <exclude reference="67i-Kg-wGu"/>
                                 <exclude reference="b32-Hm-HYm"/>
                                 <exclude reference="e7B-6b-ZwB"/>
                                 <exclude reference="psT-jt-96X"/>
+                                <exclude reference="6fe-KC-Kji"/>
                                 <exclude reference="KFF-v1-jfA"/>
                                 <exclude reference="jwC-b2-BaT"/>
                                 <exclude reference="zp5-Rk-CqQ"/>
@@ -4999,11 +5007,11 @@ about a case.</string>
                                 <include reference="fSA-vp-Cmh"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6fe-KC-Kji"/>
                                 <include reference="67i-Kg-wGu"/>
                                 <include reference="b32-Hm-HYm"/>
                                 <include reference="e7B-6b-ZwB"/>
                                 <include reference="psT-jt-96X"/>
+                                <include reference="6fe-KC-Kji"/>
                                 <include reference="KFF-v1-jfA"/>
                                 <include reference="jwC-b2-BaT"/>
                                 <include reference="zp5-Rk-CqQ"/>
@@ -5037,16 +5045,16 @@ about a case.</string>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUserCell" rowHeight="55" id="qFI-1v-nVl" customClass="SearchUserTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="53"/>
+                                <rect key="frame" x="0.0" y="130" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFI-1v-nVl" id="tEV-sK-OLj">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="hKR-xP-gVO">
                                             <rect key="frame" x="10" y="5" width="34" height="34"/>
                                         </imageView>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ss2-wf-WFa">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ss2-wf-WFa">
                                             <rect key="frame" x="0.0" y="54" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -5063,7 +5071,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFl-xs-vZS">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFl-xs-vZS">
                                             <rect key="frame" x="0.0" y="49" width="320" height="5"/>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -5080,7 +5088,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-7m-QcL">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-7m-QcL">
                                             <rect key="frame" x="0.0" y="48" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -5418,7 +5426,7 @@ about a case.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-ho-Tfj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-ho-Tfj">
                                 <rect key="frame" x="14" y="72" width="290" height="415"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5480,7 +5488,7 @@ about a case.</string>
             <objects>
                 <tableViewController storyboardIdentifier="SetNotifications" title="Notifications" id="jkL-7g-nZ4" customClass="SetNotificationTableViewC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6QG-m6-RPx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -5488,17 +5496,19 @@ about a case.</string>
                             <tableViewSection id="4jU-xg-8Oe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="L0J-zb-SHj">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L0J-zb-SHj" id="nvM-3u-Q74">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="S9s-LD-zdf">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="44" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S9s-LD-zdf" id="PY6-tM-vdP">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t56-Ce-N94">
@@ -5663,10 +5673,10 @@ about a case.</string>
                             <tableViewSection id="HwG-yk-aQf">
                                 <cells>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="68" id="5Qr-RT-TEn">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Qr-RT-TEn" id="5xM-c7-xZY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzc-wO-T3e">
@@ -5746,10 +5756,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="32" id="Rdx-LS-MQv">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rdx-LS-MQv" id="PQC-LB-uSz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-1u-Gax">
@@ -5802,13 +5812,13 @@ about a case.</string>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="Nef-FB-ad3">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="164" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nef-FB-ad3" id="lzA-Gg-Xza">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v95-th-z2L">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v95-th-z2L">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TTo-yY-00i">
@@ -5908,13 +5918,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="fnr-HC-7Ex">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="216" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnr-HC-7Ex" id="NBA-bf-QUP">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NXW-FY-JQM">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NXW-FY-JQM">
                                                     <rect key="frame" x="15" y="4" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="patient.png" translatesAutoresizingMaskIntoConstraints="NO" id="x6I-w2-a24">
@@ -6014,10 +6024,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="31" id="wVj-Lz-kZo">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="268" width="600" height="31"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wVj-Lz-kZo" id="xBv-s0-nxF">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Only visible for yow. Others will just see initials" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaN-0f-lZt">
@@ -6061,10 +6071,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="kkB-wb-JaZ">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="299" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kkB-wb-JaZ" id="6Tx-aP-mo6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dXG-MY-a4x">
@@ -6177,13 +6187,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="BjT-RP-JXy">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="351" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjT-RP-JXy" id="dgC-PT-iqL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGb-LR-6Xa">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGb-LR-6Xa">
                                                     <rect key="frame" x="15" y="3" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="gender.png" translatesAutoresizingMaskIntoConstraints="NO" id="p7u-UZ-8d7">
@@ -6293,13 +6303,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="yI8-Kp-YL2">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="403" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yI8-Kp-YL2" id="azf-F0-VMu">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hB2-J0-iyt">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hB2-J0-iyt">
                                                     <rect key="frame" x="15" y="3" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="description.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Yk-xQ-exQ">
@@ -6399,10 +6409,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="apo-tq-P8x">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="455" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apo-tq-P8x" id="As3-Ah-r9b">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfA-5t-fwU">
@@ -6489,7 +6499,7 @@ about a case.</string>
                     <rect key="frame" x="0.0" y="87" width="320" height="52"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AxK-JF-0JC" id="Mmc-Sf-rdS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rt8-fB-7sa">
@@ -6550,7 +6560,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="qjz-dy-0Pn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a75-5z-Hlq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcI-dn-est">
@@ -6607,16 +6617,17 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="7Ic-S9-aBS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="be3-YH-0GT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-pB-BbU">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupMember" rowHeight="57" id="GjD-9u-f5u" customClass="GroupMemberTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="0.0" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GjD-9u-f5u" id="GUb-GV-A4h">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uzc-Kq-ray">
@@ -6757,10 +6768,10 @@ about a case.</string>
                             <tableViewSection id="I5P-Vj-Ipm">
                                 <cells>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="42" id="sZp-4O-IBL">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZp-4O-IBL" id="eP2-a0-i4F">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sh-42-V8R">
@@ -6848,13 +6859,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="2LZ-bR-RSq">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="106" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2LZ-bR-RSq" id="hhk-SK-VIE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ff7-L9-JDT">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ff7-L9-JDT">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ly-gf-pRf">
@@ -6919,13 +6930,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="cOO-Lj-2pK">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="158" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cOO-Lj-2pK" id="Osq-Zl-IQ7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anI-k0-IuW">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anI-k0-IuW">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-He-24a">
@@ -6990,13 +7001,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="tNF-jI-ZWf">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="210" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNF-jI-ZWf" id="nZ8-mp-sx8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQE-Fa-Oqo">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQE-Fa-Oqo">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-T7-alZ">
@@ -7061,13 +7072,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="hIc-Er-iD2">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="262" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIc-Er-iD2" id="Lp7-Ji-iZ6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-TM-6J2">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-TM-6J2">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WIs-81-aDA">
@@ -7132,13 +7143,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="PzB-n1-soP">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="314" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PzB-n1-soP" id="DUi-CW-LWI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVw-xv-aOX">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVw-xv-aOX">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Linkedin" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nJV-8O-27l">
@@ -7203,13 +7214,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="9nv-AN-eU5">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="366" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9nv-AN-eU5" id="1LA-RH-bTQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67F-Ln-jwK">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67F-Ln-jwK">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bio" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="K2M-Ea-EIg">
@@ -7274,13 +7285,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="LEf-KS-L3X">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="418" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LEf-KS-L3X" id="C9k-qs-Czp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28R-ae-JcW">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28R-ae-JcW">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Areas Of Interest" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-wF-lZa">
@@ -7368,7 +7379,7 @@ about a case.</string>
                     <rect key="frame" x="0.0" y="87" width="320" height="52"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YN8-Gn-2wo" id="q0k-cE-EMQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gH-F9-rmD">
@@ -7786,7 +7797,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="0wN-Tc-Aa6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4TO-BU-PTw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAm-oo-cfs">
@@ -7796,7 +7807,7 @@ about a case.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="106" id="3Pi-pd-gBZ"/>
@@ -7902,7 +7913,7 @@ about a case.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="106" id="Ccl-fo-fjS"/>
@@ -8124,7 +8135,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="sKh-8E-3HZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="Groups" id="cMv-ap-Dob">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FWL-Gz-Ilh">
@@ -8136,10 +8147,10 @@ about a case.</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupsShareCell" rowHeight="65" id="6cr-bs-bD2" customClass="GroupsShareTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="22" width="0.0" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6cr-bs-bD2" id="wEm-41-kKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jos-bh-nr6">
@@ -8157,7 +8168,7 @@ about a case.</string>
                                                         <rect key="frame" x="26" y="5" width="33" height="32"/>
                                                     </variation>
                                                 </imageView>
-                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfk-fY-iA9">
+                                                <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfk-fY-iA9">
                                                     <rect key="frame" x="0.0" y="84" width="320" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -8175,7 +8186,7 @@ about a case.</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8O-dLJ">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-8O-dLJ">
                                                     <rect key="frame" x="0.0" y="77" width="320" height="7"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -8291,7 +8302,7 @@ about a case.</string>
             <objects>
                 <tableViewController storyboardIdentifier="SearchUserShare" title="Users" id="fMW-3D-W7Y" customClass="ShareUsersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EvQ-ze-aNK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="YHd-v3-qLc">
@@ -8304,16 +8315,16 @@ about a case.</string>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShareUserCell" rowHeight="55" id="Xwz-7J-b6q" customClass="ShareUsersTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="53"/>
+                                <rect key="frame" x="0.0" y="66" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xwz-7J-b6q" id="ag0-fS-5Mu">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="rvk-7X-zre">
                                             <rect key="frame" x="10" y="5" width="34" height="34"/>
                                         </imageView>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-q6-joO">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-q6-joO">
                                             <rect key="frame" x="0.0" y="54" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -8330,7 +8341,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THO-4b-fJ8">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THO-4b-fJ8">
                                             <rect key="frame" x="0.0" y="49" width="320" height="5"/>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -8347,7 +8358,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9u-tL-jzm">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9u-tL-jzm">
                                             <rect key="frame" x="0.0" y="48" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -8454,7 +8465,7 @@ about a case.</string>
             <objects>
                 <tableViewController storyboardIdentifier="ListCaseTable" title="Cases" id="2bO-u9-EpY" customClass="ListCaseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Hjd-pc-B1m">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="dcf-PJ-ZBb">
@@ -8467,10 +8478,10 @@ about a case.</string>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCaseCell" rowHeight="112" id="jhL-Ma-eQe" customClass="ListCaseTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="102"/>
+                                <rect key="frame" x="0.0" y="66" width="600" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhL-Ma-eQe" id="hg6-Sp-b5P">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="MH1-Ho-6QX">
@@ -8497,7 +8508,7 @@ about a case.</string>
                                                 <action selector="caseAction:" destination="jhL-Ma-eQe" eventType="touchUpInside" id="8Vg-kk-sFp"/>
                                             </connections>
                                         </button>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-B1-C6w">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-B1-C6w">
                                             <rect key="frame" x="0.0" y="111" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -8514,7 +8525,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8g-0y-m8u">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8g-0y-m8u">
                                             <rect key="frame" x="0.0" y="104" width="320" height="7"/>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -8531,7 +8542,7 @@ about a case.</string>
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48r-Ha-9zO">
+                                        <view alpha="0.25" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48r-Ha-9zO">
                                             <rect key="frame" x="0.0" y="103" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -8637,13 +8648,13 @@ about a case.</string>
                             <tableViewSection id="V8l-FE-vSQ">
                                 <cells>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="68" id="Yin-X4-aaR">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yin-X4-aaR" id="fFs-Gc-eSJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kkp-R7-G4w">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kkp-R7-G4w">
                                                     <rect key="frame" x="15" y="5" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="album.png" translatesAutoresizingMaskIntoConstraints="NO" id="9ZC-2P-jBY" customClass="IndexableImageView">
@@ -8720,10 +8731,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="32" id="xt3-SJ-TwW">
-                                        <rect key="frame" x="0.0" y="35" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xt3-SJ-TwW" id="lhZ-br-q9N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0c-gD-mQg">
@@ -8776,13 +8787,13 @@ about a case.</string>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="UKD-3J-7T3">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="164" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UKD-3J-7T3" id="h6t-Wz-WoN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-9s-MjX">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-9s-MjX">
                                                     <rect key="frame" x="15" y="6" width="290" height="45"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="616-cL-hjr">
@@ -8882,13 +8893,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="Z62-WN-Fho">
-                                        <rect key="frame" x="0.0" y="243" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="216" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z62-WN-Fho" id="4Kf-IZ-ZfT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnC-3b-vTo">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnC-3b-vTo">
                                                     <rect key="frame" x="15" y="4" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="patient.png" translatesAutoresizingMaskIntoConstraints="NO" id="mr7-wC-MZv">
@@ -8988,10 +8999,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="31" id="0GI-8n-ihi">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="268" width="600" height="31"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0GI-8n-ihi" id="Xgl-B5-k1j">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Only visible for yow. Others will just see initials" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0K5-6f-MiP">
@@ -9035,10 +9046,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="OLN-h3-wbY">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="299" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OLN-h3-wbY" id="0UM-22-xDs">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jX8-YE-mOc">
@@ -9150,13 +9161,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="BvV-Yd-pz2">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="351" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BvV-Yd-pz2" id="QOM-hm-m9M">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcM-1u-h1M">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcM-1u-h1M">
                                                     <rect key="frame" x="15" y="3" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="gender.png" translatesAutoresizingMaskIntoConstraints="NO" id="NUn-kR-eBJ">
@@ -9265,13 +9276,13 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="cJ9-av-EE3">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="403" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cJ9-av-EE3" id="85h-JV-Ujf">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plK-0U-kcS">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plK-0U-kcS">
                                                     <rect key="frame" x="15" y="3" width="290" height="45"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="description.png" translatesAutoresizingMaskIntoConstraints="NO" id="2bF-eh-Caq">
@@ -9371,10 +9382,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell alpha="0.30000001192092896" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="98" id="Bi0-mM-GpO">
-                                        <rect key="frame" x="0.0" y="87" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="455" width="600" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bi0-mM-GpO" id="E5w-pl-0gJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O67-g6-9en">
@@ -9444,10 +9455,10 @@ about a case.</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="52" id="jhx-rq-pBb">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="553" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhx-rq-pBb" id="57w-nd-jk7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -9476,7 +9487,7 @@ about a case.</string>
                     <rect key="frame" x="0.0" y="87" width="320" height="52"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yWH-NT-WqL" id="TZu-I7-pY5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRB-sX-rg0">
@@ -9534,7 +9545,7 @@ about a case.</string>
                         <viewControllerLayoutGuide type="bottom" id="3u7-hi-7SL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AiM-Vd-XrU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -9556,7 +9567,7 @@ about a case.</string>
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="VGc-3N-9v9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="VGc-3N-9v9">
                                 <rect key="frame" x="16" y="2" width="288" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>

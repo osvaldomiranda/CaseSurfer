@@ -138,7 +138,7 @@
 }
 
 #pragma GridScrollView
-- (void)selectImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
+- (void)selectHImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
     [self delImageAtIndex:indexImage];
     
 }

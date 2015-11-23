@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "Definitions.h"
 #import "CropViewController.h"
-
+#import "Utilities.h"
 
 @interface rollGridViewController ()
 
@@ -19,6 +19,7 @@
 @implementation rollGridViewController
 
 @synthesize scrollView;
+@synthesize scrollViewH;
 @synthesize assetsLibrary;
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
+    [self setHScrollViewProperties];
     
     
     [self.lblTitle setTextColor:greenColor];
@@ -59,10 +61,39 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-60);
+    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-140);
     scrollView.gridDelegate = self;
     
+    
     [self.view addSubview:scrollView];
+}
+
+
+-(void)setHScrollViewProperties{
+    scrollViewH = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
+    
+    scrollViewH.contentMode = (UIViewContentModeScaleAspectFill);
+    scrollViewH.contentSize =  CGSizeMake(400,70);
+    scrollViewH.pagingEnabled = NO;
+    scrollViewH.showsVerticalScrollIndicator = NO;
+    scrollViewH.showsHorizontalScrollIndicator = YES;
+    scrollViewH.alwaysBounceVertical = NO;
+    scrollViewH.alwaysBounceHorizontal = NO;
+    scrollViewH.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
+    scrollViewH.maximumZoomScale = 1;
+    scrollViewH.minimumZoomScale = 1;
+    scrollViewH.clipsToBounds = YES;
+    scrollViewH.frame = CGRectMake(0, SCREEN_HEIGHT-80, 400, 70);
+    scrollViewH.gridDelegate = self;
+    
+    [self.view addSubview:scrollViewH];
+    
+    Utilities *util = [[Utilities alloc] init];
+    UIView *sep = [util addSeparator:SCREEN_HEIGHT-84];
+    [self.view addSubview:sep];
+    
+    UIView *sepB = [util addSeparator:SCREEN_HEIGHT-9];
+    [self.view addSubview:sepB];
 }
 
 -(void)loadPhotoLibrary{
@@ -90,9 +121,6 @@
 
 #pragma GridScrollView
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
-    
-  
-    
     if(!assetURL){
         [self takePhoto];
     }else{
@@ -100,6 +128,15 @@
     }
 }
 #pragma END GridScrollView
+
+
+
+#pragma HorizontalScrollView
+- (void)selectHImageWithAssetURL:(UIImage *)image  indexImage:(int) indexImage assetUrl:(NSURL *) assetUrl{
+
+}
+#pragma END HorizontalScrollView
+
 
 - (void)takePhoto{
     [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
@@ -131,23 +168,23 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary *)info{
     
     if (info) {
-        
         UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
         UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+        
         [scrollView clearGrid];
-
         [self loadPhotoLibrary];
-        
-  /*      UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" IMAGE "
-                                                        message:@" Se guardó imagen"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-    */    
-        
+        [self dismissViewControllerAnimated:NO completion:nil];
     }
+    else {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
+
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+
 }
 
 
@@ -173,12 +210,20 @@
 -(void) addImageToArray: (IndexableImageView *) image{
     
     if (!self.photos) self.photos = [[NSMutableArray alloc] init];
-    if (self.photos.count < 10) {
+    if (self.photos.count < 5) {
         [self.photos addObject:image];
     }else{
         [self alertMore];
     }
     
+    [self fillHorizontalGrid];
+}
+
+-(void) fillHorizontalGrid{
+    [scrollViewH clearGrid];
+    for (IndexableImageView *image in self.photos) {
+        [scrollViewH insertPicture:image.image withAssetURL:nil index:0];
+    }
 }
 
 
@@ -187,7 +232,7 @@
 }
 
 - (void)alertMore {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Maximum 10 pictures please! "
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Maximum 5 pictures please! "
                                                     message:@" You can upload more later "
                                                    delegate:self
                                           cancelButtonTitle:@"Ok"

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
+#import "HorizontalGrid.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface rollGridViewController : UIViewController <GridScrollViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface rollGridViewController : UIViewController <GridScrollViewDelegate, horizontalGridDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
+@property (nonatomic, retain) HorizontalGrid *scrollViewH;
 @property (nonatomic, retain) GridScrollView *scrollView;
 @property (nonatomic, assign) UIImage *imageFull;
 @property (nonatomic, assign) NSString *collectionId;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol horizontalGridDelegate
 
-- (void)selectImageWithAssetURL:(UIImage *)image  indexImage:(int) indexImage assetUrl:(NSURL *) assetUrl;
+- (void)selectHImageWithAssetURL:(UIImage *)image  indexImage:(int) indexImage assetUrl:(NSURL *) assetUrl;
 
 @end
 

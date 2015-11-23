@@ -84,7 +84,7 @@
                                
                                [tappedView setImage:img];
                               
-                               [gridDelegate selectImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
+                               [gridDelegate selectHImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
                                
                            }
                        }failureBlock:^(NSError *error) {
@@ -92,7 +92,7 @@
                        }
          ];
     } else {
-        [gridDelegate selectImageWithAssetURL:nil indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
+        [gridDelegate selectHImageWithAssetURL:nil indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
     }
 }
 
