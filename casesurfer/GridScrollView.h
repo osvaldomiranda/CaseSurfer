@@ -4,7 +4,7 @@
 
 @protocol GridScrollViewDelegate
 
-- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image;
+- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image selected:(BOOL *)selected;
 
 @end
 

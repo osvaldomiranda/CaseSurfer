@@ -143,6 +143,7 @@
 		2D2EC1211B27968E009E84EB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC1201B27968E009E84EB /* Default-568h@2x.png */; };
 		2D2EC1231B2796CF009E84EB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC1221B2796CF009E84EB /* Info.plist */; };
 		2D32E4E91B694A5700E79F8D /* SearchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E4E81B694A5700E79F8D /* SearchUser.m */; };
+		2D33C6981C03B12100BB8565 /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D33C6971C03B12100BB8565 /* InstructionsViewController.m */; };
 		2D3C5C501B71484600A082C8 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C5C4F1B71484600A082C8 /* WebViewController.m */; };
 		2D3F7AB51B691E09003455C2 /* SearchUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB41B691E09003455C2 /* SearchUserTableViewCell.m */; };
 		2D3F7AB81B692AB9003455C2 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3F7AB71B692AB9003455C2 /* UserTableViewController.m */; };
@@ -393,6 +394,8 @@
 		2D2EC1221B2796CF009E84EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D32E4E71B694A5700E79F8D /* SearchUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchUser.h; path = CaseSurfer/SearchUser.h; sourceTree = SOURCE_ROOT; };
 		2D32E4E81B694A5700E79F8D /* SearchUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchUser.m; path = CaseSurfer/SearchUser.m; sourceTree = SOURCE_ROOT; };
+		2D33C6961C03B12100BB8565 /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstructionsViewController.h; path = CaseSurfer/InstructionsViewController.h; sourceTree = SOURCE_ROOT; };
+		2D33C6971C03B12100BB8565 /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstructionsViewController.m; path = CaseSurfer/InstructionsViewController.m; sourceTree = SOURCE_ROOT; };
 		2D3C5C4E1B71484600A082C8 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = CaseSurfer/WebViewController.h; sourceTree = SOURCE_ROOT; };
 		2D3C5C4F1B71484600A082C8 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = CaseSurfer/WebViewController.m; sourceTree = SOURCE_ROOT; };
 		2D3F7AB31B691E09003455C2 /* SearchUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchUserTableViewCell.h; path = CaseSurfer/SearchUserTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -575,6 +578,15 @@
 			);
 			name = casesurferTests;
 			path = ../../casesurferTests;
+			sourceTree = "<group>";
+		};
+		2D33C6991C03B13F00BB8565 /* instructions */ = {
+			isa = PBXGroup;
+			children = (
+				2D33C6961C03B12100BB8565 /* InstructionsViewController.h */,
+				2D33C6971C03B12100BB8565 /* InstructionsViewController.m */,
+			);
+			name = instructions;
 			sourceTree = "<group>";
 		};
 		2D36DAA11B25BBAC00B824E6 /* picker */ = {
@@ -1015,6 +1027,7 @@
 				2D7B5D0E1B1646DA005CC7BB /* LargeImage */,
 				2D9BF9201B6BF142000725C9 /* About */,
 				2D241D4B1B7E91CC0025FE8D /* Share */,
+				2D33C6991C03B13F00BB8565 /* instructions */,
 			);
 			path = casesurfer;
 			sourceTree = "<group>";
@@ -1321,6 +1334,7 @@
 				2D2EBFD11B2787B2009E84EB /* MKAnnotationView+WebCache.h in Sources */,
 				2D2EBFD21B2787B2009E84EB /* MKAnnotationView+WebCache.m in Sources */,
 				2D2EBFD31B2787B2009E84EB /* SDImageCache.h in Sources */,
+				2D33C6981C03B12100BB8565 /* InstructionsViewController.m in Sources */,
 				2D2EC0761B278B32009E84EB /* CreateCaseTableViewController.m in Sources */,
 				2D2EC0781B278B32009E84EB /* CropViewController.m in Sources */,
 				2D2EBFD41B2787B2009E84EB /* SDImageCache.m in Sources */,

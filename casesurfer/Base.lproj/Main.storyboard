@@ -72,6 +72,7 @@
             <string>Lato-Light</string>
             <string>Lato-Light</string>
             <string>Lato-Light</string>
+            <string>Lato-Light</string>
         </mutableArray>
         <mutableArray key="Lato-Reg-webfont.ttf">
             <string>Lato-Regular</string>
@@ -7581,6 +7582,123 @@ about a case.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzf-j2-a7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1968" y="1661"/>
+        </scene>
+        <!--Instructions-->
+        <scene sceneID="wdk-wk-Avo">
+            <objects>
+                <viewController storyboardIdentifier="Instructions" title="Instructions" id="ARw-wH-gZV" customClass="InstructionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Frr-X6-XPQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="dj4-Hv-qMg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xTY-eu-45B">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-qh-4F4">
+                                <rect key="frame" x="16" y="2" width="288" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">1. Remove all identifying patient information, this includes names, dates, locations, faces, tattos, or any other detail that could be used to identfy a patient.
+
+2. Caption should focus on the educational aspects of the case.
+
+3. Respect the patients.
+
+4. Share professional images only. CaseSurfer is not intended for sharing your own medical conditions, or those of you family or friends.
+
+All images are reviewed prior to being added to our database. Images that don't meet this criteria will not be accepted. Please be aware that all of you activity on CaseSurfer is subject to our full Community Guidelines and our Terms of Service.</mutableString>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNj-Bz-fEU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8p-RW-eSu">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" image="icon_back.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="7" width="36" height="37"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="back:" destination="ARw-wH-gZV" eventType="touchUpInside" id="Me5-Oj-PRL"/>
+                                        </connections>
+                                    </button>
+                                    <view alpha="0.44999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlV-nl-tUS">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="44" width="400" height="1"/>
+                                        </variation>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guidelines for Posting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WzG-aa-13U">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="64" y="12" width="211" height="21"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="T8p-RW-eSu"/>
+                                        <exclude reference="QlV-nl-tUS"/>
+                                        <exclude reference="WzG-aa-13U"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="45"/>
+                                    <mask key="subviews">
+                                        <include reference="T8p-RW-eSu"/>
+                                        <include reference="QlV-nl-tUS"/>
+                                        <include reference="WzG-aa-13U"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v8E-qh-4F4" firstAttribute="leading" secondItem="xTY-eu-45B" secondAttribute="leading" constant="15" id="IbJ-pG-HNc"/>
+                            <constraint firstItem="v8E-qh-4F4" firstAttribute="top" secondItem="Frr-X6-XPQ" secondAttribute="bottom" constant="16" id="bdC-DY-FGz">
+                                <variation key="widthClass=compact" constant="76"/>
+                            </constraint>
+                            <constraint firstItem="dj4-Hv-qMg" firstAttribute="top" secondItem="v8E-qh-4F4" secondAttribute="bottom" constant="16" id="esx-zi-Bii">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="v8E-qh-4F4" secondAttribute="trailing" constant="15" id="jPv-xx-7ff"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="v8E-qh-4F4"/>
+                                <exclude reference="YNj-Bz-fEU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="IbJ-pG-HNc"/>
+                                <exclude reference="bdC-DY-FGz"/>
+                                <exclude reference="jPv-xx-7ff"/>
+                                <exclude reference="esx-zi-Bii"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="v8E-qh-4F4"/>
+                                <include reference="YNj-Bz-fEU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="IbJ-pG-HNc"/>
+                                <include reference="bdC-DY-FGz"/>
+                                <include reference="jPv-xx-7ff"/>
+                                <include reference="esx-zi-Bii"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RzW-Nf-Dxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="664.5" y="1661"/>
         </scene>
         <!--Select Images-->
         <scene sceneID="egr-qB-FcJ">

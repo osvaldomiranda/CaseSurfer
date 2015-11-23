@@ -11,6 +11,7 @@
 #import "Definitions.h"
 #import "CropViewController.h"
 #import "Utilities.h"
+#import "InstructionsViewController.h"
 
 @interface rollGridViewController ()
 
@@ -32,9 +33,9 @@
     [self setScrollViewProperties];
     [self setHScrollViewProperties];
     
-    
     [self.lblTitle setTextColor:greenColor];
     
+    [self instructionAlert];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,9 +44,45 @@
     [self.navigationController setNavigationBarHidden:YES];
     self.photos = nil;
     [scrollView clearGrid];
+    [scrollViewH clearGrid];
     [self loadPhotoLibrary];
+    
 }
 
+
+-(void) instructionAlert{
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Instructions "
+                                                    message:@"Case Surfer requires that you remove all identifying features, such as: \n Fases, \n Names, \n All dates, \n Locations smaller than a state. \n\n for a full list of identifiers, please tap More Information."
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", @"More Infomation", nil];
+    [alert show];
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)  // 0 ==  cancel button
+    {
+        [self callInstructions:self];
+  
+    }
+}
+
+- (IBAction) callInstructions:(id)sender{
+
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        InstructionsViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Instructions"];
+    
+        self.hidesBottomBarWhenPushed =  YES;
+        [[self navigationController]  pushViewController:cController animated:YES];
+       
+   
+    
+}
 
 -(void)setScrollViewProperties{
     scrollView = [[GridScrollView alloc] initGrid:4 spacing:5 gridWidth:380];
@@ -120,11 +157,17 @@
 }
 
 #pragma GridScrollView
-- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
+- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image selected:(BOOL *)selected{
     if(!assetURL){
         [self takePhoto];
     }else{
-        [self addImageToArray:image];
+        if (selected) {
+            [self addImageToArray:image];
+        }
+        else{
+            [self delImageToArray:image];
+        }
+        
     }
 }
 #pragma END GridScrollView
@@ -214,6 +257,26 @@
         [self.photos addObject:image];
     }else{
         [self alertMore];
+    }
+    
+    
+    [self fillHorizontalGrid];
+}
+
+-(void) delImageToArray: (IndexableImageView *) image{
+    
+    int i=0;
+    int j= -1;
+    for (IndexableImageView *img in self.photos) {
+
+        if (image.assetURL == img.assetURL) {
+            j = i;
+        }
+        i++;
+    }
+    
+    if(j>=0){
+        [self.photos removeObjectAtIndex:j];
     }
     
     [self fillHorizontalGrid];

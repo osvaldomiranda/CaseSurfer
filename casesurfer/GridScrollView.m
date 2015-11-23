@@ -123,8 +123,6 @@
 
 - (void)tapPressCaptured:(UITapGestureRecognizer *)gesture{
     IndexableImageView *tappedView = (IndexableImageView *)[gesture.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
-
-    [gridDelegate selectImageWithAssetURL:tappedView.assetURL image:tappedView];
     
     if (tappedView.assetURL) {
         if (!tappedView.selected) {
@@ -147,6 +145,8 @@
                 }
             }
         }
+        
+        [gridDelegate selectImageWithAssetURL:tappedView.assetURL image:tappedView selected: (BOOL *)tappedView.selected];
     }
 }
 

@@ -71,7 +71,7 @@
 }
 
 #pragma GridScrollView
-- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image{
+- (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image selected:(BOOL *)selected{
     self.selectedAlbumId = [[image.imageInfo valueForKeyPath:@"id"] intValue];
     if (self.inEdit) {
         [self deleteAlbumConfirm];
