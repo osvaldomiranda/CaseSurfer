@@ -11,6 +11,7 @@
 @interface YouTableViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+@property (weak, nonatomic) IBOutlet UIButton *guidelines;
 
 - (IBAction)logOut:(id)sender;
 - (IBAction)termsOfUse:(id)sender;
@@ -18,6 +19,8 @@
 - (IBAction)help:(id)sender;
 - (IBAction)notifications:(id)sender;
 - (IBAction)profile:(id)sender;
+- (IBAction)guidelines:(id)sender;
+
 
 
 @end

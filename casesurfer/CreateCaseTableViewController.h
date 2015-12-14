@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAge;
 @property (nonatomic, retain) NSMutableArray *albums;
 @property (nonatomic, retain) NSMutableArray *albumIds;
+@property (weak, nonatomic) IBOutlet UISwitch *acceptSwitch;
 
 
 - (IBAction)tapGender:(id)sender;

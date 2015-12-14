@@ -53,7 +53,7 @@
 -(void) instructionAlert{
     
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Instructions "
-                                                    message:@"Case Surfer requires that you remove all identifying features, such as: \n Fases, \n Names, \n All dates, \n Locations smaller than a state. \n\n for a full list of identifiers, please tap More Information."
+                                                    message:@"All uploaded images should not have any identifying features such as: \n\n -Names \n -Faces \n -Dates \n -Tattoos \n -Location \n -Institution \n\nIn some countries it is mandatory to have the written inform consent and authorization of the patient to save and publish their images and information.."
                                                    delegate:self
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"OK", @"More Infomation", nil];

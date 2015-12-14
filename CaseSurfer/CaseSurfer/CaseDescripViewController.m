@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     NSLog(@"DESCRIPT %@",self.descripText);
+  //   NSLog(@"DESCRIPT %@",self.descripText);
     
     self.txtDescript.text = self.descripText;
     

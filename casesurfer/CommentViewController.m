@@ -34,7 +34,7 @@ UIView *commentView;
                                                  name:UIKeyboardWillChangeFrameNotification
                                                object:nil];
     
-    self.comments = [[NSArray alloc] init];
+    comments = [[NSMutableArray alloc] init];
     [self readData];
     [self setViewComment];
 }
@@ -56,6 +56,7 @@ UIView *commentView;
     txtComment = [[UITextView alloc] init];
     txtComment.frame = CGRectMake(5, 5, 300, 60);
     txtComment.backgroundColor = [UIColor whiteColor];
+    [txtComment setFont:[UIFont systemFontOfSize:14.0]];
     txtComment.layer.cornerRadius = 4;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -80,9 +81,26 @@ UIView *commentView;
     }];
 }
 
+
 -(void) fillCase: (NSMutableDictionary*) item{
-    self.comments = [item valueForKeyPath:@"comments"];
+    comments = [item valueForKeyPath:@"comments"];
+    [self orderArray:comments];
+    
     [self.tblComments reloadData];
+}
+
+- (void) orderArray:(NSMutableArray *) arr{
+
+    NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+    
+    NSArray *descriptors = [NSArray arrayWithObjects:hopProfileDescriptor, nil];
+    NSArray *sortedArrayOfDictionaries = [arr sortedArrayUsingDescriptors:descriptors];
+    
+    [comments removeAllObjects];
+    for (NSMutableDictionary *item in sortedArrayOfDictionaries) {
+        [comments addObject:item];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,7 +110,7 @@ UIView *commentView;
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
     
-    NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
+    NSDictionary *celda = [comments objectAtIndex:indexPath.row];
     return [self textH:[celda valueForKeyPath:@"message"]] + 50;
     
 }
@@ -102,7 +120,7 @@ UIView *commentView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.comments.count;
+    return comments.count;
 }
 
 
@@ -111,7 +129,7 @@ UIView *commentView;
     [cell.contentView clearsContextBeforeDrawing];
     cell.callerViewController = self;
     
-    NSDictionary *celda = [self.comments objectAtIndex:indexPath.row];
+    NSDictionary *celda = [comments objectAtIndex:indexPath.row];
     
     NSString *userAvatarUrl = [NSString stringWithFormat:@"%@%@",DEV_BASE_PATH, [celda valueForKeyPath:@"thumbnail"]];
     NSURL *urlUserImage = [NSURL URLWithString:[userAvatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

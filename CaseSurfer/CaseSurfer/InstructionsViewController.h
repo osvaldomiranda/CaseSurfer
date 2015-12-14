@@ -10,5 +10,7 @@
 
 @interface InstructionsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
 - (IBAction)back:(id)sender;
 @end

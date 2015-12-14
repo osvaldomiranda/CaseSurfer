@@ -62,8 +62,6 @@
     
     indexableImage.contentMode = UIViewContentModeScaleAspectFit;
     [indexableImage setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPressCaptured:)];
-    [indexableImage addGestureRecognizer:tapRecognizer];
     indexableImage.frame = CGRectMake(0, 0, pictureSize, pictureSize);
     
     pictureView.frame = CGRectMake(col + ([self.spacing integerValue]/2), row, pictureSize, pictureSize);
@@ -81,6 +79,8 @@
     }
     
     [pictureView addSubview:indexableImage];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPressCaptured:)];
+    [pictureView addGestureRecognizer:tapRecognizer];
     
     if (subTitle) {
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(5, pictureSize +2, pictureSize, 15)];
@@ -124,7 +124,7 @@
 - (void)tapPressCaptured:(UITapGestureRecognizer *)gesture{
     IndexableImageView *tappedView = (IndexableImageView *)[gesture.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
     
-    if (tappedView.assetURL) {
+  //  if (tappedView.assetURL) {
         if (!tappedView.selected) {
             UIImage *selImg = [UIImage imageNamed:@"icon_check.png"];
             UIImageView *selectedImg = [[UIImageView alloc] initWithImage:selImg];
@@ -147,7 +147,8 @@
         }
         
         [gridDelegate selectImageWithAssetURL:tappedView.assetURL image:tappedView selected: (BOOL *)tappedView.selected];
-    }
+ //   }
+   
 }
 
 - (void) clearGrid{

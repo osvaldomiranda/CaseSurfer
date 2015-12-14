@@ -20,6 +20,7 @@
 
 @implementation FeedViewController
 @synthesize feedTableView;
+@synthesize readNextPage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +33,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(uploadingEnd)
                                                  name:EndUpLoadingObserver
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(shareStatus)
+                                                 name:shareStatusObserver
                                                object:nil];
     
     self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 400, 60)];
@@ -47,6 +53,7 @@
     
     
     self.page = 1;
+    readNextPage = false;
     
     
     feedTableView.separatorColor = [UIColor clearColor];
@@ -66,16 +73,23 @@
 
 
 -(void) refrechData{
+    
+  
     NSNumber *p= [[NSNumber alloc] initWithInt:self.page];
     NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
     Notification *notification = [[Notification alloc] initWithParams:notificationParams];
-    
-   // [self fillImtensArray:[self loadNotificationsCache]];
+
     
     [notification index:notificationParams Success:^(NSArray *items) {
         [self saveNotificationsCache:items];
-        
         [self fillImtensArray:items];
+        
+       
+        
+        if (itemsArray.count==0) {
+            [self initialFeed];
+        }
+        
         if (self.pullRefreshVisible) {
             [self loadingViewVisible:NO];
         }
@@ -110,7 +124,26 @@
         }
     }
     [self orderArray:itemsArray];
+    
+  //   NSLog(@"%@",itemsArray);
+    
     [feedTableView reloadData];
+}
+
+-(void) removeItemArray: (int) id{
+    bool exist = false;
+    int i = 0;
+    int itemindex = 0;
+    for (NSMutableDictionary *iarray in itemsArray) {
+        if (id == [[iarray valueForKeyPath:@"id"] intValue] ) {
+            exist = true;
+            itemindex=i;
+        }
+        i++;
+    }
+    if (!exist) {
+        [itemsArray removeObjectAtIndex: itemindex];
+    }
 }
 
 - (void) orderArray:(NSMutableArray *) arr{
@@ -138,7 +171,7 @@
             height = 290;
         }
         if([notificableTipe isEqualToString:@"Share"]){
-            height = 210;
+            height = 250;
         }
         if ([notificableTipe isEqualToString:@"Comment"])
         {
@@ -188,15 +221,23 @@
     
     if([notificableType isEqualToString:@"Share"]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+       
         cell.status =  [notificable valueForKeyPath:@"status"];
         
         int sender = [[notificable valueForKey:@"sender_id"] intValue];
 
-        int uId = [[self.session getUserId] intValue] ;
+        
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        int uId = [[defaults objectForKey:@"UserId"] intValue] ;
+        
+        NSLog(@" u Id: %d", uId);
         
         if([cell.status isEqualToString:@"approved"]){
             cell.btnAcept.hidden = TRUE;
             cell.btnIgnore.hidden = TRUE;
+           
             cell.lblWantToShare.text = @"Shared case with you";
             if (uId == sender){
                cell.lblWantToShare.text = @"Accepted your case";
@@ -264,22 +305,28 @@
         if (!self.pullRefreshVisible){
             if (!self.uploadingVisible) {
                 [self loadingViewVisible:YES];
+               
             }
         }
     }
     
     
     //next page
-    CGFloat refreshPoint = scrollView.frame.size.height * 6;
+    CGFloat refreshPoint = scrollView.frame.size.height * self.page;
     CGFloat distanceFromBottom = scrollView.contentSize.height - scrollView.contentOffset.y;
     
-    if(distanceFromBottom < refreshPoint)
+   // NSLog(@"PUNTOS %f --- %f --- %f",scrollView.frame.size.height, scrollView.contentSize.height, scrollView.contentOffset.y);
+    
+    if(distanceFromBottom < refreshPoint && !readNextPage)
     {
+        readNextPage = true;
         [self nextPage];
     }
 }
 
 -(void) nextPage{
+    
+   //NSLog(@"Next Page : %d", self.page);
     self.page++;
     NSNumber *p= [[NSNumber alloc] initWithInt:self.page];
     NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
@@ -288,10 +335,12 @@
     [notification index:notificationParams Success:^(NSArray *items) {
         [self saveNotificationsCache:items];
         
-        NSLog(@"Norificaciones : %@", items);
+      //  NSLog(@"Norificaciones : %@", items);
         
         [self fillImtensArray:items];
-        } Error:^(NSError *error) {
+        readNextPage = false;
+    } Error:^(NSError *error) {
+            readNextPage = false;
     }];
     
 }
@@ -317,6 +366,7 @@
                     }
                     completion:nil];
     self.refreshLoadingView.hidden = hidden;
+    self.page = 1;
     [self refrechData];
 }
 
@@ -346,8 +396,22 @@
     [defaults setObject:@"NO" forKey:@"uploading"];
     [defaults synchronize];
     [self upLoadingViewVisible:NO];
+    self.page = 1;
     [self refrechData];
 }
+
+
+- (void) shareStatus{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int caseShareId = [[defaults objectForKey:@"caseShareId"] intValue];
+    
+    [self removeItemArray: caseShareId];
+    
+    self.page = 1;
+    [self refrechData];
+}
+
+
 
 -(void) upLoadingViewVisible:(BOOL) visible{
     BOOL hidden; int viewMove=0;
@@ -374,6 +438,140 @@
     
 }
 
+
+- (void) initialFeed {
+    
+    NSDictionary *notif = @{
+                            @"album_id": @"0",
+                            @"created_at": @"2015-11-03T10:01:33.871Z",
+                            @"description": @"A cloud based App and web platform for organizing, sharing and discussing medical imaging cases.",
+                            @"id": @"0",
+                            @"patient": @"xx",
+                            @"patient_age": @"30",
+                            @"patient_gender": @"Male",
+                            @"stars": @"0",
+                            @"title": @"Welcome to our platform",
+                            @"updated_at": @"2015-11-03T10:01:33.871Z",
+                            @"user_id": @"10" };
+    
+    NSMutableDictionary *item = @{@"actor_user_id": @"10",
+                                @"id" : @"0",
+                                @"is_read": @"1",
+                                @"medcase_image": @"http://casesurfer.com/assets/welcome-1ce1b004d4a86ec72c1e2c0abba4707e.jpg",
+                                @"medcaseid": @"0",
+                                @"notificable": notif,
+                                @"notificable_id": @"215",
+                                @"notificable_type": @"Medcase",
+                                @"share_image": @"",
+                                @"time_ago": @"less than a minute ago",
+                                @"title": @"Welcome to our platform, A cloud based App and web platform for organizing, sharing and discussing medical imaging cases.",
+                                @"url": @"" ,
+                                @"user_avatar": @"",
+                                @"user_id": @"10",
+                                @"user_name": @"Case Surfer"
+                                }.mutableCopy;
+    
+    
+    [itemsArray addObject: item];
+    
+    
+    notif = @{
+                            @"album_id": @"0",
+                            @"created_at": @"2015-11-03T10:01:33.871Z",
+                            @"description": @"",
+                            @"id": @"0",
+                            @"patient": @"xx",
+                            @"patient_age": @"30",
+                            @"patient_gender": @"Male",
+                            @"stars": @"0",
+                            @"title": @"Welcome to our platform",
+                            @"updated_at": @"2015-11-03T10:01:33.871Z",
+                            @"user_id": @"10" };
+    
+    item = @{@"actor_user_id": @"10",
+                                  @"id" : @"0",
+                                  @"is_read": @"1",
+                                  @"medcase_image": @"http://casesurfer.com/assets/fistula2-0e76b82af65a9f082767e5ced2d1c594.jpg",
+                                  @"medcaseid": @"0",
+                                  @"notificable": notif,
+                                  @"notificable_id": @"",
+                                  @"notificable_type": @"Medcase",
+                                  @"share_image": @"",
+                                  @"time_ago": @"less than a minute ago",
+                                  @"title": @"You will be notified here when you upload a case.\n You uploaded a new case Left CC Fistula ",
+                                  @"url": @"" ,
+                                  @"user_avatar": @"",
+                                  @"user_id": @"10",
+                                  @"user_name": @"Case Surfer"
+                                  }.mutableCopy;
+    
+    
+    [itemsArray addObject: item];
+    
+    notif = @{
+              @"album_id": @"0",
+              @"created_at": @"2015-11-03T10:01:33.871Z",
+              @"description": @"",
+              @"id": @"0",
+              @"patient": @"xx",
+              @"patient_age": @"30",
+              @"patient_gender": @"Male",
+              @"stars": @"0",
+              @"title": @"Welcome to our platform",
+              @"updated_at": @"2015-11-03T10:01:33.871Z",
+              @"user_id": @"10" };
+    
+    item = @{@"actor_user_id": @"10",
+             @"id" : @"0",
+             @"is_read": @"1",
+             @"medcase_image": @"http://casesurfer.com/assets/shared1-da11362bc582bdf0728b23e4f89035f5.jpg",
+             @"medcaseid": @"0",
+             @"notificable": notif,
+             @"notificable_id": @"",
+             @"notificable_type": @"Share",
+             @"share_image": @"",
+             @"time_ago": @"less than a minute ago",
+             @"title": @"If someone wants to share a case with you will be ask here for accepting or declining.\n John Bolton want's to share a case with you.  ",
+             @"url": @"" ,
+             @"user_avatar": @"",
+             @"user_id": @"10",
+             @"user_name": @"Case Surfer"
+             }.mutableCopy;
+    
+    
+    [itemsArray addObject: item];
+    
+    notif = @{
+              @"created_at": @"2015-12-02T17:57:16.014Z",
+              @"id": @"0",
+              @"medcase_id": @"0",
+              @"message": @"This Timeline displays all your comments or other’s comments to shared cases.\n\nJohn Bolton : Great job ",
+              @"updated_at": @"2015-12-02T17:57:16.014Z",
+              @"user_id": @"0",
+              };
+    
+    item = @{@"actor_user_id": @"10",
+             @"id" : @"0",
+             @"is_read": @"1",
+             @"medcase_image": @"http://casesurfer.com/assets/fistula1-920c006972123c43b695ba82644d5c00.jpg",
+             @"medcaseid": @"0",
+             @"notificable": notif,
+             @"notificable_id": @"",
+             @"notificable_type": @"Comment",
+             @"share_image": @"",
+             @"time_ago": @"less than a minute ago",
+             @"title": @"Some Medcase",
+             @"url": @"" ,
+             @"user_avatar": @"",
+             @"user_id": @"10",
+             @"user_name": @"Case Surfer"
+             }.mutableCopy;
+    
+    
+    [itemsArray addObject: item];
+    
+    
+}
 
 
 

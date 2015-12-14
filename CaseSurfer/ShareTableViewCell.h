@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ShareTableViewCell : UITableViewCell
+
+
 
 @property (nonatomic, unsafe_unretained) id callerViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *userAvatar;

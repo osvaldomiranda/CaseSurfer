@@ -11,8 +11,9 @@
 #import "LoadingView.h"
 #import "UploadingView.h"
 #import "session.h"
+#import "ShareTableViewCell.h"
 
-@interface FeedViewController : UIViewController <SDWebImageManagerDelegate> {
+@interface FeedViewController : UIViewController <SDWebImageManagerDelegate>  {
      NSMutableArray *itemsArray;
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) LoadingView *refreshLoadingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint  *viewWidthConstraint;
 @property (nonatomic, assign) int page;
+@property (nonatomic, assign) bool readNextPage;
 @property (nonatomic, assign) Session *session;
 
 

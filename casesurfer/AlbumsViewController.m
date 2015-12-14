@@ -37,8 +37,9 @@
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:YES];
     [scrollView clearGrid];
-    self.selectedAlbumId = 0;
     [self loadAlbums];
+    self.selectedAlbumId = 0;
+    
 
 }
 

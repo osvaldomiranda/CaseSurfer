@@ -81,6 +81,7 @@
     NSString *age = [item valueForKeyPath:@"patient_age"];
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
     self.comments = [item valueForKeyPath:@"comments"];
+  //  [self orderArray:self.comments];
     self.images = [item valueForKeyPath:@"medcase_images"];
     self.ownerUser = [[item valueForKeyPath:@"user_id"] intValue];
     
@@ -96,6 +97,19 @@
     
     [self setMosaic];
     [self.tblComments reloadData];
+}
+
+- (void) orderArray:(NSMutableArray *) arr{
+    NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+    
+    NSArray *descriptors = [NSArray arrayWithObjects:hopProfileDescriptor, nil];
+    NSArray *sortedArrayOfDictionaries = [arr sortedArrayUsingDescriptors:descriptors];
+    
+    [self.comments removeAllObjects];
+    for (NSMutableDictionary *item in sortedArrayOfDictionaries) {
+        [self.comments addObject:item];
+    }
+    
 }
 
 -(void) setMosaic{

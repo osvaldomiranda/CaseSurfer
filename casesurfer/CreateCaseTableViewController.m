@@ -27,8 +27,16 @@
     [super viewDidLoad];
     self.albums = [[NSMutableArray alloc] init];
     self.albumIds = [[NSMutableArray alloc] init];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:FALSE];
     [self loadAlbums];
 }
+
 
 -(void) loadAlbums{
     Album *myAlbum = [[Album alloc] init];
@@ -54,12 +62,7 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:FALSE];
-    [self loadAlbums];
-}
+
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:YES];
@@ -77,7 +80,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+    return 10;
 }
 
 
@@ -94,6 +97,8 @@
         [UIAlertView alertViewOopsWithmessage:@"You must select an Gender."];
     } else if(self.selectedAge == nil){
         [UIAlertView alertViewOopsWithmessage:@"You must select an Age."];
+    } else if(!self.acceptSwitch.on){
+        [UIAlertView alertViewOopsWithmessage:@"You must Switch Uploading Toggle."];
     } else {
         NSInteger row = [self.albums indexOfObjectIdenticalTo:self.selectedAlbum];
         MedCase *medCase = [[MedCase alloc] init];
@@ -121,11 +126,11 @@
 - (IBAction)createAlbum:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    rollGridChoseImageViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollGridChose"];
-    cController.callerViewController = self;
+    NewAlbumViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewAlbum"];
+    
     self.hidesBottomBarWhenPushed =  YES;
     [self.navigationController pushViewController:cController animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    self.hidesBottomBarWhenPushed =  NO;
 }
 
 - (void) hideKeyboard {

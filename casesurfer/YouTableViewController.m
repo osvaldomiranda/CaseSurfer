@@ -17,6 +17,7 @@
 #import "Definitions.h"
 #import "UserViewController.h"
 #import "SetNotificationTableViewC.h"
+#import "InstructionsViewController.h"
 
 @interface YouTableViewController ()
 
@@ -77,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 6;
+    return 7;
 }
 
 - (IBAction)termsOfUse:(id)sender {
@@ -109,6 +110,17 @@
     UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
     cController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cController animated:YES];
+}
+
+- (IBAction)guidelines:(id)sender {
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    InstructionsViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Instruction"];
+    
+    self.hidesBottomBarWhenPushed =  YES;
+    [[self navigationController]  pushViewController:cController animated:YES];
+    self.hidesBottomBarWhenPushed =  NO;
 }
 
 - (IBAction)logOut:(id)sender {

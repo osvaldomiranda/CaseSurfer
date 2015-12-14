@@ -19,9 +19,12 @@
     NSString *url = [NSString stringWithFormat:@"/sessions.json"];
     
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:params Success:^(NSMutableDictionary *items) {
+        [self saveUserId:[items valueForKeyPath:@"id"]];
         [self saveToken:[items valueForKeyPath:@"auth_token"]];
         [self saveEmail:[items valueForKeyPath:@"email"]];
-        [self saveUserId:[items valueForKeyPath:@"id"]];
+        
+        NSLog(@"USERID in login %@ ",[items valueForKeyPath:@"id"]);
+        
         successBlock(items);
     } Error:^(NSError *error) {
         errorBlock(error);

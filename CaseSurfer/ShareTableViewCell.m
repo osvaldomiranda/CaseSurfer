@@ -11,6 +11,7 @@
 #import "CaseViewController.h"
 #import "Share.h"
 #import "Notification.h"
+#import "Definitions.h"
 
 @implementation ShareTableViewCell
 
@@ -31,40 +32,70 @@
 }
 
 - (IBAction)userAction:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
-    cController.userId = self.userId;
-    cController.hidesBottomBarWhenPushed = YES;
-    [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
+    if (self.caseId != 0) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UserViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"User"];
+        cController.userId = self.userId;
+        cController.hidesBottomBarWhenPushed = YES;
+        [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
+    }
+
 }
 
 - (IBAction)caseAction:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    CaseViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Case"];
-    cController.caseId = self.caseId;
-    [cController.navigationController setNavigationBarHidden:NO];
-    cController.hidesBottomBarWhenPushed = YES;
-    [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
+    if (self.caseId != 0) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        CaseViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Case"];
+        cController.caseId = self.caseId;
+        [cController.navigationController setNavigationBarHidden:NO];
+        cController.hidesBottomBarWhenPushed = YES;
+        [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject: [NSString stringWithFormat:@"%d", self.caseId] forKey:@"caseShareId"];
+        [defaults synchronize];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:shareStatusObserver
+                                                            object:nil];
+    }
+
 }
 
 - (IBAction)aceptAction:(id)sender{
-    NSDictionary *shareData = @{@"medcase_id":[NSString stringWithFormat:@"%d", self.caseId] ,
-                                @"status": @"approved"
-                                  };
-    NSMutableDictionary *shareParams =  @{@"share" : shareData}.mutableCopy;
-    Share *share = [[Share alloc] initWithParams:shareParams];
-    [share update:[self.notificableId intValue] params:shareParams Success:^(NSMutableDictionary *items) {
-    } Error:^(NSError *error) {
-    }];
+    if (self.caseId != 0) {
+        NSDictionary *shareData = @{@"medcase_id":[NSString stringWithFormat:@"%d", self.caseId] ,
+                                    @"status": @"approved"
+                                    };
+        NSMutableDictionary *shareParams =  @{@"share" : shareData}.mutableCopy;
+        Share *share = [[Share alloc] initWithParams:shareParams];
+        [share update:[self.notificableId intValue] params:shareParams Success:^(NSMutableDictionary *items) {
+        } Error:^(NSError *error) {
+        }];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject: [NSString stringWithFormat:@"%d", self.caseId] forKey:@"caseShareId"];
+        [defaults synchronize];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:shareStatusObserver
+                                                            object:nil];
+       
+    }
+    
+
 }
 
 
 - (IBAction)ignoreAction:(id)sender{
-    NSMutableDictionary *notificationParams =  @{}.mutableCopy;
-    Notification *notification = [[Notification alloc] initWithParams:notificationParams];
-    [notification delete:[self.notificationId intValue] params:notificationParams Success:^(NSMutableDictionary *items) {
-    } Error:^(NSError *error) {
-    }];
+    if (self.caseId != 0) {
+        NSMutableDictionary *notificationParams =  @{}.mutableCopy;
+        Notification *notification = [[Notification alloc] initWithParams:notificationParams];
+        [notification delete:[self.notificationId intValue] params:notificationParams Success:^(NSMutableDictionary *items) {
+        } Error:^(NSError *error) {
+        }];
+        
+        
+    }
+
 }
 
 @end

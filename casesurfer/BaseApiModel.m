@@ -112,7 +112,7 @@
     [[CaseConnect sharedCaseSurfer] postWithUrl:url params:parameters Success:^(NSMutableDictionary *items) {
         successBlock(items);
     } Error:^(NSError *error) {
-        [self alertError:error];
+      //  [self alertError:error];
         errorBlock(error);
     }];
 }

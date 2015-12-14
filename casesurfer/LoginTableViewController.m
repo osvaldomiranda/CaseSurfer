@@ -46,7 +46,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 5;
+    return 6;
 }
 
 - (IBAction)login:(id)sender {
@@ -76,5 +76,7 @@
 -(void) accessDenied{
     [UIAlertView alertViewOopsWithmessage:@"Invalid email or password."];
 }
+
+
 
 @end
