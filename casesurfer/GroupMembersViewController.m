@@ -175,7 +175,7 @@
     
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"ELiminar");
+      //  NSLog(@"ELiminar");
 
         [self deleteGroupUser:self.groupId idUser:[idUser intValue]];
     }

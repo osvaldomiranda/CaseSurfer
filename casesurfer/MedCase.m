@@ -65,7 +65,7 @@
     int i=0;
     for (IndexableImageView *image in self.images) {
         
-        NSLog(@"Al subir caso %f %f",image.image.size.height, image.image.size.height);
+      //  NSLog(@"Al subir caso %f %f",image.image.size.height, image.image.size.height);
         
         
         NSData *imageData = UIImageJPEGRepresentation(image.image, 1.0);
@@ -96,7 +96,7 @@
         if(data.length > 0)
         {
             NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-                     NSLog(@"RESP %@",[resp class]);
+                    NSLog(@"RESP %@",[resp class]);
   //          successBlock(resp);
             
             [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
@@ -126,7 +126,7 @@
     
     Session *sess = [[Session alloc] init];
     
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH,@"/medcases.json"]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@",BASE_PATH,@"/medcases/update.json"]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
@@ -146,6 +146,11 @@
     
     // add params (all params are strings)
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"id"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n",self.id] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // add params (all params are strings)
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"auth_token"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"%@\r\n",[sess getToken]] dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -153,9 +158,11 @@
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"medcase"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"%@\r\n",medcaseString] dataUsingEncoding:NSUTF8StringEncoding]];
-    
+ 
+
     int i=0;
     for (IndexableImageView *image in self.images) {
+        
         NSData *imageData = UIImageJPEGRepresentation(image.image, 1.0);
         
         NSString *name = [NSString stringWithFormat:@"medcase_images_attributes[%d]",i];
@@ -170,6 +177,7 @@
         }
         i++;
     }
+  
     
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     

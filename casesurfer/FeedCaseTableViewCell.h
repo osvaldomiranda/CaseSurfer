@@ -26,6 +26,9 @@
 @property (nonatomic, assign) NSString *notificationId;
 @property (weak, nonatomic) IBOutlet UILabel *lblWantToShare;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewWidthConstraint;
+
 - (IBAction)userAction:(id)sender;
 - (IBAction)caseAction:(id)sender;
 

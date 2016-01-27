@@ -395,7 +395,7 @@ static SDWebImageManager *instance;
     
     if ([[downloader.userInfo objectForKey:@"transformation"]  isEqual: @"crop"])
     {
-        CGRect bounds = CGRectFromString([downloader.userInfo objectForKey:@"bounds"]);
+      //  CGRect bounds = CGRectFromString([downloader.userInfo objectForKey:@"bounds"]);
       //  image = [image croppedImage:bounds];
         downloader.imageData = [UIImagePNGRepresentation(image) copy];
     }
@@ -403,7 +403,7 @@ static SDWebImageManager *instance;
     {
         if ([[downloader.userInfo objectForKey:@"transformation"]  isEqual: @"resize"])
         {
-            CGSize size = CGSizeFromString([downloader.userInfo objectForKey:@"size"]);
+          //  CGSize size = CGSizeFromString([downloader.userInfo objectForKey:@"size"]);
             NSString *contentmode = [downloader.userInfo objectForKey:@"content_mode"];
             if (contentmode)
             {
@@ -411,7 +411,7 @@ static SDWebImageManager *instance;
                 
                 if ([contentmode isEqualToString:@"UIViewContentModeScaleAspectFill"])
                 {
-                    mode = UIViewContentModeScaleAspectFill;
+          //          mode = UIViewContentModeScaleAspectFill;
                 }
                 
             //    image = [image resizedImageWithContentMode:mode bounds:size interpolationQuality:kCGInterpolationHigh];

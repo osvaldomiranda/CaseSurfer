@@ -114,7 +114,6 @@
     
     NSString *url;
     
-    NSLog(@"GIGUALDAD  %d, tableView %@, result %@",tableView == self.searchDisplayController.searchResultsTableView,tableView, self.searchDisplayController.searchResultsTableView);
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         SearchUser *sUser = [self.filteredUserArray objectAtIndex:indexPath.row];

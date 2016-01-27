@@ -35,10 +35,7 @@
                                                  name:EndUpLoadingObserver
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(shareStatus)
-                                                 name:shareStatusObserver
-                                               object:nil];
+
     
     self.refreshLoadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, 400, 60)];
     self.refreshLoadingView.hidden = YES;
@@ -84,8 +81,6 @@
         [self saveNotificationsCache:items];
         [self fillImtensArray:items];
         
-       
-        
         if (itemsArray.count==0) {
             [self initialFeed];
         }
@@ -125,26 +120,14 @@
     }
     [self orderArray:itemsArray];
     
-  //   NSLog(@"%@",itemsArray);
+    NSArray *newArray = [[NSOrderedSet orderedSetWithArray:itemsArray] array];
+    [itemsArray removeAllObjects];
+    itemsArray = newArray.mutableCopy;
     
     [feedTableView reloadData];
 }
 
--(void) removeItemArray: (int) id{
-    bool exist = false;
-    int i = 0;
-    int itemindex = 0;
-    for (NSMutableDictionary *iarray in itemsArray) {
-        if (id == [[iarray valueForKeyPath:@"id"] intValue] ) {
-            exist = true;
-            itemindex=i;
-        }
-        i++;
-    }
-    if (!exist) {
-        [itemsArray removeObjectAtIndex: itemindex];
-    }
-}
+
 
 - (void) orderArray:(NSMutableArray *) arr{
     NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
@@ -161,7 +144,7 @@
 
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
-    int height = 90;
+    int height = 250;
     if (itemsArray.count > 0) {
         NSDictionary *celda = [itemsArray objectAtIndex:indexPath.row];
         NSString *notificableTipe = [celda valueForKeyPath:@"notificable_type"];
@@ -212,15 +195,22 @@
     NSURL *urlCaseImage = [NSURL URLWithString:[caseImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSDictionary *notificable =  [celda valueForKeyPath:@"notificable"];
     
-    FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
     
+    ShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+    
+    
+    cell.delegate = self;
     
     if([notificableType isEqualToString:@"Medcase"]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCaseCell"];
     }
     
+    if([notificableType isEqualToString:@"Comment"]){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
+    }
+    
     if([notificableType isEqualToString:@"Share"]){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+        
        
         cell.status =  [notificable valueForKeyPath:@"status"];
         
@@ -232,7 +222,7 @@
         
         int uId = [[defaults objectForKey:@"UserId"] intValue] ;
         
-        NSLog(@" u Id: %d", uId);
+        //NSLog(@" u Id: %d", uId);
         
         if([cell.status isEqualToString:@"approved"]){
             cell.btnAcept.hidden = TRUE;
@@ -259,6 +249,7 @@
     
     if([notificableType isEqualToString:@"Comment"]){
         
+        
         Utilities *util = [[Utilities alloc] init];
         
         cell.txtMessage.text = [notificable valueForKeyPath:@"message"];
@@ -272,8 +263,8 @@
                 [view removeFromSuperview];
             }
         }
-        UIView *sep = [util addSeparator:[self textH:[notificable valueForKeyPath:@"message"]]+40];
-        [cell addSubview:sep];
+       // UIView *sep = [util addSeparator:[self textH:[notificable valueForKeyPath:@"message"]]+40];
+       // [cell addSubview:sep];
     }
     
     [cell.contentView clearsContextBeforeDrawing];
@@ -401,15 +392,7 @@
 }
 
 
-- (void) shareStatus{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    int caseShareId = [[defaults objectForKey:@"caseShareId"] intValue];
-    
-    [self removeItemArray: caseShareId];
-    
-    self.page = 1;
-    [self refrechData];
-}
+
 
 
 
@@ -574,7 +557,37 @@
 }
 
 
+// cell delegate
+- (void) accept:(NSString *) notificationId {
+    [self shareStatus: notificationId];
+}
+
+- (void) ignore:(NSString *) notificationId {
+    [self shareStatus: notificationId];
+}
 
 
+- (void) shareStatus:(NSString *) notificationId{
+    [self removeItemArray: notificationId ];
+    
+    self.page = 1;
+    [self refrechData];
+}
+
+-(void) removeItemArray: (NSString *) id{
+    bool exist = false;
+    int i = 0;
+    int itemindex = 0;
+    for (NSMutableDictionary *iarray in itemsArray) {
+        if ([id isEqual: [iarray valueForKeyPath:@"id"]]) {
+            exist = true;
+            itemindex=i;
+        }
+        i++;
+    }
+    if (exist) {
+        [itemsArray removeObjectAtIndex: itemindex];
+    }
+}
 
 @end

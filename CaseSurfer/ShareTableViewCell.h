@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol acctionToShareDelegate <NSObject>
+- (void)accept:(NSString *) notificationId;
+- (void)ignore:(NSString *) notificationId;
+@end
 
 @interface ShareTableViewCell : UITableViewCell
 
-
+@property (nonatomic, assign) id<acctionToShareDelegate> delegate;
 
 @property (nonatomic, unsafe_unretained) id callerViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
@@ -27,6 +31,9 @@
 @property (nonatomic, assign) int userId;
 @property (nonatomic, assign) NSString *notificableId;
 @property (nonatomic, assign) NSString *notificationId;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *TextViewWidthConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblWantToShare;
 

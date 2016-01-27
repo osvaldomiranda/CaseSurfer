@@ -12,6 +12,7 @@
 
 @interface MedCase : BaseApiModel
 
+@property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *album_id;
 @property (nonatomic, retain) NSString *patient;

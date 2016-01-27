@@ -23,7 +23,7 @@
         [self saveToken:[items valueForKeyPath:@"auth_token"]];
         [self saveEmail:[items valueForKeyPath:@"email"]];
         
-        NSLog(@"USERID in login %@ ",[items valueForKeyPath:@"id"]);
+      //  NSLog(@"USERID in login %@ ",[items valueForKeyPath:@"id"]);
         
         successBlock(items);
     } Error:^(NSError *error) {

@@ -202,7 +202,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@",searchText];
     self.filteredUserArray = [NSMutableArray arrayWithArray:[self.usersArray filteredArrayUsingPredicate:predicate]];
     
-    NSLog(@"Users Array %@", self.filteredUserArray);
+   // NSLog(@"Users Array %@", self.filteredUserArray);
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods

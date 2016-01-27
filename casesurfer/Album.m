@@ -66,7 +66,7 @@
     }
 
     
-    NSLog(@"IMAGE %@",self.image);
+   // NSLog(@"IMAGE %@",self.image);
     NSData *imageData = UIImageJPEGRepresentation(self.image, 1.0);
     if (imageData) {
         [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -104,8 +104,8 @@
 {
     
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters = @{@"auth_token": [mySession getToken]}.mutableCopy;
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken]}];
+   // parameters = @{@"auth_token": [mySession getToken]}.mutableCopy;
     [parameters addEntriesFromDictionary:params];
     
     NSString *url = [NSString stringWithFormat:@"/albums_shared/show.json"];

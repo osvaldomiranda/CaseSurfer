@@ -22,6 +22,7 @@
 @property (weak, nonatomic) NSString *selectedGender;
 @property (weak, nonatomic) NSString *selectedAlbum;
 @property (weak, nonatomic) NSString *selectedAge;
+@property (weak, nonatomic) NSString *caseId;
 @property (weak, nonatomic) IBOutlet UILabel *lblGender;
 @property (weak, nonatomic) IBOutlet UILabel *lblAlbum;
 @property (weak, nonatomic) IBOutlet UILabel *lblAge;
@@ -32,6 +33,8 @@
 
 @property (nonatomic, retain) NSMutableArray *delImages;
 @property (nonatomic, retain) NSMutableArray *originalImages;
+@property (nonatomic, retain) NSMutableArray *uploadNewImages;
+@property (nonatomic, retain) NSMutableArray *photosUpload;
 
 @property (weak, nonatomic) IBOutlet UIView *viewImages;
 

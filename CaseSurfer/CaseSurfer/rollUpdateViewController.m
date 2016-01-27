@@ -84,12 +84,13 @@
                                          [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
                                              if (result != nil){
                                                  UIImage *img = [UIImage imageWithCGImage:[result thumbnail]];
+                                                 
                                                  [scrollView insertPicture:img withAssetURL:[result valueForProperty:ALAssetPropertyAssetURL] indexImage:nil];
                                              }
                                          }];
                                      }
                                  } failureBlock:^(NSError *error) {
-                                     NSLog(@"error: %@", error);
+                         //            NSLog(@"error: %@", error);
                                  }];
 }
 
@@ -164,7 +165,7 @@
     image.image = imageFinal;
     
     if (!self.photos) self.photos = [[NSMutableArray alloc] init];
-    if (self.photos.count <= 10) {
+    if (self.photos.count <= 5) {
         [self.photos addObject:image];
     }else{
         [self alertMore];
@@ -178,7 +179,7 @@
 }
 
 - (void)alertMore {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Maximum 10 pictures please! "
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Maximum 5 new pictures please! "
                                                     message:@" You can upload more later "
                                                    delegate:self
                                           cancelButtonTitle:@"Ok"
@@ -194,6 +195,7 @@
     UIGraphicsEndImageContext();
     return destImage;
 }
+
 
 
 

@@ -58,9 +58,9 @@
 {
  
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken] }];
     
-    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;
+   // parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
     
@@ -79,9 +79,9 @@
        Error:(CaseErrorBlock)errorBlock
 {
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken] }];
     
-    parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;;
+   // parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;;
     [parameters addEntriesFromDictionary:params];
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
@@ -102,8 +102,8 @@
          Error:(CaseErrorBlock)errorBlock
 {
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }];
+   // parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
     [parameters addEntriesFromDictionary:params];
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];
@@ -124,9 +124,9 @@
          Error:(CaseErrorBlock)errorBlock
 {
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }];
     
-    parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
+  //  parameters = @{@"auth_token": [mySession getToken], @"id": [NSString stringWithFormat:@"%d", identifier] }.mutableCopy;
     [parameters addEntriesFromDictionary:params];
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];

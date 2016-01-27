@@ -23,6 +23,7 @@
 #import "Utilities.h"
 #import "UpdateCaseTableView.h"
 #import "CaseDescripViewController.h"
+#import "ParticipantsTableViewController.h"
 
 
 @interface CaseViewController ()
@@ -34,10 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.comments = [[NSMutableArray alloc] init];
+    self.participants = [[NSMutableArray alloc] init];
     self.scrollPrueba.contentSize =  CGSizeMake(self.scrollPrueba.contentSize.width, 950);
     self.scrollPrueba.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
-    
-   
 }
 
 
@@ -50,7 +50,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-  
 }
 
 - (void) setToptButtons{
@@ -74,6 +73,9 @@
 
 
 -(void) fillCase: (NSMutableDictionary*) item{
+    
+   // NSLog(@"ITEM %@",item);
+    
     self.txtTitle.text = [item valueForKeyPath:@"title"];
     self.txtDescription.text = [item valueForKeyPath:@"description"];
     NSString *patient = [item valueForKeyPath:@"patient"];
@@ -81,9 +83,17 @@
     NSString *age = [item valueForKeyPath:@"patient_age"];
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
     self.comments = [item valueForKeyPath:@"comments"];
+    self.participants = [item valueForKeyPath:@"participants"];
   //  [self orderArray:self.comments];
     self.images = [item valueForKeyPath:@"medcase_images"];
     self.ownerUser = [[item valueForKeyPath:@"user_id"] intValue];
+    
+    NSString *lblPartic = [NSString stringWithFormat:@"%lu Participants", (unsigned long)self.participants.count ];
+    if (self.participants.count == 1) {
+        lblPartic = [NSString stringWithFormat:@"%lu Participant", (unsigned long)self.participants.count ];
+    }
+    
+    self.lblParticipants.text = lblPartic;
     
     Session *session= [[Session alloc] init];
     int myId =  [session.getUserId intValue];
@@ -193,6 +203,15 @@
                                         
                                      }];
    */
+}
+
+- (IBAction)participants:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ParticipantsTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Participants"];
+    cController.caseId = self.caseId;
+    [cController.navigationController setNavigationBarHidden:NO];
+    cController.hidesBottomBarWhenPushed = YES;
+    [[self navigationController] pushViewController:cController animated:YES];
 }
 
 

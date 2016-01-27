@@ -95,7 +95,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.selectedItem = self.datasource[row];
-    NSLog(@"row selected:%@", self.selectedItem);
+//    NSLog(@"row selected:%@", self.selectedItem);
 }
 
 - (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component

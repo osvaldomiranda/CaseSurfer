@@ -13,7 +13,7 @@
 #import "session.h"
 #import "ShareTableViewCell.h"
 
-@interface FeedViewController : UIViewController <SDWebImageManagerDelegate>  {
+@interface FeedViewController : UIViewController <SDWebImageManagerDelegate, acctionToShareDelegate>  {
      NSMutableArray *itemsArray;
 }
 

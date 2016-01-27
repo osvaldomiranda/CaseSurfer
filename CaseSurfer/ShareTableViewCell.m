@@ -51,34 +51,28 @@
         cController.hidesBottomBarWhenPushed = YES;
         [[[self callerViewController] navigationController] pushViewController:cController animated:YES];
         
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject: [NSString stringWithFormat:@"%d", self.caseId] forKey:@"caseShareId"];
-        [defaults synchronize];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:shareStatusObserver
-                                                            object:nil];
-    }
+        }
 
 }
 
 - (IBAction)aceptAction:(id)sender{
     if (self.caseId != 0) {
+        self.btnAcept.hidden = true;
+        self.btnIgnore.hidden = true;
+   
         NSDictionary *shareData = @{@"medcase_id":[NSString stringWithFormat:@"%d", self.caseId] ,
                                     @"status": @"approved"
                                     };
         NSMutableDictionary *shareParams =  @{@"share" : shareData}.mutableCopy;
         Share *share = [[Share alloc] initWithParams:shareParams];
         [share update:[self.notificableId intValue] params:shareParams Success:^(NSMutableDictionary *items) {
+            [self.delegate accept:self.notificationId];
         } Error:^(NSError *error) {
+            [self.delegate accept:self.notificationId];
         }];
         
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject: [NSString stringWithFormat:@"%d", self.caseId] forKey:@"caseShareId"];
-        [defaults synchronize];
+    
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:shareStatusObserver
-                                                            object:nil];
-       
     }
     
 
@@ -87,11 +81,17 @@
 
 - (IBAction)ignoreAction:(id)sender{
     if (self.caseId != 0) {
+        self.btnIgnore.hidden = true;
+        self.btnAcept.hidden = true;
+        
+  
         NSMutableDictionary *notificationParams =  @{}.mutableCopy;
         Notification *notification = [[Notification alloc] initWithParams:notificationParams];
         [notification delete:[self.notificationId intValue] params:notificationParams Success:^(NSMutableDictionary *items) {
+            [self.delegate accept:self.notificationId];
         } Error:^(NSError *error) {
         }];
+  
         
         
     }

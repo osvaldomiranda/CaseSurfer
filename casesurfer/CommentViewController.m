@@ -84,7 +84,7 @@ UIView *commentView;
 
 -(void) fillCase: (NSMutableDictionary*) item{
     comments = [item valueForKeyPath:@"comments"];
-    [self orderArray:comments];
+   // [self orderArray:comments];
     
     [self.tblComments reloadData];
 }

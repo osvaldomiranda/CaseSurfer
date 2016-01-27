@@ -74,7 +74,7 @@
         if(data.length > 0)
         {
             NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"RESP %@",resp);
+        //    NSLog(@"RESP %@",resp);
             //          successBlock(resp);
         }
     }];

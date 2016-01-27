@@ -60,7 +60,7 @@ static char CANCEL_IDENTIFER = 'c';
         }
 	} else {
         if (alertView.dismissBlock) {
-            alertView.dismissBlock(buttonIndex - 1); // cancel button is button 0
+            alertView.dismissBlock(buttonIndex - 1.0); // cancel button is button 0
         }
     }
 }

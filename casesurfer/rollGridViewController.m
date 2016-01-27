@@ -12,6 +12,7 @@
 #import "CropViewController.h"
 #import "Utilities.h"
 #import "InstructionsViewController.h"
+@import Photos;
 
 @interface rollGridViewController ()
 
@@ -35,7 +36,8 @@
     
     [self.lblTitle setTextColor:greenColor];
     
-    [self instructionAlert];
+    [self requestPermissions];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -152,9 +154,65 @@
                                          }];
                                      }
                                  } failureBlock:^(NSError *error) {
-                                     NSLog(@"error: %@", error);
+                         //            NSLog(@"error: %@", error);
                                  }];
 }
+
+
+- (void)requestPermissions
+{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    
+    switch (status)
+    {
+        case PHAuthorizationStatusAuthorized:
+        {
+            [self instructionAlert];
+            break;
+        }
+        case PHAuthorizationStatusNotDetermined:
+        {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus authorizationStatus)
+             {
+                 if (authorizationStatus == PHAuthorizationStatusAuthorized)
+                 {
+                     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Instructions "
+                                                                     message:@"To publish a case must authorize the app to access your photos in your iPhone settings."
+                                                                    delegate:self
+                                                           cancelButtonTitle:nil
+                                                           otherButtonTitles:@"OK", nil];
+                     [alert show];
+                     
+                     [self.navigationController popViewControllerAnimated:YES];
+                 }
+                 else
+                 {
+                     [self instructionAlert];
+                 }
+             }];
+            break;
+        }
+            
+        case PHAuthorizationStatusDenied:
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@" Instructions "
+                                                            message:@"To publish a case must authorize the app to access your photos in your iPhone settings."
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            break;
+        }
+        default:
+       //     block(NO);
+            break;
+    }
+}
+
 
 #pragma GridScrollView
 - (void)selectImageWithAssetURL:(NSURL *)assetURL image:(IndexableImageView *)image selected:(BOOL *)selected{

@@ -32,7 +32,10 @@
     self.albums = [[NSMutableArray alloc] init];
     self.albumIds = [[NSMutableArray alloc] init];
     self.originalImages = [[NSMutableArray alloc] init];
+    self.uploadNewImages = [[NSMutableArray alloc] init];
     self.delImages = [[NSMutableArray alloc] init];
+    self.photosUpload = [[NSMutableArray alloc] init];
+    
     [self setScrollViewProperties];
     [self setImages];
 
@@ -116,6 +119,7 @@
             IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image andUrl:urlImgCase andImageInfo:info];
             
             [self.originalImages addObject:indexableImage];
+          
             
         } failure:^(NSError *error) {
             
@@ -173,7 +177,10 @@
     
     for (IndexableImageView *image in images) {
         IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image.image andUrl:image.assetURL andImageInfo:image.imageInfo];
+        
         [self.originalImages insertObject:indexableImage atIndex:0];
+        [self.uploadNewImages insertObject:indexableImage atIndex:0];
+        [self fillNewImage];
     }
     
     [self fillHorizontalView];
@@ -194,6 +201,7 @@
         
     }];
    
+    self.caseId = [item valueForKeyPath:@"id"];
     self.txtTitle.text = [item valueForKeyPath:@"title"];
     self.txtDescription.text = [item valueForKeyPath:@"description"];
     self.txtPatient.text = [item valueForKeyPath:@"patient"];
@@ -257,17 +265,21 @@
     } else if(self.selectedAge == nil){
         [UIAlertView alertViewOopsWithmessage:@"You must select an Age."];
     } else {
-   //     NSInteger row = [self.albums indexOfObjectIdenticalTo:self.selectedAlbum];
+        NSInteger row = [self.albums indexOfObjectIdenticalTo:self.selectedAlbum];
         MedCase *medCase = [[MedCase alloc] init];
+        medCase.id = self.caseId;
+        
+        
         medCase.title = self.txtTitle.text;
-  //      medCase.album_id = self.albumIds[row];
+        medCase.album_id = self.albumIds[row];
         medCase.patient = self.txtPatient.text;
         medCase.patient_age = self.selectedAge;
         medCase.patient_gender = self.selectedGender;
         medCase.descript = self.txtDescription.text;
         medCase.stars = @"0";
-        medCase.images = self.photos;
-     //   [medCase ];
+        medCase.images = self.photosUpload;
+        [medCase edit];
+        
         
         [self.navigationController setNavigationBarHidden:TRUE];
         [[NSNotificationCenter defaultCenter] postNotificationName:loginObserver
@@ -359,6 +371,43 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]
                           atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
+
+
+-(void) fillNewImage{
+        IndexableImageView *img = [self.uploadNewImages objectAtIndex:0];
+        
+        ALAssetsLibrary *assetsL = [[ALAssetsLibrary alloc] init];
+        
+        [assetsL assetForURL: img.assetURL
+                 resultBlock:^(ALAsset *asset){
+                     if (asset != nil){
+                         ALAssetRepresentation *repr = [asset defaultRepresentation];
+                         UIImage *_img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
+                         
+                         UIImage *imagePrev = _img;
+                         int a = imagePrev.size.height*640/imagePrev.size.width  ;
+                         UIImage *imageFinal = [self imageWithImage:_img convertToSize: CGSizeMake(640,a )];
+                         
+                         img.image = imageFinal;
+                         
+                         [self.photosUpload addObject:img];
+                         
+                     }
+                 }failureBlock:^(NSError *error) {
+            //         NSLog(@"error: %@", error);
+                 }
+         ];
+      
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
+
 
 
 @end

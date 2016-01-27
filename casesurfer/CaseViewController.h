@@ -21,10 +21,12 @@
 @property (nonatomic, assign) int ownerUser;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSMutableArray *participants;
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
 @property (nonatomic, strong) NSMutableDictionary *medCase;
 @property (weak, nonatomic) IBOutlet UIView *firstView;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblParticipants;
 
 - (IBAction)descript:(id)sender;
 
@@ -35,6 +37,8 @@
 
 - (IBAction)comment:(id)sender;
 - (IBAction)share:(id)sender;
+- (IBAction)participants:(id)sender;
+
 
 
 @end

@@ -67,8 +67,8 @@
     
     [client POST:url parameters:params completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
         
-        NSLog(@"POST %@",response);
-        NSLog(@"POST %@",error);
+       // NSLog(@"POST %@",response);
+       // NSLog(@"POST %@",error);
         
         if ([response isKindOfClass:[NSDictionary class]]) {
             successBlock(response);
@@ -126,7 +126,7 @@
        // NSLog(@"Get %@",response);
        // NSLog(@"Get %@",error);
         
-         NSLog(@"PUT %@",response);
+     //    NSLog(@"PUT %@",response);
         if ([response isKindOfClass:[NSDictionary class]]) {
             successBlock(response);
             

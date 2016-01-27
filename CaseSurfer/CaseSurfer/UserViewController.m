@@ -83,7 +83,7 @@
 
 -(void) fiilUser:(NSMutableDictionary *) items{
     
-    NSLog(@"%@",items);
+   // NSLog(@"%@",items);
     
     self.lblName.text = [NSString stringWithFormat:@"%@",[items valueForKeyPath:@"name"]];
     self.lblTitle.text = [NSString stringWithFormat:@"%@", [items valueForKeyPath:@"tilte"]];
