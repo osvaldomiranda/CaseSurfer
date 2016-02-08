@@ -87,10 +87,10 @@
 }
 
 -(void)setScrollViewProperties{
-    scrollView = [[GridScrollView alloc] initGrid:4 spacing:5 gridWidth:380];
+    scrollView = [[GridScrollView alloc] initGrid:4 spacing:5 gridWidth:SCREEN_WIDTH + 5];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(380,SCREEN_HEIGHT);
+    scrollView.contentSize =  CGSizeMake(SCREEN_WIDTH+5,SCREEN_HEIGHT);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -100,7 +100,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 65, 380, SCREEN_HEIGHT-140);
+    scrollView.frame = CGRectMake(0, 65, SCREEN_WIDTH+5, SCREEN_HEIGHT-140);
     scrollView.gridDelegate = self;
     
     
@@ -271,10 +271,14 @@
     if (info) {
         UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
         UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+
+        [self dismissViewControllerAnimated:NO completion:nil];
+      
         
         [scrollView clearGrid];
+        sleep(1);
+        
         [self loadPhotoLibrary];
-        [self dismissViewControllerAnimated:NO completion:nil];
     }
     else {
         [self dismissViewControllerAnimated:NO completion:nil];

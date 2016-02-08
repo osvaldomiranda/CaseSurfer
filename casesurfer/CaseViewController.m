@@ -26,6 +26,7 @@
 #import "ParticipantsTableViewController.h"
 
 
+
 @interface CaseViewController ()
 
 @end
@@ -161,6 +162,7 @@
     [cController.navigationController setNavigationBarHidden:NO];
     cController.hidesBottomBarWhenPushed = YES;
     [[self navigationController] pushViewController:cController animated:YES];
+    
 }
 
 

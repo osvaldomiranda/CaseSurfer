@@ -459,7 +459,7 @@
 
 - (UIImage *)imageByCropping:(UIImage *)image toRect:(CGRect)rect
 {
-    if (UIGraphicsBeginImageContextWithOptions) {
+    if (&UIGraphicsBeginImageContextWithOptions) {
         UIGraphicsBeginImageContextWithOptions(rect.size,
                                                /* opaque */ NO,
                                                /* scaling factor */ 0.0);
