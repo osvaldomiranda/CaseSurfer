@@ -14,6 +14,7 @@
 @interface rollGridViewController : UIViewController <GridScrollViewDelegate, horizontalGridDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (nonatomic, retain) HorizontalGrid *scrollViewH;
+@property (nonatomic, retain) HorizontalGrid *scrollViewCover;
 @property (nonatomic, retain) GridScrollView *scrollView;
 @property (nonatomic, assign) UIImage *imageFull;
 @property (nonatomic, assign) NSString *collectionId;

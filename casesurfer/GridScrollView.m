@@ -117,7 +117,7 @@
     self.currentCol = [NSNumber numberWithInt:(int)[self.currentCol integerValue]+1];
     self.addedElements = [NSNumber numberWithInt:(int)[self.addedElements integerValue]+1];
     if (subTitle) {
-        self.contentSize =  CGSizeMake(self.contentSize.width,self.contentSize.height + 20);
+        self.contentSize =  CGSizeMake(self.contentSize.width,self.contentSize.height + 23.5);
     }
 }
 

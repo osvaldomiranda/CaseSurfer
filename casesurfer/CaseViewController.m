@@ -77,9 +77,21 @@
     
    // NSLog(@"ITEM %@",item);
     
+    NSString *patient =  [item valueForKeyPath:@"patient"];
+    
+    Session *session= [[Session alloc] init];
+    int myId =  [session.getUserId intValue];
+    
+    if (myId == self.ownerUser) {
+        self.shareButton.hidden = NO;
+        [self setToptButtons];
+    } else{
+        self.shareButton.hidden = YES;
+        patient = [self anonimize: [item valueForKeyPath:@"patient"]];
+    }
+    
     self.txtTitle.text = [item valueForKeyPath:@"title"];
     self.txtDescription.text = [item valueForKeyPath:@"description"];
-    NSString *patient = [item valueForKeyPath:@"patient"];
     NSString *gender = [item valueForKeyPath:@"patient_gender"];
     NSString *age = [item valueForKeyPath:@"patient_age"];
     self.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
@@ -95,16 +107,6 @@
     }
     
     self.lblParticipants.text = lblPartic;
-    
-    Session *session= [[Session alloc] init];
-    int myId =  [session.getUserId intValue];
-    
-    if (myId == self.ownerUser) {
-        self.shareButton.hidden = NO;
-        [self setToptButtons];
-    } else{
-        self.shareButton.hidden = YES;
-    }
     
     [self setMosaic];
     [self.tblComments reloadData];
@@ -292,4 +294,19 @@
     cController.hidesBottomBarWhenPushed = YES;
     [[self navigationController] pushViewController:cController animated:YES];
 }
+
+- (NSString *)anonimize:(NSString *) fullname {
+    
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [fullname componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    for (NSString * word in words) {
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringToIndex:1];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+        }
+    }
+    
+    return firstCharacters;
+}
+
 @end

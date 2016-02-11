@@ -143,7 +143,7 @@
 
 
 -(void) alertError:(NSError *) Error{
-    [UIAlertView alertViewOopsWithmessage:@"Bad Server Response"];
+    [UIAlertView alertViewOopsWithmessage:@"Unable connect to server, check your internet connection"];
 }
 
 

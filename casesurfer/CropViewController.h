@@ -23,8 +23,6 @@
 @property (nonatomic, strong) CropInterface *cropper;
 @property (nonatomic, assign) int indexImage;
 @property (nonatomic, assign) BOOL inCropp;
-@property (weak, nonatomic) IBOutlet UIButton *okCroppButton;
-
 
 - (void) setOriginalImage:(UIImage *)originalImage;
 - (IBAction)trashImage:(id)sender;

@@ -25,8 +25,6 @@
     [super viewDidLoad];
     
     self.inCropp = NO;
-    self.okCroppButton.hidden = YES;
-    
     self.photosUpload = [[NSMutableArray alloc] init];
     
     self.displayImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -55,7 +53,7 @@
     scrollView = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
     
     scrollView.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollView.contentSize =  CGSizeMake(400,70);
+    scrollView.contentSize =  CGSizeMake(SCREEN_WIDTH,70);
     scrollView.pagingEnabled = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -65,7 +63,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, SCREEN_HEIGHT-80, 400, 70);
+    scrollView.frame = CGRectMake(0, SCREEN_HEIGHT-80, SCREEN_WIDTH, 70);
     scrollView.gridDelegate = self;
     
     [self.view addSubview:scrollView];
@@ -110,8 +108,6 @@
 #pragma GridScrollView
 - (void)selectHImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
     
-   
-    
    [self setImageOriginal:image];
     self.indexImage = indexImage;
 }
@@ -155,9 +151,11 @@
 - (IBAction) SetCroppedImage:(id)sender {
     if (self.inCropp) {
         [self.cropper removeFromSuperview];
-        self.displayImage.image = self.originalImage;
+        
+       // self.displayImage.image = self.originalImage;
+        [self okCroppedImage:self];
         self.inCropp = NO;
-        self.okCroppButton.hidden = YES;
+    
     }
     else{
         [self.cropper removeFromSuperview];
@@ -165,18 +163,22 @@
         self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
         [self.displayImage addSubview:self.cropper];
         self.inCropp=YES;
-        self.okCroppButton.hidden = NO;
     }
 }
 
 - (IBAction) okCroppedImage:(id)sender {
     
-     self.okCroppButton.hidden = YES;
-    
      UIImage *croppedImage = [self.cropper getCroppedImage];
      
      [self setImageOriginal: croppedImage];
-     IndexableImageView *img = [[IndexableImageView alloc] initWithImage:croppedImage andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
+    
+     UIImage *imagePrev = croppedImage;
+     int a = imagePrev.size.height*640/imagePrev.size.width  ;
+     UIImage *imageFinal = [self imageWithImage:croppedImage convertToSize: CGSizeMake(640,a )];
+
+    
+     IndexableImageView *img = [[IndexableImageView alloc] initWithImage:imageFinal andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
+    
      [self.photosUpload replaceObjectAtIndex:self.indexImage withObject:img];
      
      [scrollView clearGrid];

@@ -22,6 +22,7 @@
 
 @synthesize scrollView;
 @synthesize scrollViewH;
+@synthesize scrollViewCover;
 @synthesize assetsLibrary;
 
 - (void)didReceiveMemoryWarning {
@@ -73,17 +74,12 @@
 }
 
 - (IBAction) callInstructions:(id)sender{
-
-        
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         InstructionsViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Instructions"];
     
         self.hidesBottomBarWhenPushed =  YES;
         [[self navigationController]  pushViewController:cController animated:YES];
-       
-   
-    
 }
 
 -(void)setScrollViewProperties{
@@ -103,7 +99,6 @@
     scrollView.frame = CGRectMake(0, 65, SCREEN_WIDTH+5, SCREEN_HEIGHT-140);
     scrollView.gridDelegate = self;
     
-    
     [self.view addSubview:scrollView];
 }
 
@@ -112,7 +107,7 @@
     scrollViewH = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
     
     scrollViewH.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollViewH.contentSize =  CGSizeMake(400,70);
+    scrollViewH.contentSize =  CGSizeMake(SCREEN_WIDTH,70);
     scrollViewH.pagingEnabled = NO;
     scrollViewH.showsVerticalScrollIndicator = NO;
     scrollViewH.showsHorizontalScrollIndicator = YES;
@@ -122,7 +117,7 @@
     scrollViewH.maximumZoomScale = 1;
     scrollViewH.minimumZoomScale = 1;
     scrollViewH.clipsToBounds = YES;
-    scrollViewH.frame = CGRectMake(0, SCREEN_HEIGHT-80, 400, 70);
+    scrollViewH.frame = CGRectMake(0, SCREEN_HEIGHT-80, SCREEN_WIDTH, 70);
     scrollViewH.gridDelegate = self;
     
     [self.view addSubview:scrollViewH];
@@ -250,11 +245,16 @@
     self.pickerController.delegate = self;
     self.pickerController.navigationBarHidden = YES;
     
+    UIView *cameraCover =  [self coverView];
+    
     if ([UIImagePickerController isSourceTypeAvailable:sourceType])
     {
         [self.pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
         [[self navigationController]  presentViewController:self.pickerController animated:YES completion:nil];
-        self.pickerController.showsCameraControls = YES;
+      //  self.pickerController.showsCameraControls = YES;
+        
+        self.pickerController.showsCameraControls = NO;
+        self.pickerController.cameraOverlayView = cameraCover ;
         
     }else{
         #if TARGET_IPHONE_SIMULATOR
@@ -270,15 +270,25 @@
     
     if (info) {
         UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+        
+        [assetsLibrary writeImageToSavedPhotosAlbum:[img CGImage] orientation:(ALAssetOrientation)[img imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            
+            if (error) {
+                NSLog(@"error");  // oops, error !
+            } else {
+                if (assetURL != NULL) {
+                    
+                    UIImage *imagePrev = img;
+                    int a = imagePrev.size.height*640/imagePrev.size.width  ;
+                    UIImage *imageFinal = [self imageWithImage:img convertToSize: CGSizeMake(640,a )];
+                    
+                    IndexableImageView *image = [[IndexableImageView alloc] initWithImage:imageFinal andUrl:assetURL andImageInfo:nil];
+                    [self addImageToArray:image];
+                }
 
-        [self dismissViewControllerAnimated:NO completion:nil];
-      
+            }  
+        }];
         
-        [scrollView clearGrid];
-        sleep(1);
-        
-        [self loadPhotoLibrary];
     }
     else {
         [self dismissViewControllerAnimated:NO completion:nil];
@@ -289,12 +299,16 @@
 -(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:NO completion:nil];
+    [scrollView clearGrid];
+    sleep(1);
+    
+    [self loadPhotoLibrary];
 
 }
 
 
 - (IBAction) callCrop:(id)sender{
-    
+ 
     if (self.photos.count > 0) {
         
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -321,8 +335,8 @@
         [self alertMore];
     }
     
-    
     [self fillHorizontalGrid];
+    [self fillcoverGrid];
 }
 
 -(void) delImageToArray: (IndexableImageView *) image{
@@ -351,6 +365,12 @@
     }
 }
 
+-(void) fillcoverGrid{
+    [scrollViewCover clearGrid];
+    for (IndexableImageView *image in self.photos) {
+        [scrollViewCover insertPicture:image.image withAssetURL:nil index:0];
+    }
+}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -369,5 +389,134 @@
 
 
 
+- (UIView *) coverView {
+    
+    scrollViewCover = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
+    
+    scrollViewCover.contentMode = (UIViewContentModeScaleAspectFill);
+    scrollViewCover.contentSize =  CGSizeMake(SCREEN_WIDTH,70);
+    scrollViewCover.pagingEnabled = NO;
+    scrollViewCover.showsVerticalScrollIndicator = NO;
+    scrollViewCover.showsHorizontalScrollIndicator = YES;
+    scrollViewCover.alwaysBounceVertical = NO;
+    scrollViewCover.alwaysBounceHorizontal = NO;
+    scrollViewCover.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
+    scrollViewCover.maximumZoomScale = 1;
+    scrollViewCover.minimumZoomScale = 1;
+    scrollViewCover.clipsToBounds = YES;
+    scrollViewCover.frame = CGRectMake(0, SCREEN_HEIGHT-135, SCREEN_WIDTH, 70);
+    scrollViewCover.gridDelegate = self;
+    
+    UIColor *normal   =graySep;
+    
+    CGFloat screenHeight = [UIScreen mainScreen].applicationFrame.size.height;
+    
+    UIView *cameraCover =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, screenHeight)];;
+    
+    UIButton *cancelButton = [[UIButton alloc] init];
+    UIImage *imageBcancel = [UIImage imageNamed:@"icon_action_button_cancel.png"];
+    [cancelButton setImage:imageBcancel forState:UIControlStateNormal];
+    
+    [cancelButton setTitle:@" Next" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(rollAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
+    
+    [cancelButton setTitleColor:[UIColor colorWithRed:0.47 green:0.35 blue:0.37 alpha:1]
+                       forState:UIControlStateNormal];
+    [cancelButton setBackgroundColor:normal];
+    
+    // ******************************
+    UIButton *cameraButton;
+    
+    UIImage *imageB3 = [UIImage imageNamed:@"icon_bar_button_shot.png"];
+    cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [cameraButton addTarget:self action:@selector(cameraAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cameraButton.backgroundColor = gray;
+    [cameraButton setImage:imageB3 forState:UIControlStateNormal];
+    
+    
+    // ******************************
+    UIButton *frontCam;
+    UIImage *imageFronCam = [UIImage imageNamed:@"front_camera.png"];
+    frontCam = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [frontCam addTarget:self action:@selector(swithCamAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    frontCam.backgroundColor = [UIColor clearColor];
+    [frontCam setImage:imageFronCam forState:UIControlStateNormal];
+    
+    // ******************************
+    
+    UIButton *rollButton = [[UIButton alloc] init];
+    
+    UIImage *imageBroll = [UIImage imageNamed:@"icon_action_button_gallery.png"];
+    [rollButton setImage:imageBroll forState:UIControlStateNormal];
+    
+    [rollButton setTitle:@" Cancel" forState:UIControlStateNormal];
+    [rollButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rollButton setTitleColor:[UIColor colorWithRed:0.47 green:0.35 blue:0.37 alpha:1]
+                     forState:UIControlStateNormal];
+    [rollButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
+    [rollButton setBackgroundColor:normal];
+    
+    Utilities *util = [[Utilities alloc] init];
+    UIView *sep = [util addSeparator:SCREEN_HEIGHT-139];
+    [cameraCover addSubview:sep];
+    
+    UIView *sepB = [util addSeparator:SCREEN_HEIGHT-64];
+    [cameraCover addSubview:sepB];
+    
+    rollButton   .frame = CGRectMake(0  , screenHeight-35, 125, 50);
+    cameraButton .frame = CGRectMake(125, screenHeight-35, 70 , 50);
+    cancelButton .frame = CGRectMake(195, screenHeight-35, 125, 50);
+    frontCam     .frame = CGRectMake(250, 25, 50, 50);
+    
+    [cameraCover addSubview:cancelButton];
+    [cameraCover addSubview:cameraButton];
+    [cameraCover addSubview:rollButton  ];
+    [cameraCover addSubview:frontCam  ];
+    [cameraCover addSubview:scrollViewCover];
+    
+    return cameraCover;
+}
+
+
+
+- (IBAction) cancelAction:(id)sender{
+    [self.pickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction) swithCamAction:(id)sender{
+    if (self.pickerController.cameraDevice == UIImagePickerControllerCameraDeviceRear) {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerCameraDeviceFront]) {
+            self.pickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        }
+    }else {
+        self.pickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    }
+}
+
+
+- (IBAction) cameraAction:(id)sender{
+    [self.pickerController takePicture];
+}
+
+- (IBAction) rollAction:(id)sender{
+    [self callCrop:self];
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    return destImage;
+}
 
 @end

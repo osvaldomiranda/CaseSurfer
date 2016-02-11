@@ -186,6 +186,8 @@
 		2D8828E41B2B580500859D13 /* album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8828E21B2B580500859D13 /* album@2x.png */; };
 		2D8828E71B2B581B00859D13 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8828E51B2B581B00859D13 /* patient.png */; };
 		2D8828E81B2B581B00859D13 /* patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8828E61B2B581B00859D13 /* patient@2x.png */; };
+		2D8A55B51C6B727300622D2F /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A55B31C6B727300622D2F /* crop.png */; };
+		2D8A55B61C6B727300622D2F /* crop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A55B41C6B727300622D2F /* crop@2x.png */; };
 		2D8A8C111AFD634600DBBE6A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8A8C0C1AFD630C00DBBE6A /* CoreFoundation.framework */; };
 		2D8A8C121AFD634E00DBBE6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8A8C0E1AFD631300DBBE6A /* UIKit.framework */; };
 		2D8DEEDF1B31BE1900F5268D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DEEDE1B31BE1900F5268D /* logo.png */; };
@@ -209,6 +211,10 @@
 		2DD339151C21A35C008255C1 /* ParticipantsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD339141C21A35C008255C1 /* ParticipantsTableViewCell.m */; };
 		2DEAB3AF1B2FBF8D005568D5 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAB3AE1B2FBF8D005568D5 /* ShareTableViewCell.m */; };
 		2DF1924A1B70F72C00C0CBC1 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF192491B70F72C00C0CBC1 /* ProfileTableViewController.m */; };
+		2DF8DE2C1C698A910008E60A /* front_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF8DE2A1C698A910008E60A /* front_camera.png */; };
+		2DF8DE2D1C698A910008E60A /* front_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF8DE2B1C698A910008E60A /* front_camera@2x.png */; };
+		2DF8DE301C698B480008E60A /* icon_bar_button_shot.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF8DE2E1C698B480008E60A /* icon_bar_button_shot.png */; };
+		2DF8DE311C698B480008E60A /* icon_bar_button_shot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF8DE2F1C698B480008E60A /* icon_bar_button_shot@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -456,6 +462,8 @@
 		2D8828E21B2B580500859D13 /* album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album@2x.png"; sourceTree = SOURCE_ROOT; };
 		2D8828E51B2B581B00859D13 /* patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patient.png; sourceTree = SOURCE_ROOT; };
 		2D8828E61B2B581B00859D13 /* patient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patient@2x.png"; sourceTree = SOURCE_ROOT; };
+		2D8A55B31C6B727300622D2F /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = SOURCE_ROOT; };
+		2D8A55B41C6B727300622D2F /* crop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crop@2x.png"; sourceTree = SOURCE_ROOT; };
 		2D8A8C0C1AFD630C00DBBE6A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		2D8A8C0E1AFD631300DBBE6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D8DEEDE1B31BE1900F5268D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
@@ -491,6 +499,10 @@
 		2DEAB3AE1B2FBF8D005568D5 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		2DF192481B70F72C00C0CBC1 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewController.h; path = CaseSurfer/ProfileTableViewController.h; sourceTree = SOURCE_ROOT; };
 		2DF192491B70F72C00C0CBC1 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewController.m; path = CaseSurfer/ProfileTableViewController.m; sourceTree = SOURCE_ROOT; };
+		2DF8DE2A1C698A910008E60A /* front_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = front_camera.png; sourceTree = SOURCE_ROOT; };
+		2DF8DE2B1C698A910008E60A /* front_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "front_camera@2x.png"; sourceTree = SOURCE_ROOT; };
+		2DF8DE2E1C698B480008E60A /* icon_bar_button_shot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bar_button_shot.png; sourceTree = SOURCE_ROOT; };
+		2DF8DE2F1C698B480008E60A /* icon_bar_button_shot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_bar_button_shot@2x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,6 +827,12 @@
 		2D58C7491B085E6000205D5C /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				2D8A55B31C6B727300622D2F /* crop.png */,
+				2D8A55B41C6B727300622D2F /* crop@2x.png */,
+				2DF8DE2E1C698B480008E60A /* icon_bar_button_shot.png */,
+				2DF8DE2F1C698B480008E60A /* icon_bar_button_shot@2x.png */,
+				2DF8DE2A1C698A910008E60A /* front_camera.png */,
+				2DF8DE2B1C698A910008E60A /* front_camera@2x.png */,
 				2DB1D0AB1BC5A9F600E1FF3C /* arroworder.png */,
 				2DB1D0AC1BC5A9F600E1FF3C /* arroworder@2x.png */,
 				2D287C6B1B867A5D0061753F /* icon_check.png */,
@@ -1231,6 +1249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8A55B51C6B727300622D2F /* crop.png in Resources */,
 				2DB1D0AE1BC5A9F600E1FF3C /* arroworder@2x.png in Resources */,
 				2D8828B61B2B451100859D13 /* home_active_blue@2x.png in Resources */,
 				2D2EC0F01B279105009E84EB /* folder_active@2x.png in Resources */,
@@ -1246,6 +1265,7 @@
 				2D2EC0CB1B27906D009E84EB /* Lato-Hai-webfont.ttf in Resources */,
 				2D9BF9241B6C070A000725C9 /* twitter_logo.png in Resources */,
 				2D8DEEEB1B31C28300F5268D /* Default.png in Resources */,
+				2D8A55B61C6B727300622D2F /* crop@2x.png in Resources */,
 				2D2EC0FF1B27911B009E84EB /* icon_back@3x.png in Resources */,
 				2D2EC0DA1B2790B0009E84EB /* app_launch_camera.png in Resources */,
 				2D2EC0DD1B2790B0009E84EB /* app_time.png in Resources */,
@@ -1264,6 +1284,7 @@
 				2D8828DF1B2B54CC00859D13 /* age.png in Resources */,
 				2D8828D21B2B515E00859D13 /* gender@2x.png in Resources */,
 				2D8828C01B2B473A00859D13 /* group_active_blue@2x.png in Resources */,
+				2DF8DE2D1C698A910008E60A /* front_camera@2x.png in Resources */,
 				2D8828DB1B2B518C00859D13 /* trash.png in Resources */,
 				2D8DEEE81B31C28300F5268D /* Default-736h.png in Resources */,
 				2D8828C41B2B475700859D13 /* user_active_blue@2x.png in Resources */,
@@ -1279,9 +1300,11 @@
 				2D8828D41B2B516F00859D13 /* pluss@2x.png in Resources */,
 				2D2EC1121B279212009E84EB /* LaunchScreen.xib in Resources */,
 				2D8828E71B2B581B00859D13 /* patient.png in Resources */,
+				2DF8DE2C1C698A910008E60A /* front_camera.png in Resources */,
 				2D8DEEDF1B31BE1900F5268D /* logo.png in Resources */,
 				2D2EC10F1B2791BD009E84EB /* landing01.jpg in Resources */,
 				2D287C6D1B867A5D0061753F /* icon_check.png in Resources */,
+				2DF8DE311C698B480008E60A /* icon_bar_button_shot@2x.png in Resources */,
 				2D2EC1091B27916F009E84EB /* caseImage.jpg in Resources */,
 				2D8828C61B2B500300859D13 /* pluss.png in Resources */,
 				2D2EC1211B27968E009E84EB /* Default-568h@2x.png in Resources */,
@@ -1307,6 +1330,7 @@
 				2D2EC10D1B2791AF009E84EB /* bkg_bw.jpg in Resources */,
 				2D2EC0E01B2790B0009E84EB /* appFormPassword.png in Resources */,
 				2D2EC0F11B279105009E84EB /* folder_inactive@2x.png in Resources */,
+				2DF8DE301C698B480008E60A /* icon_bar_button_shot.png in Resources */,
 				2D8828DA1B2B518C00859D13 /* title@2x.png in Resources */,
 				2D2EC0ED1B2790E6009E84EB /* email_inactive.png in Resources */,
 				2D8828BC1B2B472800859D13 /* folder_active_blue@2x.png in Resources */,

@@ -64,7 +64,7 @@
     scrollView.maximumZoomScale = 1;
     scrollView.minimumZoomScale = 1;
     scrollView.clipsToBounds = YES;
-    scrollView.frame = CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT-100);
+    scrollView.frame = CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT-110);
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     scrollView.gridDelegate = self;
     
@@ -156,6 +156,8 @@
            [scrollView insertPicture:placeholder withAssetURL:nil indexImage:imageInfo];
         }];
     }
+    
+    
     
 }
 

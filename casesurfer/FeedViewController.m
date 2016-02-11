@@ -217,7 +217,6 @@
         int sender = [[notificable valueForKey:@"sender_id"] intValue];
 
         
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         int uId = [[defaults objectForKey:@"UserId"] intValue] ;
@@ -263,8 +262,8 @@
                 [view removeFromSuperview];
             }
         }
-       // UIView *sep = [util addSeparator:[self textH:[notificable valueForKeyPath:@"message"]]+40];
-       // [cell addSubview:sep];
+        UIView *sep = [util addSeparator:[self textH:[notificable valueForKeyPath:@"message"]]+40];
+        [cell addSubview:sep];
     }
     
     [cell.contentView clearsContextBeforeDrawing];
