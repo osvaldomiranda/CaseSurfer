@@ -48,14 +48,9 @@
     self.uploadingVisible = NO;
     [self.view addSubview:self.upLoadingView];
     
-    
-    self.page = 1;
-    readNextPage = false;
-    
-    
     feedTableView.separatorColor = [UIColor clearColor];
     itemsArray = [[NSMutableArray alloc] init];
-    [self refrechData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +61,11 @@
 {
     [super viewWillAppear:YES];
     
+    self.page = 1;
+    readNextPage = false;
+    
+    [self refrechData];
+    
 }
 
 
@@ -75,7 +75,6 @@
     NSNumber *p= [[NSNumber alloc] initWithInt:self.page];
     NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
     Notification *notification = [[Notification alloc] initWithParams:notificationParams];
-
     
     [notification index:notificationParams Success:^(NSArray *items) {
         [self saveNotificationsCache:items];
@@ -106,7 +105,26 @@
 }
 -(void) fillImtensArray:(NSArray *) items{
     //[itemsArray removeAllObjects];
+    
+    //******** del notifications deleted
     bool exist = false;
+  /*  int i = 0;
+    for (NSMutableDictionary *item in itemsArray) {
+        exist = false;
+        for (NSMutableDictionary *iarray in itemsArray) {
+            if ([item valueForKeyPath:@"id"] == [iarray valueForKeyPath:@"id"] ) {
+                exist = true;
+            }
+        }
+        if (!exist) {
+            [itemsArray removeObjectAtIndex:i];
+        }
+        i++;
+    }
+    */
+    
+    //******** add new notifications
+    exist = false;
     for (NSMutableDictionary *item in items) {
         exist = false;
         for (NSMutableDictionary *iarray in itemsArray) {
@@ -118,6 +136,7 @@
              [itemsArray addObject:item];
         }
     }
+    
     [self orderArray:itemsArray];
     
     NSArray *newArray = [[NSOrderedSet orderedSetWithArray:itemsArray] array];

@@ -27,7 +27,14 @@
     [super viewDidLoad];
     self.albums = [[NSMutableArray alloc] init];
     self.albumIds = [[NSMutableArray alloc] init];
-
+    
+    
+    for (IndexableImageView *image in self.photos){
+    
+        NSData *imageData = UIImageJPEGRepresentation(image.image, 1.0);
+    
+        NSLog(@"Size of Image(K bytes):%lu",(unsigned long)[imageData length]/1024);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

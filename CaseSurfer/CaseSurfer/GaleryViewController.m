@@ -25,6 +25,8 @@
 
     self.zoomScrollView.hidden = TRUE;
     
+   
+    
     [self setScroll];
     [self fillImages];
     [self setPageControlInScroll];
@@ -127,9 +129,11 @@
 #pragma Zoom
 
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {
+    
     CGFloat newZoomScale = self.scrollView.zoomScale / 3.0f;
-    newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
+    newZoomScale = MIN(newZoomScale, self.scrollView.minimumZoomScale);
     [self.zoomScrollView setZoomScale:newZoomScale animated:YES];
+    
 }
 
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
@@ -146,7 +150,6 @@
     }
     else {
         self.inZoom = YES;
-        
         int i=0;
         for (UIImageView *v in self.scrollView.subviews) {
             if (i==self.page) {
@@ -154,10 +157,20 @@
             }
             i++;
         }
-        rectToZoomTo = CGRectMake(location.x+2 -(self.page*SCREEN_WIDTH), location.y-60, 0,0  );
-        self.zoomScrollView.hidden = NO;
+        
+        
+    //    rectToZoomTo = CGRectMake(location.x, location.y,180,180  );
         self.scrollView.hidden = YES;
-        [self.zoomScrollView zoomToRect:rectToZoomTo animated:YES];
+        self.zoomScrollView.hidden = NO;
+
+     //   [self.zoomScrollView zoomToRect:rectToZoomTo animated:NO];
+        CGFloat newZoomScale = self.scrollView.zoomScale*3.0f;
+        newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
+        [self.zoomScrollView setZoomScale:newZoomScale animated:YES];
+        
+
+    //    [self.zoomScrollView zoomToRect:rectToZoomTo animated:YES];
+
     }
 }
 
@@ -165,6 +178,7 @@
 
 
 - (void)centerScrollViewContents {
+    
     CGSize boundsSize = self.zoomScrollView.bounds.size;
     CGRect contentsFrame = self.imageView.frame;
     
@@ -180,6 +194,7 @@
         contentsFrame.origin.y = 0.0f;
     }
     self.imageView.frame = contentsFrame;
+    
 }
 #pragma endZoom
 
@@ -205,9 +220,11 @@
 
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+
     if (scrollView.tag == 0) {
         return nil;
     }
+ 
     return self.imageView;
 }
 

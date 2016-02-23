@@ -24,11 +24,14 @@
 @property (nonatomic, assign) int indexImage;
 @property (nonatomic, assign) BOOL inCropp;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
 - (void) setOriginalImage:(UIImage *)originalImage;
 - (IBAction)trashImage:(id)sender;
 
 - (IBAction)back:(id)sender ;
 - (IBAction)createCase:(id)sender;
-- (IBAction) SetCroppedImage:(id)sender;
-- (IBAction) okCroppedImage:(id)sender;
+- (IBAction)SetCroppedImage:(id)sender;
+- (IBAction)okCroppedImage:(id)sender;
 @end

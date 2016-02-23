@@ -83,20 +83,18 @@ UIView *commentView;
 
 
 -(void) fillCase: (NSMutableDictionary*) item{
-    comments = [item valueForKeyPath:@"comments"];
-   // [self orderArray:comments];
-    
+    [self orderArray:[item valueForKeyPath:@"comments"]];
     [self.tblComments reloadData];
 }
 
 - (void) orderArray:(NSMutableArray *) arr{
-
-    NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
-    
-    NSArray *descriptors = [NSArray arrayWithObjects:hopProfileDescriptor, nil];
-    NSArray *sortedArrayOfDictionaries = [arr sortedArrayUsingDescriptors:descriptors];
     
     [comments removeAllObjects];
+    
+    NSSortDescriptor *hopProfileDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSArray *descriptors = [NSArray arrayWithObjects:hopProfileDescriptor, nil];
+    NSArray *sortedArrayOfDictionaries = [arr sortedArrayUsingDescriptors:descriptors];
+
     for (NSMutableDictionary *item in sortedArrayOfDictionaries) {
         [comments addObject:item];
     }

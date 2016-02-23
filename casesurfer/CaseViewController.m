@@ -78,6 +78,7 @@
    // NSLog(@"ITEM %@",item);
     
     NSString *patient =  [item valueForKeyPath:@"patient"];
+    self.ownerUser = [[item valueForKeyPath:@"user_id"] intValue];
     
     Session *session= [[Session alloc] init];
     int myId =  [session.getUserId intValue];
@@ -99,12 +100,13 @@
     self.participants = [item valueForKeyPath:@"participants"];
   //  [self orderArray:self.comments];
     self.images = [item valueForKeyPath:@"medcase_images"];
-    self.ownerUser = [[item valueForKeyPath:@"user_id"] intValue];
     
     NSString *lblPartic = [NSString stringWithFormat:@"%lu Participants", (unsigned long)self.participants.count ];
     if (self.participants.count == 1) {
         lblPartic = [NSString stringWithFormat:@"%lu Participant", (unsigned long)self.participants.count ];
     }
+    
+
     
     self.lblParticipants.text = lblPartic;
     

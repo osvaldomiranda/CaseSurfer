@@ -14,6 +14,7 @@
 #import "MedCase.h"
 #import "NewAlbumViewController.h"
 #import "SearchCase.h"
+#import "Session.h"
 
 @interface ListCaseTableViewController ()
 
@@ -154,6 +155,18 @@
         NSArray *images = [infoCase valueForKeyPath:@"images"];
         NSURL *urlCaseImage = [self urlFirsImage:images];
         
+         ;
+        
+        Session *session= [[Session alloc] init];
+        int myId =  [session.getUserId intValue];
+        
+       // NSLog(@"%@", infoCase);
+        
+        if (myId != [[infoCase valueForKeyPath:@"user_id"] intValue]) {
+            patient = [self anonimize: [infoCase valueForKeyPath:@"patient"]];
+        }
+        
+        
         cell.caseId = [[infoCase valueForKeyPath:@"id"] intValue];
         cell.lblTitle.text = [infoCase valueForKeyPath:@"title"];
         cell.lblData.text = [NSString stringWithFormat:@"%@, %@, %@ years old", patient, gender, age ];
@@ -260,6 +273,19 @@
     return urlCaseImage;
 }
 
+- (NSString *)anonimize:(NSString *) fullname {
+    
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [fullname componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    for (NSString * word in words) {
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringToIndex:1];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+        }
+    }
+    
+    return firstCharacters;
+}
 
 
 
