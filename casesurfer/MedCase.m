@@ -93,15 +93,15 @@
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if(data.length > 0)
-        {
-            NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-                    NSLog(@"RESP %@",[resp class]);
-  //          successBlock(resp);
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
+        
+        NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"RESP %@",[resp class]);
+
+        
+        //TO DO: notificar error
+        [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
                                                                 object:nil];
-        }
+        
     }];
     
 }
@@ -109,7 +109,7 @@
 -(void) edit {
     
     NSDictionary *medcase = @{@"title": self.title,
-                              @"album_id":self.album_id,
+          //                    @"album_id":self.album_id,
                               @"patient": self.patient,
                               @"patient_age": self.patient_age,
                               @"patient_gender": self.patient_gender,
@@ -188,16 +188,17 @@
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     
+    
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if(data.length > 0)
-        {
-            NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"RESP %@",[resp class]);
-            //          successBlock(resp);
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
+    
+        NSString *resp = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"RESP %@",[resp class]);
+        
+         //TO DO: notificar error
+        [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
                                                                 object:nil];
-        }
+
     }];
     
 }

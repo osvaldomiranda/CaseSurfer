@@ -17,6 +17,7 @@
 #import "rollUpdateViewController.h"
 #import "rollGridChoseImageViewController.h"
 #import "UIImageView+WebCache.h"
+#import "Utilities.h"
 
 @interface UpdateCaseTableView ()
 
@@ -38,9 +39,6 @@
     
     [self setScrollViewProperties];
     [self setImages];
-
-    
-  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +52,6 @@
     [self loadAlbums];
   
     [scrollView startEditMode];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -148,6 +145,7 @@
 }
 #pragma END GridScrollView
 
+
 - (void) delImageAtIndex:(int)index {
     
     if (self.originalImages.count > 1) {
@@ -168,7 +166,7 @@
 
 }
 
-#pragma rollUpdate
+#pragma rollUpdateDelegate
 - (void)selectImages:(NSMutableArray *)images{
     
     [scrollView clearGrid];
@@ -179,13 +177,12 @@
         IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image.image andUrl:image.assetURL andImageInfo:image.imageInfo];
         
         [self.originalImages insertObject:indexableImage atIndex:0];
-        [self.uploadNewImages insertObject:indexableImage atIndex:0];
-        [self fillNewImage];
+        [self.photosUpload insertObject:indexableImage atIndex:0];
     }
     
     [self fillHorizontalView];
 }
-#pragma END rollUpdate
+#pragma END rollUpdateDelegate
 
 
 
@@ -252,6 +249,7 @@
 
 
 - (IBAction)updateCase:(id)sender {
+    
     if (![self.txtTitle.text isValidText]) {
         [UIAlertView alertViewOopsWithmessage:@"You must place a valid Title."];
     } else if (![self.txtPatient.text isValidText]) {
@@ -265,13 +263,12 @@
     } else if(self.selectedAge == nil){
         [UIAlertView alertViewOopsWithmessage:@"You must select an Age."];
     } else {
-        NSInteger row = [self.albums indexOfObjectIdenticalTo:self.selectedAlbum];
+
         MedCase *medCase = [[MedCase alloc] init];
         medCase.id = self.caseId;
         
-        
         medCase.title = self.txtTitle.text;
-        medCase.album_id = self.albumIds[row];
+
         medCase.patient = self.txtPatient.text;
         medCase.patient_age = self.selectedAge;
         medCase.patient_gender = self.selectedGender;
@@ -280,6 +277,8 @@
         medCase.images = self.photosUpload;
         [medCase edit];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:upLoadingObserver
+                                                            object:nil];
         
         [self.navigationController setNavigationBarHidden:TRUE];
         [[NSNotificationCenter defaultCenter] postNotificationName:loginObserver
@@ -372,41 +371,6 @@
                           atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
-
--(void) fillNewImage{
-        IndexableImageView *img = [self.uploadNewImages objectAtIndex:0];
-        
-        ALAssetsLibrary *assetsL = [[ALAssetsLibrary alloc] init];
-        
-        [assetsL assetForURL: img.assetURL
-                 resultBlock:^(ALAsset *asset){
-                     if (asset != nil){
-                         ALAssetRepresentation *repr = [asset defaultRepresentation];
-                         UIImage *_img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
-                         
-                         UIImage *imagePrev = _img;
-                         int a = imagePrev.size.height*640/imagePrev.size.width  ;
-                         UIImage *imageFinal = [self imageWithImage:_img convertToSize: CGSizeMake(640,a )];
-                         
-                         img.image = imageFinal;
-                         
-                         [self.photosUpload addObject:img];
-                         
-                     }
-                 }failureBlock:^(NSError *error) {
-            //         NSLog(@"error: %@", error);
-                 }
-         ];
-      
-}
-
-- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return destImage;
-}
 
 
 

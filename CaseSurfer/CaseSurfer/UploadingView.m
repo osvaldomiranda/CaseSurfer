@@ -28,7 +28,7 @@
         loadingMessage.textAlignment = NSTextAlignmentCenter;
         [loadingMessage setFont:[UIFont systemFontOfSize:10.0f]];
         [loadingMessage setTextColor:greenColor];
-        loadingMessage.frame = CGRectMake(137, 30, 75, 30);
+        loadingMessage.frame = CGRectMake(137, 30, 100, 30);
         [self addSubview:loadingMessage];
     }
     return self;

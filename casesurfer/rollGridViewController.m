@@ -279,12 +279,7 @@
             } else {
                 if (assetURL != NULL) {
                     
-                    UIImage *imagePrev = img;
-                //    int a = imagePrev.size.height*640/imagePrev.size.width  ;
-                    
                     UIImage *imageFinal = [self squareImageWithImage:img scaledToSize: CGSizeMake(640,640)];
-                    
-                   // UIImage *imageFinal = [self imageWithImage:img convertToSize: CGSizeMake(640,a)];
                     
                     IndexableImageView *image = [[IndexableImageView alloc] initWithImage:imageFinal andUrl:assetURL andImageInfo:nil];
                     [self addImageToArray:image];
@@ -318,7 +313,7 @@
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         CropViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"CropView"];
-        
+        cController.isNewCase = true;
         [cController setPhotos: self.photos];
         
         self.hidesBottomBarWhenPushed =  YES;
@@ -512,16 +507,6 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
-    
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    
-    return destImage;
-}
 
 - (UIImage *)squareImageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     double ratio;

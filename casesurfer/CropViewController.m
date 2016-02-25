@@ -75,6 +75,7 @@
 -(void) fillHorizontalView{
     
     int i = 0 ;
+
     for (IndexableImageView *img in self.photos){
         ALAssetsLibrary *assetsL = [[ALAssetsLibrary alloc] init];
         
@@ -139,7 +140,13 @@
 - (IBAction)back:(id)sender {
     [scrollView clearGrid];
     self.photos = nil;
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.isNewCase) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
+    }
+    
 }
 
 - (IBAction)createCase:(id)sender {
@@ -150,17 +157,24 @@
         [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
     }
     else{
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CreateCaseTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewCase"];
         
-        [cController setPhotos: self.photosUpload];
-        
-        self.hidesBottomBarWhenPushed =  YES;
-        [self.navigationController pushViewController:cController animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
-    }
-    
+        if (self.isNewCase) {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            CreateCaseTableViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"NewCase"];
+            
+            [cController setPhotos: self.photosUpload];
+            
+            self.hidesBottomBarWhenPushed =  YES;
+            [self.navigationController pushViewController:cController animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }
+        else{
+            
+            [self.delegate selectImages:self.photosUpload];
+            [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
 
+        }
+    }
 }
 
 - (IBAction) SetCroppedImage:(id)sender {

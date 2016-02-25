@@ -11,9 +11,11 @@
 #import "rollUpdateViewController.h"
 
 
+
 @interface UpdateCaseTableView : UITableViewController <horizontalGridDelegate, rollUpdateDelegate>
 
 @property (nonatomic, retain) HorizontalGrid *scrollView;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 @property (weak, nonatomic) IBOutlet UITextField *txtDescription;

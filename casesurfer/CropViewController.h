@@ -10,9 +10,16 @@
 #import "HorizontalGrid.h"
 #import "CropInterface.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+@protocol cropDelegate
+
+- (void)selectImages:(NSMutableArray *)images;
+
+@end
 
 
 @interface CropViewController : UIViewController<horizontalGridDelegate>
+
+@property (nonatomic, retain) id<cropDelegate> delegate;
 
 @property (nonatomic, retain) HorizontalGrid *scrollView;
 @property (nonatomic, assign) NSMutableArray *photos;
@@ -23,6 +30,8 @@
 @property (nonatomic, strong) CropInterface *cropper;
 @property (nonatomic, assign) int indexImage;
 @property (nonatomic, assign) BOOL inCropp;
+@property (nonatomic, assign) BOOL isNewCase;
+
 
 
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;

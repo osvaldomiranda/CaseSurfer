@@ -734,8 +734,7 @@
                                                             <exclude reference="nUd-p6-2U2"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="80" y="11" width="169" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="nUd-p6-2U2"/>
                                                         </mask>
@@ -2650,7 +2649,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="rO7-zg-mPM"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="169" y="11" width="80" height="18"/>
                                                         <mask key="constraints">
                                                             <include reference="ayr-nh-0wC"/>
                                                             <include reference="rO7-zg-mPM"/>
@@ -2775,19 +2775,19 @@ If images are find to not accomplish these specifications, they will be removed.
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="4gu-mt-dSE"/>
+                                                    <exclude reference="GKh-uI-l68"/>
+                                                    <exclude reference="M8Z-tz-et1"/>
                                                     <exclude reference="piF-bJ-pmA"/>
                                                     <exclude reference="vP4-31-oo3"/>
                                                     <exclude reference="MW4-AA-wy6"/>
                                                     <exclude reference="ff4-xx-dA6"/>
-                                                    <exclude reference="4gu-mt-dSE"/>
-                                                    <exclude reference="GKh-uI-l68"/>
-                                                    <exclude reference="M8Z-tz-et1"/>
+                                                    <exclude reference="Fub-4v-KwA"/>
+                                                    <exclude reference="nub-PS-boE"/>
                                                     <exclude reference="5dY-yd-YPh"/>
                                                     <exclude reference="Che-0l-wXE"/>
                                                     <exclude reference="ctA-KP-tRx"/>
                                                     <exclude reference="wHh-VU-zjR"/>
-                                                    <exclude reference="Fub-4v-KwA"/>
-                                                    <exclude reference="nub-PS-boE"/>
                                                     <exclude reference="3dS-8I-Btv"/>
                                                     <exclude reference="IY1-nq-ZmU"/>
                                                     <exclude reference="hRJ-9C-7lY"/>
@@ -2801,19 +2801,19 @@ If images are find to not accomplish these specifications, they will be removed.
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="constraints">
+                                                    <include reference="4gu-mt-dSE"/>
+                                                    <include reference="GKh-uI-l68"/>
+                                                    <include reference="M8Z-tz-et1"/>
                                                     <include reference="piF-bJ-pmA"/>
                                                     <include reference="vP4-31-oo3"/>
                                                     <include reference="MW4-AA-wy6"/>
                                                     <include reference="ff4-xx-dA6"/>
-                                                    <include reference="4gu-mt-dSE"/>
-                                                    <include reference="GKh-uI-l68"/>
-                                                    <include reference="M8Z-tz-et1"/>
+                                                    <include reference="Fub-4v-KwA"/>
+                                                    <include reference="nub-PS-boE"/>
                                                     <include reference="5dY-yd-YPh"/>
                                                     <include reference="Che-0l-wXE"/>
                                                     <include reference="ctA-KP-tRx"/>
                                                     <include reference="wHh-VU-zjR"/>
-                                                    <include reference="Fub-4v-KwA"/>
-                                                    <include reference="nub-PS-boE"/>
                                                     <include reference="3dS-8I-Btv"/>
                                                     <include reference="IY1-nq-ZmU"/>
                                                     <include reference="hRJ-9C-7lY"/>
@@ -2907,7 +2907,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="ioT-M5-X2G"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="246" y="8" width="66" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="NSm-yv-kV0"/>
                                                             <include reference="ioT-M5-X2G"/>
@@ -2964,7 +2965,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="elW-rH-BgQ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="179" y="8" width="59" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="2Gg-d2-y24"/>
                                                             <include reference="elW-rH-BgQ"/>
@@ -2994,10 +2996,10 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <exclude reference="BxD-bS-eQx"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="EJ0-6S-V4F"/>
                                                     <exclude reference="ZoX-l1-hwK"/>
                                                     <exclude reference="cwP-A4-Sm4"/>
                                                     <exclude reference="eik-nI-ThY"/>
+                                                    <exclude reference="EJ0-6S-V4F"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -3013,10 +3015,10 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <include reference="BxD-bS-eQx"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="EJ0-6S-V4F"/>
                                                     <include reference="ZoX-l1-hwK"/>
                                                     <include reference="cwP-A4-Sm4"/>
                                                     <include reference="eik-nI-ThY"/>
+                                                    <include reference="EJ0-6S-V4F"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -5971,7 +5973,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                                 <constraint firstAttribute="width" constant="305" id="tBL-jc-pqP"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="5Bg-jo-4GI"/>
@@ -6096,7 +6098,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                                 <constraint firstAttribute="height" constant="30" id="av4-mH-KZE"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="MSI-Fr-1nq"/>
@@ -6186,8 +6188,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="Kg5-Yz-LXe"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="68" y="0.0" width="249" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Kg5-Yz-LXe"/>
                                                         </mask>
@@ -9227,7 +9228,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                                 <constraint firstAttribute="height" constant="30" id="KOy-9u-0f2"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="EVy-35-Gac"/>
@@ -9352,7 +9353,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                                 <constraint firstAttribute="width" constant="305" id="t3H-Mr-n4H"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="KpQ-jb-gf9"/>
@@ -9442,8 +9443,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="uRP-gG-R8s"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="68" y="0.0" width="249" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="uRP-gG-R8s"/>
                                                         </mask>
@@ -9735,7 +9735,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                                 <constraint firstAttribute="width" constant="301" id="o4B-yS-ia5"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="3UZ-Bd-7kP"/>

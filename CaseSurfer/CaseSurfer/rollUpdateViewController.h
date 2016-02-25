@@ -9,17 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "HorizontalGrid.h"
+#import "CropViewController.h"
 @protocol rollUpdateDelegate
 
 - (void)selectImages:(NSMutableArray *)images;
 
 @end
 
-@interface rollUpdateViewController : UIViewController <GridScrollViewDelegate>
+@interface rollUpdateViewController : UIViewController <GridScrollViewDelegate, UIImagePickerControllerDelegate, horizontalGridDelegate, cropDelegate>
 
 @property (nonatomic, retain) id<rollUpdateDelegate> delegate;
 
 @property (nonatomic, retain) GridScrollView *scrollView;
+@property (nonatomic, retain) HorizontalGrid *scrollViewCover;
 @property (nonatomic, assign) UIImage *imageFull;
 @property (nonatomic, assign) NSString *collectionId;
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
