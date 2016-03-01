@@ -10,6 +10,7 @@
 #import "HorizontalGrid.h"
 #import "CropInterface.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "Utilities.h"
 @protocol cropDelegate
 
 - (void)selectImages:(NSMutableArray *)images;
@@ -28,10 +29,12 @@
 @property (nonatomic, strong) IBOutlet UIImageView *displayImage;
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) CropInterface *cropper;
+@property (nonatomic, strong) Utilities *util;
+@property (weak, nonatomic) NSString *caseId;
+
 @property (nonatomic, assign) int indexImage;
 @property (nonatomic, assign) BOOL inCropp;
 @property (nonatomic, assign) BOOL isNewCase;
-
 
 
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;

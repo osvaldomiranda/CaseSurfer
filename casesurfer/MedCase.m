@@ -98,24 +98,39 @@
         NSLog(@"RESP %@",[resp class]);
 
         
+ 
+        
         //TO DO: notificar error
         [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
                                                                 object:nil];
         
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Upload successful!"
+                                                        message:@""
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        
     }];
     
 }
+
+
     
 -(void) edit {
     
-    NSDictionary *medcase = @{@"title": self.title,
-          //                    @"album_id":self.album_id,
-                              @"patient": self.patient,
-                              @"patient_age": self.patient_age,
-                              @"patient_gender": self.patient_gender,
-                              @"description": self.descript,
-                              @"stars": self.stars
-                              };
+    NSDictionary *medcase = @{};
+    
+    if (self.title != nil) {
+        medcase = @{@"title": self.title,
+                    //                    @"album_id":self.album_id,
+                    @"patient": self.patient,
+                    @"patient_age": self.patient_age,
+                    @"patient_gender": self.patient_gender,
+                    @"description": self.descript,
+                    @"stars": self.stars
+                    };
+    }
     
     NSError *error;
     NSData *medcaseJson = [NSJSONSerialization dataWithJSONObject:medcase options:kNilOptions error:&error];
@@ -198,6 +213,13 @@
          //TO DO: notificar error
         [[NSNotificationCenter defaultCenter] postNotificationName:EndUpLoadingObserver
                                                                 object:nil];
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Update successful!"
+                                                        message:@""
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
 
     }];
     

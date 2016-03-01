@@ -1,3 +1,4 @@
+
 //
 //  CropViewController.m
 //  casesurfer
@@ -10,6 +11,7 @@
 #import "Definitions.h"
 #import "IndexableImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "MedCase.h"
 #import "CreateCaseTableViewController.h"
 
 
@@ -20,6 +22,7 @@
 @implementation CropViewController
 @synthesize scrollView;
 @synthesize assetsLibrary;
+@synthesize util;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,9 +33,7 @@
     self.displayImage.contentMode = UIViewContentModeScaleAspectFit;
     self.displayImage.userInteractionEnabled = YES;
     
-    
-    self.displayImage.image = [self squareImageWithImage:self.originalImage scaledToSize: CGSizeMake(640,640 )];
-  
+    util = [[Utilities alloc] init];
     
     self.indexImage = 0;
     
@@ -42,13 +43,18 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
- 
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:YES];
+    if (self.isNewCase) {
+        [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    } else{
+        [self.nextButton setTitle:@"Save" forState:UIControlStateNormal];
+    }
 }
 
 
@@ -75,7 +81,7 @@
 -(void) fillHorizontalView{
     
     int i = 0 ;
-
+    
     for (IndexableImageView *img in self.photos){
         ALAssetsLibrary *assetsL = [[ALAssetsLibrary alloc] init];
         
@@ -84,29 +90,26 @@
                      if (asset != nil){
                          ALAssetRepresentation *repr = [asset defaultRepresentation];
                          UIImage *_img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
-                         if (i==0){
-                             [self setImageOriginal:_img];
-                         }
+
                          
-                         
-                        // UIImage *imagePrev = _img;
-                        // int a = imagePrev.size.height*640/imagePrev.size.width  ;
-                         
-                         UIImage *imageFinal = [self squareImageWithImage:_img scaledToSize: CGSizeMake(640,640 )];
-                        // UIImage *imageFinal = [self imageWithImage:_img convertToSize: CGSizeMake(640,a )];
+                         UIImage *imageFinal = [util squareImageWithImage:_img];
                          
                          [scrollView insertPicture:imageFinal withAssetURL:img.assetURL index:i];
                          img.image = imageFinal;
                          
                          [self.photosUpload addObject:img];
                          
+                         if (i==0){
+                             [self setImageOriginal:imageFinal];
+                         }
+                         
                          
                      }
                  }failureBlock:^(NSError *error) {
-               //      NSLog(@"error: %@", error);
+                     //      NSLog(@"error: %@", error);
                  }
          ];
-
+        
         i++;
     }
     
@@ -115,7 +118,7 @@
 #pragma GridScrollView
 - (void)selectHImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
     
-   [self setImageOriginal:image];
+    [self setImageOriginal:[util squareImageWithImage:image]];
     self.indexImage = indexImage;
 }
 #pragma END GridScrollView
@@ -124,7 +127,7 @@
 -(void) setImageOriginal:(UIImage *) image{
     [self setOriginalImage:image];
     [self.cropper removeFromSuperview];
-    self.displayImage.image = [self squareImageWithImage:self.originalImage scaledToSize: CGSizeMake(640,640 )];
+    self.displayImage.image = image;
 }
 
 - (IBAction)trashImage:(id)sender{
@@ -144,7 +147,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
+        [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
     }
     
 }
@@ -154,7 +157,11 @@
     if(self.inCropp==YES){
         [self okCroppedImage:self];
         self.inCropp = NO;
-        [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        if (self.isNewCase) {
+            [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        } else{
+            [self.nextButton setTitle:@"Save" forState:UIControlStateNormal];
+        }
     }
     else{
         
@@ -169,19 +176,44 @@
             self.hidesBottomBarWhenPushed = NO;
         }
         else{
-            
-            [self.delegate selectImages:self.photosUpload];
-            [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
-
+            [self updateCase:self];
         }
     }
 }
+
+- (IBAction)updateCase:(id)sender {
+    
+        MedCase *medCase = [[MedCase alloc] init];
+        medCase.id = self.caseId;
+        
+        medCase.title = nil;
+        medCase.patient = nil;
+        medCase.patient_age = nil;
+        medCase.patient_gender = nil;
+        medCase.descript = nil;
+        medCase.stars = @"0";
+        medCase.images = self.photosUpload;
+        [medCase edit];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:upLoadingObserver
+                                                            object:nil];
+        
+        [self.navigationController setNavigationBarHidden:TRUE];
+        [[NSNotificationCenter defaultCenter] postNotificationName:loginObserver
+                                                            object:nil];
+}
+
 
 - (IBAction) SetCroppedImage:(id)sender {
     if (self.inCropp) {
         [self.cropper removeFromSuperview];
         self.inCropp = NO;
-        [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        if (self.isNewCase) {
+            [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        }else{
+            [self.nextButton setTitle:@"Save" forState:UIControlStateNormal];
+        }
+        
     }
     else{
         [self.cropper removeFromSuperview];
@@ -195,26 +227,26 @@
 
 - (IBAction) okCroppedImage:(id)sender {
     
-     UIImage *croppedImage = [self.cropper getCroppedImage];
-     
-     [self setImageOriginal: croppedImage];
+    UIImage *croppedImage = [self.cropper getCroppedImage];
     
-     UIImage *imagePrev = croppedImage;
-     int a = imagePrev.size.height*640/imagePrev.size.width  ;
-     UIImage *imageFinal = [self imageWithImage:croppedImage convertToSize: CGSizeMake(640,a )];
-
+    [self setImageOriginal: croppedImage];
     
-     IndexableImageView *img = [[IndexableImageView alloc] initWithImage:imageFinal andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
+    UIImage *imagePrev = croppedImage;
+    int a = imagePrev.size.height*640/imagePrev.size.width  ;
+    UIImage *imageFinal = [self imageWithImage:croppedImage convertToSize: CGSizeMake(640,a )];
     
-     [self.photosUpload replaceObjectAtIndex:self.indexImage withObject:img];
-     
-     [scrollView clearGrid];
-     
-     int i=0;
-     for (IndexableImageView *view in self.photos ) {
-     [scrollView insertPicture: view.image withAssetURL:view.assetURL index:i];
-     i++;
-     }
+    
+    IndexableImageView *img = [[IndexableImageView alloc] initWithImage:imageFinal andAssetURL:nil andIndex:[NSNumber numberWithInt:self.indexImage]];
+    
+    [self.photosUpload replaceObjectAtIndex:self.indexImage withObject:img];
+    
+    [scrollView clearGrid];
+    
+    int i=0;
+    for (IndexableImageView *view in self.photos ) {
+        [scrollView insertPicture: view.image withAssetURL:view.assetURL index:i];
+        i++;
+    }
     
 }
 
@@ -224,51 +256,13 @@
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-
+    
     
     return destImage;
 }
 
 
-- (UIImage *)squareImageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    double ratio;
-    double delta;
-    CGPoint offset;
-    
-    //make a new square size, that is the resized imaged width
-    CGSize sz = CGSizeMake(newSize.width, newSize.width);
-    
-    //figure out if the picture is landscape or portrait, then
-    //calculate scale factor and offset
-    if (image.size.width > image.size.height) {
-        ratio = newSize.width / image.size.width;
-        delta = (ratio*image.size.width - ratio*image.size.height);
-        offset = CGPointMake(delta/2, 0);
-    } else {
-        ratio = newSize.width / image.size.height;
-        delta = (ratio*image.size.height - ratio*image.size.width);
-        offset = CGPointMake(0, delta/2);
-    }
-    
-    //make the final clipping rect based on the calculated values
-    CGRect clipRect = CGRectMake(-offset.x, -offset.y,
-                                 (ratio * image.size.width) + delta,
-                                 (ratio * image.size.height) + delta);
-    
-    
-    //start a new context, with scale factor 0.0 so retina displays get
-    //high quality image
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-        UIGraphicsBeginImageContextWithOptions(sz, YES, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(sz);
-    }
-    UIRectClip(clipRect);
-    [image drawInRect:clipRect];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
+
+
 
 @end

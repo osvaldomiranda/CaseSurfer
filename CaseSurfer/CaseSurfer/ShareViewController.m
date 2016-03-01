@@ -149,6 +149,14 @@
         NSMutableDictionary *medcaseParams =  @{@"medcase" : shareData}.mutableCopy;
         MedCase *medcase = [[MedCase alloc] init];
         [medcase update:self.caseId params:medcaseParams Success:^(NSMutableDictionary *items) {
+            
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Your case has been shared!"
+                                                            message:@""
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+            
             [self.navigationController popViewControllerAnimated:TRUE];
         } Error:^(NSError *error) {
             

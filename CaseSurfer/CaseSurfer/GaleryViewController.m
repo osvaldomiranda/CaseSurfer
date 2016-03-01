@@ -158,22 +158,46 @@
             i++;
         }
         
-        
-    //    rectToZoomTo = CGRectMake(location.x, location.y,180,180  );
         self.scrollView.hidden = YES;
         self.zoomScrollView.hidden = NO;
 
-     //   [self.zoomScrollView zoomToRect:rectToZoomTo animated:NO];
         CGFloat newZoomScale = self.scrollView.zoomScale*3.0f;
         newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
-        [self.zoomScrollView setZoomScale:newZoomScale animated:YES];
+      
+        location.x = location.x - (380*self.page);
         
-
-    //    [self.zoomScrollView zoomToRect:rectToZoomTo animated:YES];
-
+        [self zoomToPoint:location withScale:newZoomScale animated:YES];
+        
     }
+    
 }
 
+- (void)zoomToPoint:(CGPoint)zoomPoint withScale: (CGFloat)scale animated: (BOOL)animated
+{
+    //Normalize current content size back to content scale of 1.0f
+    CGSize contentSize;
+    contentSize.width = (self.zoomScrollView.contentSize.width / self.zoomScrollView.zoomScale);
+    contentSize.height = (self.zoomScrollView.contentSize.height / self.zoomScrollView.zoomScale);
+    
+    //translate the zoom point to relative to the content rect
+    zoomPoint.x = (zoomPoint.x / self.zoomScrollView.bounds.size.width) * contentSize.width;
+    zoomPoint.y = (zoomPoint.y / self.zoomScrollView.bounds.size.height) * contentSize.height;
+    
+    //derive the size of the region to zoom to
+    CGSize zoomSize;
+    zoomSize.width = self.zoomScrollView.bounds.size.width / scale;
+    zoomSize.height = self.zoomScrollView.bounds.size.height / scale;
+    
+    //offset the zoom rect so the actual zoom point is in the middle of the rectangle
+    CGRect zoomRect;
+    zoomRect.origin.x = zoomPoint.x - zoomSize.width / 2.0f;
+    zoomRect.origin.y = zoomPoint.y - zoomSize.height / 2.0f;
+    zoomRect.size.width = zoomSize.width;
+    zoomRect.size.height = zoomSize.height;
+    
+    //apply the resize
+    [self.zoomScrollView zoomToRect: zoomRect animated: animated];
+}
 
 
 

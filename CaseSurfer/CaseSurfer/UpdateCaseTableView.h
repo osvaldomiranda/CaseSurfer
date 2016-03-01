@@ -12,7 +12,7 @@
 
 
 
-@interface UpdateCaseTableView : UITableViewController <horizontalGridDelegate, rollUpdateDelegate>
+@interface UpdateCaseTableView : UITableViewController <horizontalGridDelegate>
 
 @property (nonatomic, retain) HorizontalGrid *scrollView;
 
@@ -45,5 +45,4 @@
 - (IBAction)tapAge:(id)sender;
 - (IBAction)updateCase:(id)sender;
 - (IBAction)createAlbum:(id)sender;
-- (IBAction)addImage:(id)sender;
 @end

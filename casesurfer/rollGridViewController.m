@@ -24,6 +24,8 @@
 @synthesize scrollViewH;
 @synthesize scrollViewCover;
 @synthesize assetsLibrary;
+@synthesize cameraButton;
+@synthesize util;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,7 +36,7 @@
     assetsLibrary = [[ALAssetsLibrary alloc] init];
     [self setScrollViewProperties];
     [self setHScrollViewProperties];
-    
+    util = [[Utilities alloc] init];
 
     [self.lblTitle setTextColor:greenColor];
     
@@ -146,6 +148,7 @@
                                              if (result != nil){
                                                  UIImage *img = [UIImage imageWithCGImage:[result thumbnail]];
                                                  [scrollView insertPicture:img withAssetURL:[result valueForProperty:ALAssetPropertyAssetURL] indexImage:nil];
+                                                 
                                              }
                                          }];
                                      }
@@ -153,6 +156,8 @@
                          //            NSLog(@"error: %@", error);
                                  }];
 }
+
+
 
 
 - (void)requestPermissions
@@ -216,6 +221,7 @@
         [self takePhoto];
     }else{
         if (selected) {
+
             [self addImageToArray:image];
         }
         else{
@@ -278,11 +284,10 @@
                 NSLog(@"error");  // oops, error !
             } else {
                 if (assetURL != NULL) {
-                    
-                    UIImage *imageFinal = [self squareImageWithImage:img scaledToSize: CGSizeMake(640,640)];
-                    
+                    UIImage *imageFinal = [util squareImageWithImage:img];
                     IndexableImageView *image = [[IndexableImageView alloc] initWithImage:imageFinal andUrl:assetURL andImageInfo:nil];
                     [self addImageToArray:image];
+                    cameraButton.backgroundColor = gray;
                 }
 
             }  
@@ -388,12 +393,12 @@
 
 
 
+
 - (UIView *) coverView {
-    
-    scrollViewCover = [[HorizontalGrid alloc] initGrid:4 gridHeight:70];
+    scrollViewCover = [[HorizontalGrid alloc] initGrid:4 gridHeight:100];
     
     scrollViewCover.contentMode = (UIViewContentModeScaleAspectFill);
-    scrollViewCover.contentSize =  CGSizeMake(SCREEN_WIDTH,70);
+    scrollViewCover.contentSize =  CGSizeMake(SCREEN_WIDTH,100);
     scrollViewCover.pagingEnabled = NO;
     scrollViewCover.showsVerticalScrollIndicator = NO;
     scrollViewCover.showsHorizontalScrollIndicator = YES;
@@ -403,14 +408,14 @@
     scrollViewCover.maximumZoomScale = 1;
     scrollViewCover.minimumZoomScale = 1;
     scrollViewCover.clipsToBounds = YES;
-    scrollViewCover.frame = CGRectMake(0, SCREEN_HEIGHT-135, SCREEN_WIDTH, 70);
+    scrollViewCover.frame = CGRectMake(0, SCREEN_HEIGHT-170, SCREEN_WIDTH, 100);
     scrollViewCover.gridDelegate = self;
     
     UIColor *normal   =graySep;
     
     CGFloat screenHeight = [UIScreen mainScreen].applicationFrame.size.height;
     
-    UIView *cameraCover =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, screenHeight)];;
+    UIView *cameraCover =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, screenHeight)];
     
     UIButton *cancelButton = [[UIButton alloc] init];
     UIImage *imageBcancel = [UIImage imageNamed:@"icon_action_button_cancel.png"];
@@ -425,8 +430,8 @@
     [cancelButton setBackgroundColor:normal];
     
     // ******************************
-    UIButton *cameraButton;
     
+    cameraButton = [[UIButton alloc] init];
     UIImage *imageB3 = [UIImage imageNamed:@"icon_bar_button_shot.png"];
     cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -460,18 +465,26 @@
     [rollButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
     [rollButton setBackgroundColor:normal];
     
-    Utilities *util = [[Utilities alloc] init];
-    UIView *sep = [util addSeparator:SCREEN_HEIGHT-139];
-    [cameraCover addSubview:sep];
     
-    UIView *sepB = [util addSeparator:SCREEN_HEIGHT-64];
-    [cameraCover addSubview:sepB];
+    UIView *cameraMaskTop =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    UIView *cameraMaskFoot =  [[UIView alloc] initWithFrame:CGRectMake(0,SCREEN_WIDTH+70, SCREEN_WIDTH, SCREEN_HEIGHT-(SCREEN_WIDTH+70))];
+    cameraMaskTop.backgroundColor = [UIColor whiteColor];
+    cameraMaskFoot.backgroundColor = [UIColor whiteColor];
+    
+    Utilities *util = [[Utilities alloc] init];
+    UIView *sep = [util addSeparator:0];
+    [cameraMaskFoot addSubview:sep];
+    
+    UIView *sepB = [util addSeparator:113];
+    [cameraMaskFoot addSubview:sepB];
     
     rollButton   .frame = CGRectMake(0  , screenHeight-35, 125, 50);
     cameraButton .frame = CGRectMake(125, screenHeight-35, 70 , 50);
     cancelButton .frame = CGRectMake(195, screenHeight-35, 125, 50);
-    frontCam     .frame = CGRectMake(250, 25, 50, 50);
+    frontCam     .frame = CGRectMake(250, 0, 50, 50);
     
+    [cameraCover addSubview:cameraMaskTop];
+    [cameraCover addSubview:cameraMaskFoot];
     [cameraCover addSubview:cancelButton];
     [cameraCover addSubview:cameraButton];
     [cameraCover addSubview:rollButton  ];
@@ -480,7 +493,6 @@
     
     return cameraCover;
 }
-
 
 
 - (IBAction) cancelAction:(id)sender{
@@ -499,6 +511,7 @@
 
 
 - (IBAction) cameraAction:(id)sender{
+    cameraButton.backgroundColor = darkGray;
     [self.pickerController takePicture];
 }
 
@@ -508,46 +521,7 @@
 }
 
 
-- (UIImage *)squareImageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    double ratio;
-    double delta;
-    CGPoint offset;
-    
-    //make a new square size, that is the resized imaged width
-    CGSize sz = CGSizeMake(newSize.width, newSize.width);
-    
-    //figure out if the picture is landscape or portrait, then
-    //calculate scale factor and offset
-    if (image.size.width > image.size.height) {
-        ratio = newSize.width / image.size.width;
-        delta = (ratio*image.size.width - ratio*image.size.height);
-        offset = CGPointMake(delta/2, 0);
-    } else {
-        ratio = newSize.width / image.size.height;
-        delta = (ratio*image.size.height - ratio*image.size.width);
-        offset = CGPointMake(0, delta/2);
-    }
-    
-    //make the final clipping rect based on the calculated values
-    CGRect clipRect = CGRectMake(-offset.x, -offset.y,
-                                 (ratio * image.size.width) + delta,
-                                 (ratio * image.size.height) + delta);
-    
-    
-    //start a new context, with scale factor 0.0 so retina displays get
-    //high quality image
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-        UIGraphicsBeginImageContextWithOptions(sz, YES, 0.0);
-    } else {
-        UIGraphicsBeginImageContext(sz);
-    }
-    UIRectClip(clipRect);
-    [image drawInRect:clipRect];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
+
 
 
 @end

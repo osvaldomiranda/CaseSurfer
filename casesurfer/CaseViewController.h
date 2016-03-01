@@ -38,6 +38,7 @@
 - (IBAction)comment:(id)sender;
 - (IBAction)share:(id)sender;
 - (IBAction)participants:(id)sender;
+- (IBAction)addImage:(id)sender;
 
 
 

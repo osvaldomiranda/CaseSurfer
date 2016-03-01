@@ -61,4 +61,14 @@
     return separator;
 }
 
+- (UIImage *)squareImageWithImage:(UIImage *)myimage {
+    UIView *myview = [[UIView alloc] init];
+    myview.frame = CGRectMake(0, 0, 640, 840);
+    self.cropper = [[CropInterface alloc]initWithFrame:myview.bounds Image:myimage andRatio:1];
+    UIImage *croppedImage = [self.cropper getCroppedImage];
+    return croppedImage;
+}
+
+
+
 @end

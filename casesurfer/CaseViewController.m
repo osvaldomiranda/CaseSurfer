@@ -55,7 +55,7 @@
 
 - (void) setToptButtons{
 
-        UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+        UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit Data"
                                                                   style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(editCase:)];
@@ -309,6 +309,13 @@
     }
     
     return firstCharacters;
+}
+
+- (IBAction)addImage:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    rollUpdateViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollUpdate"];
+    cController.caseId = [NSString stringWithFormat:@"%d",self.caseId];
+    [self.navigationController pushViewController:cController animated:YES];
 }
 
 @end

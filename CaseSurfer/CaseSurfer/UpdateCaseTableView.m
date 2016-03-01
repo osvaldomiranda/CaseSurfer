@@ -50,8 +50,6 @@
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:FALSE];
     [self loadAlbums];
-  
-    [scrollView startEditMode];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -87,13 +85,14 @@
     
     scrollView.gridDelegate = self;
     
-    self.viewImages.frame = CGRectMake(88, 11, 280, 70);
+    self.viewImages.frame = CGRectMake(10, 11, 280, 70);
     [self.viewImages addSubview:scrollView];
     
 }
 
 - (void) setImages{
     int i = 0;
+
     for (NSDictionary *imageIdx in self.photos) {
         NSString *id = [imageIdx valueForKeyPath:@"id"];
         NSDictionary *img = [imageIdx valueForKeyPath:@"image"];
@@ -135,7 +134,6 @@
 
         i++;
     }
-    [scrollView startEditMode];
 }
 
 #pragma GridScrollView
@@ -165,24 +163,6 @@
     }
 
 }
-
-#pragma rollUpdateDelegate
-- (void)selectImages:(NSMutableArray *)images{
-    
-    [scrollView clearGrid];
-    
-    self.newImageCount = (int)images.count;
-    
-    for (IndexableImageView *image in images) {
-        IndexableImageView *indexableImage = [[IndexableImageView alloc] initWithImage:image.image andUrl:image.assetURL andImageInfo:image.imageInfo];
-        
-        [self.originalImages insertObject:indexableImage atIndex:0];
-        [self.photosUpload insertObject:indexableImage atIndex:0];
-    }
-    
-    [self fillHorizontalView];
-}
-#pragma END rollUpdateDelegate
 
 
 
@@ -296,12 +276,7 @@
     self.hidesBottomBarWhenPushed = NO;
 }
 
-- (IBAction)addImage:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    rollUpdateViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"rollUpdate"];
-    cController.delegate = self;
-    [self.navigationController pushViewController:cController animated:YES];
-}
+
 
 - (void) hideKeyboard {
     [self.txtTitle resignFirstResponder];

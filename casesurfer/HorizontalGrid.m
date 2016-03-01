@@ -82,7 +82,8 @@
                                ALAssetRepresentation *repr = [asset defaultRepresentation];
                                UIImage *img = [UIImage imageWithCGImage:[repr fullResolutionImage] scale:1.0f orientation:(UIImageOrientation)[repr orientation]];
                                
-                               [tappedView setImage:img];
+                               
+                              // [tappedView setImage:img];
                               
                                [gridDelegate selectHImageWithAssetURL:img indexImage:[tappedView.index intValue] assetUrl:tappedView.assetURL];
                                

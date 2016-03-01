@@ -27,7 +27,13 @@
 @property (nonatomic, assign) NSString *collectionId;
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, retain) NSMutableArray *photos;
+@property (nonatomic, retain) UIImage *fullImage;
+@property (nonatomic, strong) Utilities *util;
+@property (weak, nonatomic) NSString *caseId;
+
+@property (nonatomic, retain) UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
 
 @property (nonatomic, strong) UIImagePickerController *pickerController;
 

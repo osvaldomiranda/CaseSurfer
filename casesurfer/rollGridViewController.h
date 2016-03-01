@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
 #import "HorizontalGrid.h"
+#import "Utilities.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface rollGridViewController : UIViewController <GridScrollViewDelegate, horizontalGridDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
@@ -21,6 +22,8 @@
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, retain) NSMutableArray *photos;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (nonatomic, retain) UIButton *cameraButton;
+@property (nonatomic, strong) Utilities *util;
 
 @property (nonatomic, strong) UIImagePickerController *pickerController;
 
