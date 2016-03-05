@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1969F073-CD70-4919-93CE-D7C039976F0D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CaseSurfer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>497BB21431E82B4BEBC9E03FA72BEA866726264C</key>
+		<string>https://github.com/osvaldomiranda/CaseSurfer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>casesurfer/CaseSurfer</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>497BB21431E82B4BEBC9E03FA72BEA866726264C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/osvaldomiranda/CaseSurfer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>497BB21431E82B4BEBC9E03FA72BEA866726264C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>497BB21431E82B4BEBC9E03FA72BEA866726264C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>casesurfer</string>
+		</dict>
+	</array>
+</dict>
+</plist>
