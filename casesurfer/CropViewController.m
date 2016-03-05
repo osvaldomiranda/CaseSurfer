@@ -43,6 +43,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    NSLog(@"MEMORY WARNING");
     
 }
 
@@ -99,25 +100,24 @@
                          
                          [self.photosUpload addObject:img];
                          
-                         if (i==0){
-                             [self setImageOriginal:imageFinal];
+                         if (i==0) {
+                             self.displayImage.image = imageFinal;
                          }
                          
-                         
+                        
                      }
                  }failureBlock:^(NSError *error) {
                      //      NSLog(@"error: %@", error);
                  }
          ];
-        
         i++;
     }
-    
 }
+
+
 
 #pragma GridScrollView
 - (void)selectHImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
-    
     [self setImageOriginal:[util squareImageWithImage:image]];
     self.indexImage = indexImage;
 }

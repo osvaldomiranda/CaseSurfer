@@ -9,6 +9,7 @@
 #import "FeedCaseTableViewCell.h"
 #import "CaseViewController.h"
 #import "UserViewController.h"
+#import "Definitions.h"
 
 @implementation FeedCaseTableViewCell
 @synthesize userAvatar;
@@ -28,6 +29,8 @@
 {
     [userAvatar.layer setMasksToBounds:YES];
     [userAvatar.layer setCornerRadius:17.5f];
+    
+
 }
 
 - (IBAction)userAction:(id)sender {

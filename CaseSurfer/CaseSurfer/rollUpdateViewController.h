@@ -17,7 +17,7 @@
 
 @end
 
-@interface rollUpdateViewController : UIViewController <GridScrollViewDelegate, UIImagePickerControllerDelegate, horizontalGridDelegate, cropDelegate>
+@interface rollUpdateViewController : UIViewController <GridScrollViewDelegate, UIImagePickerControllerDelegate, horizontalGridDelegate>
 
 @property (nonatomic, retain) id<rollUpdateDelegate> delegate;
 

@@ -2882,13 +2882,13 @@ If images are find to not accomplish these specifications, they will be removed.
                                                         <rect key="frame" x="64" y="27" width="141" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-6Z-PmW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-6Z-PmW">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="11" y="45" width="247" height="25"/>
+                                                        <rect key="frame" x="11" y="45" width="301" height="25"/>
                                                     </variation>
                                                 </label>
                                                 <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9th-XQ-QTX">
@@ -2908,7 +2908,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="ioT-M5-X2G"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="246" y="8" width="66" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="NSm-yv-kV0"/>
                                                             <include reference="ioT-M5-X2G"/>
@@ -2930,10 +2931,23 @@ If images are find to not accomplish these specifications, they will be removed.
                                                         <action selector="caseAction:" destination="0HR-ba-VzG" eventType="touchUpInside" id="3dO-VF-rIZ"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="sNh-IC-kKB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="138" placeholderIntrinsicHeight="128" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="sNh-IC-kKB">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="131" y="99" width="138" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="138" id="lif-NH-sI6"/>
+                                                        <constraint firstAttribute="height" constant="128" id="rBe-QR-S7e"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="lif-NH-sI6"/>
+                                                            <exclude reference="rBe-QR-S7e"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="lif-NH-sI6"/>
+                                                            <include reference="rBe-QR-S7e"/>
+                                                        </mask>
                                                     </variation>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-33-kpl">
@@ -2965,7 +2979,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="elW-rH-BgQ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="179" y="8" width="59" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="2Gg-d2-y24"/>
                                                             <include reference="elW-rH-BgQ"/>
@@ -2978,9 +2993,13 @@ If images are find to not accomplish these specifications, they will be removed.
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BxD-bS-eQx" firstAttribute="top" secondItem="2p8-mB-luE" secondAttribute="top" constant="8" id="EJ0-6S-V4F"/>
+                                                <constraint firstItem="sNh-IC-kKB" firstAttribute="centerX" secondItem="2p8-mB-luE" secondAttribute="centerX" id="IuR-1Q-xbB"/>
                                                 <constraint firstAttribute="trailing" secondItem="9th-XQ-QTX" secondAttribute="trailing" constant="8" id="ZoX-l1-hwK"/>
                                                 <constraint firstItem="9th-XQ-QTX" firstAttribute="top" secondItem="2p8-mB-luE" secondAttribute="top" constant="8" id="cwP-A4-Sm4"/>
                                                 <constraint firstItem="9th-XQ-QTX" firstAttribute="leading" secondItem="BxD-bS-eQx" secondAttribute="trailing" constant="8" id="eik-nI-ThY"/>
+                                                <constraint firstItem="sNh-IC-kKB" firstAttribute="centerY" secondItem="2p8-mB-luE" secondAttribute="centerY" id="vgK-jz-tqf">
+                                                    <variation key="widthClass=compact" constant="42.5"/>
+                                                </constraint>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -2999,6 +3018,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <exclude reference="cwP-A4-Sm4"/>
                                                     <exclude reference="eik-nI-ThY"/>
                                                     <exclude reference="EJ0-6S-V4F"/>
+                                                    <exclude reference="IuR-1Q-xbB"/>
+                                                    <exclude reference="vgK-jz-tqf"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -3018,6 +3039,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <include reference="cwP-A4-Sm4"/>
                                                     <include reference="eik-nI-ThY"/>
                                                     <include reference="EJ0-6S-V4F"/>
+                                                    <include reference="IuR-1Q-xbB"/>
+                                                    <include reference="vgK-jz-tqf"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3136,10 +3159,23 @@ If images are find to not accomplish these specifications, they will be removed.
                                                         <action selector="userAction:" destination="edP-0C-JRg" eventType="touchUpInside" id="6N5-kT-gCW"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-o2-kPt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="caseImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-o2-kPt">
                                                     <rect key="frame" x="47" y="58" width="226" height="211"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="101" y="87" width="197" height="182"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="182" id="Wrx-uK-1ZF"/>
+                                                        <constraint firstAttribute="width" constant="197" id="leJ-uy-6wO"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Wrx-uK-1ZF"/>
+                                                            <exclude reference="leJ-uy-6wO"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="Wrx-uK-1ZF"/>
+                                                            <include reference="leJ-uy-6wO"/>
+                                                        </mask>
                                                     </variation>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sw4-j0-EOV">
@@ -3154,11 +3190,11 @@ If images are find to not accomplish these specifications, they will be removed.
                                                         <action selector="caseAction:" destination="edP-0C-JRg" eventType="touchUpInside" id="YZS-pL-5YC"/>
                                                     </connections>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qjS-xp-8iv">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjS-xp-8iv">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="6" y="42" width="369" height="40"/>
@@ -3168,12 +3204,18 @@ If images are find to not accomplish these specifications, they will be removed.
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="b22-Ry-jmT" secondAttribute="trailing" constant="7" id="HnG-7h-UXE"/>
                                                 <constraint firstItem="b22-Ry-jmT" firstAttribute="top" secondItem="F0u-0q-v7N" secondAttribute="top" constant="10" id="NXb-SS-Xxz"/>
+                                                <constraint firstItem="fqa-o2-kPt" firstAttribute="centerX" secondItem="F0u-0q-v7N" secondAttribute="centerX" id="c27-gf-JAA"/>
+                                                <constraint firstItem="fqa-o2-kPt" firstAttribute="centerY" secondItem="F0u-0q-v7N" secondAttribute="centerY" id="l65-W0-yW1">
+                                                    <variation key="widthClass=compact" constant="30.5"/>
+                                                </constraint>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="qjS-xp-8iv"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="c27-gf-JAA"/>
+                                                    <exclude reference="l65-W0-yW1"/>
                                                     <exclude reference="HnG-7h-UXE"/>
                                                     <exclude reference="NXb-SS-Xxz"/>
                                                 </mask>
@@ -3183,6 +3225,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <include reference="qjS-xp-8iv"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="c27-gf-JAA"/>
+                                                    <include reference="l65-W0-yW1"/>
                                                     <include reference="HnG-7h-UXE"/>
                                                     <include reference="NXb-SS-Xxz"/>
                                                 </mask>

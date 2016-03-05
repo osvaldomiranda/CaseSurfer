@@ -138,32 +138,9 @@
 
 #pragma GridScrollView
 - (void)selectHImageWithAssetURL:(UIImage *)image indexImage:(int)indexImage assetUrl:(NSURL *)assetUrl{
-    [self delImageAtIndex:indexImage];
     
 }
 #pragma END GridScrollView
-
-
-- (void) delImageAtIndex:(int)index {
-    
-    if (self.originalImages.count > 1) {
-        
-        
-        IndexableImageView *image = [self.originalImages objectAtIndex:index];
-        
-        
-        if ([image.imageInfo valueForKeyPath:@"idImageCase"] != NULL ) {
-            [self.delImages addObject:image];
-        }
-        
-        [self.originalImages removeObjectAtIndex:index];
-        
-        [scrollView clearGrid];
-        [self fillHorizontalView];
-    }
-
-}
-
 
 
 

@@ -277,17 +277,15 @@
     
     if (info) {
         UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+       
         
         [assetsLibrary writeImageToSavedPhotosAlbum:[img CGImage] orientation:(ALAssetOrientation)[img imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
-            
             if (error) {
                 NSLog(@"error");  // oops, error !
             } else {
                 if (assetURL != NULL) {
-                    UIImage *imageFinal = [util squareImageWithImage:img];
-                    IndexableImageView *image = [[IndexableImageView alloc] initWithImage:imageFinal andUrl:assetURL andImageInfo:nil];
-                    [self addImageToArray:image];
-                    cameraButton.backgroundColor = gray;
+                    [self getThumbnailwithUrl:assetURL];
+                     cameraButton.backgroundColor = gray;
                 }
 
             }  
@@ -392,10 +390,8 @@
 }
 
 
-
-
 - (UIView *) coverView {
-    scrollViewCover = [[HorizontalGrid alloc] initGrid:4 gridHeight:100];
+    scrollViewCover = [[HorizontalGrid alloc] initGrid:4 gridHeight:(SCREEN_WIDTH-24)/5];
     
     scrollViewCover.contentMode = (UIViewContentModeScaleAspectFill);
     scrollViewCover.contentSize =  CGSizeMake(SCREEN_WIDTH,100);
@@ -408,7 +404,7 @@
     scrollViewCover.maximumZoomScale = 1;
     scrollViewCover.minimumZoomScale = 1;
     scrollViewCover.clipsToBounds = YES;
-    scrollViewCover.frame = CGRectMake(0, SCREEN_HEIGHT-170, SCREEN_WIDTH, 100);
+    scrollViewCover.frame = CGRectMake(0, SCREEN_HEIGHT-140, SCREEN_WIDTH, 100);
     scrollViewCover.gridDelegate = self;
     
     UIColor *normal   =graySep;
@@ -421,9 +417,9 @@
     UIImage *imageBcancel = [UIImage imageNamed:@"icon_action_button_cancel.png"];
     [cancelButton setImage:imageBcancel forState:UIControlStateNormal];
     
-    [cancelButton setTitle:@" Next" forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(rollAction:) forControlEvents:UIControlEventTouchUpInside];
-    [cancelButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
     
     [cancelButton setTitleColor:[UIColor colorWithRed:0.47 green:0.35 blue:0.37 alpha:1]
                        forState:UIControlStateNormal];
@@ -442,6 +438,21 @@
     
     
     // ******************************
+    
+    UIButton *rollButton = [[UIButton alloc] init];
+    
+    UIImage *imageBroll = [UIImage imageNamed:@"icon_action_button_gallery.png"];
+    [rollButton setImage:imageBroll forState:UIControlStateNormal];
+    
+    [rollButton setTitle:@"Next" forState:UIControlStateNormal];
+    [rollButton addTarget:self action:@selector(rollAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rollButton setTitleColor:[UIColor colorWithRed:0.47 green:0.35 blue:0.37 alpha:1]
+                     forState:UIControlStateNormal];
+    [rollButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
+    [rollButton setBackgroundColor:normal];
+    
+    // ******************************
+    
     UIButton *frontCam;
     UIImage *imageFronCam = [UIImage imageNamed:@"front_camera.png"];
     frontCam = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -453,34 +464,24 @@
     
     // ******************************
     
-    UIButton *rollButton = [[UIButton alloc] init];
-    
-    UIImage *imageBroll = [UIImage imageNamed:@"icon_action_button_gallery.png"];
-    [rollButton setImage:imageBroll forState:UIControlStateNormal];
-    
-    [rollButton setTitle:@" Cancel" forState:UIControlStateNormal];
-    [rollButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
-    [rollButton setTitleColor:[UIColor colorWithRed:0.47 green:0.35 blue:0.37 alpha:1]
-                     forState:UIControlStateNormal];
-    [rollButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
-    [rollButton setBackgroundColor:normal];
-    
     
     UIView *cameraMaskTop =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     UIView *cameraMaskFoot =  [[UIView alloc] initWithFrame:CGRectMake(0,SCREEN_WIDTH+70, SCREEN_WIDTH, SCREEN_HEIGHT-(SCREEN_WIDTH+70))];
     cameraMaskTop.backgroundColor = [UIColor whiteColor];
     cameraMaskFoot.backgroundColor = [UIColor whiteColor];
     
-    Utilities *util = [[Utilities alloc] init];
+    
     UIView *sep = [util addSeparator:0];
     [cameraMaskFoot addSubview:sep];
     
-    UIView *sepB = [util addSeparator:113];
-    [cameraMaskFoot addSubview:sepB];
     
-    rollButton   .frame = CGRectMake(0  , screenHeight-35, 125, 50);
-    cameraButton .frame = CGRectMake(125, screenHeight-35, 70 , 50);
-    cancelButton .frame = CGRectMake(195, screenHeight-35, 125, 50);
+    int widthButon = (SCREEN_WIDTH - 70)/2;
+    
+    
+    cancelButton .frame = CGRectMake(0            , SCREEN_HEIGHT-50, widthButon, 50);
+    cameraButton .frame = CGRectMake(widthButon   , SCREEN_HEIGHT-50, 70, 50);
+    rollButton   .frame = CGRectMake(widthButon+70, SCREEN_HEIGHT-50, widthButon, 50);
+    
     frontCam     .frame = CGRectMake(250, 0, 50, 50);
     
     [cameraCover addSubview:cameraMaskTop];
@@ -520,7 +521,25 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-
+- (void) getThumbnailwithUrl:(NSURL *) assetUrl {
+    ALAssetsLibrary *assetsL = [[ALAssetsLibrary alloc] init];
+    
+    [assetsL assetForURL: assetUrl
+             resultBlock:^(ALAsset *asset){
+                 if (asset != nil){
+                     
+                     UIImage *_img = [UIImage imageWithCGImage:[asset thumbnail]];
+                     
+                     IndexableImageView *image = [[IndexableImageView alloc] initWithImage:_img andUrl:assetUrl andImageInfo:nil];
+                     [self addImageToArray:image];
+                     
+                 }
+             }failureBlock:^(NSError *error) {
+                 //      NSLog(@"error: %@", error);
+             }
+     ];
+    
+}
 
 
 

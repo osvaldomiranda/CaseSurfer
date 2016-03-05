@@ -29,6 +29,8 @@
 {
     [self.userAvatar.layer setMasksToBounds:YES];
     [self.userAvatar.layer setCornerRadius:17.5f];
+
+    
 }
 
 - (IBAction)userAction:(id)sender {

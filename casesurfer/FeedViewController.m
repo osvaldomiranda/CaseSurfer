@@ -124,7 +124,6 @@
     */
     
     //******** add new notifications
-    exist = false;
     for (NSMutableDictionary *item in items) {
         exist = false;
         for (NSMutableDictionary *iarray in itemsArray) {
@@ -297,6 +296,7 @@
     
     [cell.caseImage setImageWithURL:urlCaseImage placeholderImage: [UIImage imageNamed:@"logo.png"]];
     [cell.userAvatar setImageWithURL:urlUserImage placeholderImage: [UIImage imageNamed:@"logo.png"]];
+    
     
     return cell;
 }
