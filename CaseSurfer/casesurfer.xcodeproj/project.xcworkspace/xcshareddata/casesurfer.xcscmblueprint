@@ -1,15 +1,15 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "497BB21431E82B4BEBC9E03FA72BEA866726264C",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F0C0CB7420C85EB08260369FF7A7D49FCA1D709B",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "497BB21431E82B4BEBC9E03FA72BEA866726264C" : 0,
+    "F0C0CB7420C85EB08260369FF7A7D49FCA1D709B" : 0,
     "196A2A964D58C9F674C4D04B94C9615F8500148A" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "133E731F-1818-4F36-8376-9B32E3D49C89",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "497BB21431E82B4BEBC9E03FA72BEA866726264C" : "CaseSurfer\/",
+    "F0C0CB7420C85EB08260369FF7A7D49FCA1D709B" : "CaseSurfer\/",
     "196A2A964D58C9F674C4D04B94C9615F8500148A" : "CaseSurfer\/EBPhotoPages\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "casesurfer",
@@ -24,7 +24,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/osvaldomiranda\/CaseSurfer.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "497BB21431E82B4BEBC9E03FA72BEA866726264C"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F0C0CB7420C85EB08260369FF7A7D49FCA1D709B"
     }
   ]
 }

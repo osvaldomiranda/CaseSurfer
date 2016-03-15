@@ -2943,7 +2943,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="rBe-QR-S7e"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="91" y="99" width="138" height="128"/>
                                                         <mask key="constraints">
                                                             <include reference="lif-NH-sI6"/>
                                                             <include reference="rBe-QR-S7e"/>
@@ -3171,7 +3172,8 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="leJ-uy-6wO"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="62" y="87" width="197" height="182"/>
                                                         <mask key="constraints">
                                                             <include reference="Wrx-uK-1ZF"/>
                                                             <include reference="leJ-uy-6wO"/>
