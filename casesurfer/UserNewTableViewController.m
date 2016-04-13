@@ -76,11 +76,29 @@
         NSMutableDictionary *userParams =  @{@"user" : userData}.mutableCopy;
         User *user = [[User alloc] initWithParams:userParams];
         [user save:userParams withSession:NO Success:^(NSMutableDictionary *items) {
-            Session *session = [[Session alloc] init];
-            [session saveToken:[items valueForKeyPath:@"auth_token"]];
-            [session saveEmail:[items valueForKeyPath:@"email"]];
-            [self whenLogin];
+            
+            //NSLog(@"USER %@",items);
+            
+            if ([items valueForKeyPath:@"auth_token"] == NULL  ) {
+                NSString *msg = [NSString stringWithFormat:@"%@",items];
+                
+                msg = [msg stringByReplacingOccurrencesOfString:@"{" withString:@""];
+                msg = [msg stringByReplacingOccurrencesOfString:@"}" withString:@""];
+                msg = [msg stringByReplacingOccurrencesOfString:@"(" withString:@""];
+                msg = [msg stringByReplacingOccurrencesOfString:@")" withString:@""];
+                msg = [msg stringByReplacingOccurrencesOfString:@";" withString:@""];
+                
+                [UIAlertView alertViewOopsWithmessage: msg ];
+            } else {
+                Session *session = [[Session alloc] init];
+                [session saveToken:[items valueForKeyPath:@"auth_token"]];
+                [session saveEmail:[items valueForKeyPath:@"email"]];
+                [self whenLogin];
+            }
+            
         } Error:^(NSError *error) {
+            
+            NSLog(@"USER ERROR %@",error);
         }];
     }
 }

@@ -62,13 +62,50 @@
 }
 
 - (UIImage *)squareImageWithImage:(UIImage *)myimage {
-    UIView *myview = [[UIView alloc] init];
-    myview.frame = CGRectMake(0, 0, 640, 840);
-    self.cropper = [[CropInterface alloc]initWithFrame:myview.bounds Image:myimage andRatio:1];
-    UIImage *croppedImage = [self.cropper getCroppedImage];
-    return croppedImage;
+
+    
+    int centropropy = 0;
+    int centropropx = 0;
+    int a = myimage.size.height*640/myimage.size.width;
+    int b = myimage.size.width*640/myimage.size.height;
+    
+     UIImage *image = [self imageWithImage:myimage convertToSize: CGSizeMake(640,a )];
+    
+    if (myimage.size.height>myimage.size.width) {
+        centropropy = (a/2) - 320;
+    }else {
+        centropropx = (b/2) - 320;
+        image = [self imageWithImage:myimage convertToSize: CGSizeMake(b,640 )];
+    }
+
+    
+   
+   
+    CGRect rect =  CGRectMake(centropropx, centropropy, 640, 640);
+        if (&UIGraphicsBeginImageContextWithOptions) {
+            UIGraphicsBeginImageContextWithOptions(rect.size,
+                                                   /* opaque */ NO,
+                                                   /* scaling factor */ 0.0);
+        } else {
+            UIGraphicsBeginImageContext(rect.size);
+        }
+        [image drawAtPoint:CGPointMake(-rect.origin.x, -rect.origin.y)];
+        UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return result;
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    return destImage;
+}
 
 
 @end

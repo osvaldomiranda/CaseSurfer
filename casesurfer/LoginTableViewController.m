@@ -24,7 +24,10 @@
     self.mySession = [[Session alloc] init];
     
     NSString *myEmail = [self.mySession getEmail];
-    [self.email setText:myEmail];
+ 
+    if(myEmail.class == [NSString class]) {
+        [self.email setText:myEmail];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

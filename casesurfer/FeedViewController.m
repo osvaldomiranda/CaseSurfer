@@ -76,6 +76,8 @@
     NSMutableDictionary *notificationParams =  @{@"page": p}.mutableCopy;
     Notification *notification = [[Notification alloc] initWithParams:notificationParams];
     
+    //NSLog(@"notification params %@", notificationParams);
+    
     [notification index:notificationParams Success:^(NSArray *items) {
         [self saveNotificationsCache:items];
         [self fillImtensArray:items];

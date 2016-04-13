@@ -217,7 +217,7 @@
     }
     else{
         [self.cropper removeFromSuperview];
-        self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.displayImage.image andRatio:1];
+        self.cropper = [[CropInterface alloc]initWithFrame:self.displayImage.bounds Image:self.displayImage.image andRatio:1 andBorder:TRUE];
         self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
         [self.displayImage addSubview:self.cropper];
         self.inCropp=YES;

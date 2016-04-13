@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) NSString *kind;
 -(void) createOrUpdate:(NSString *)albumId action:(NSString *) action;
 -(void) album_shared: (NSMutableDictionary *) params
              Success:(CaseSuccessArrayBlock)successBlock

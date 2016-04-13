@@ -79,9 +79,13 @@
        Error:(CaseErrorBlock)errorBlock
 {
     Session *mySession = [[Session alloc] init];
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": [mySession getToken] }];
+    NSString *token =  [mySession getToken];
     
-   // parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;;
+    //NSLog(@"Token %@",token);
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"auth_token": token }];
+    
+   // NSMutableDictionary *parameters = @{@"auth_token": [mySession getToken] }.mutableCopy;;
     [parameters addEntriesFromDictionary:params];
     
     NSString *className = [NSString stringWithFormat:@"%@s",NSStringFromClass([self class]).lowercaseString];

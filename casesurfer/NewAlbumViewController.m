@@ -132,6 +132,7 @@
         Album *album = [[Album alloc] init];
         album.title = self.txtTitle.text;
         album.image = self.albumImage.image;
+        album.kind  = @"personal";
         [album createOrUpdate:@"" action:@"create"];
     }
 }
@@ -144,6 +145,7 @@
         Album *album = [[Album alloc] init];
         album.title = self.txtTitle.text;
         album.image = self.albumImage.image;
+        album.kind  = @"personal";
         [album createOrUpdate: [NSString stringWithFormat:@"%d",self.albumId] action:@"update"];
     }
 }

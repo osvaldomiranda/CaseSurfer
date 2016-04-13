@@ -47,7 +47,7 @@
 
 @implementation CropInterface
 
-- (id)initWithFrame:(CGRect)frame Image:(UIImage *)image andRatio:(float)r
+- (id)initWithFrame:(CGRect)frame Image:(UIImage *)image andRatio:(float)r andBorder:(BOOL) border
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -69,18 +69,25 @@
         bottomLeftView = [self newCornerView];
         bottomRightView = [self newCornerView];
         
-        [self initialCropView];
+        [self initialCropView: border];
     }
     return self;
 }
 
-- (void)initialCropView {
+- (void)initialCropView:(BOOL) border {
     CGFloat width;
     CGFloat height;
     CGFloat x;
     CGFloat y;
     
-    width  = self.frame.size.width / 4 * 3;
+    if (border) {
+        width  = self.frame.size.width / 4 * 3;
+    }
+    else {
+        width  = self.frame.size.width;
+    }
+    
+    
     height = width * ratio;
     x      = (self.frame.size.width - width) / 2;
     y      = (self.frame.size.height - height) / 2;

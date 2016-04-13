@@ -142,11 +142,16 @@
             Session *mySession = [[Session alloc] init];
             [mySession destroy];
             
+            
+            
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ViewController *cController = [storyBoard instantiateViewControllerWithIdentifier:@"Landing"];
             
+         
             cController.hidesBottomBarWhenPushed =  YES;
-            [self.navigationController pushViewController:cController animated:YES];
+            [self.navigationController pushViewController:cController animated:NO];
+           
+
         }
     }
 }

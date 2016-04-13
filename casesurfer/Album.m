@@ -13,7 +13,7 @@
 @implementation Album
 -(void) createOrUpdate:(NSString *)albumId action:(NSString *) action  {
     
-    NSDictionary *album = @{@"name": self.title};
+    NSDictionary *album = @{@"name": self.title, @"kind": self.kind};
     
     NSError *error;
     NSData *albumJson = [NSJSONSerialization dataWithJSONObject:album options:kNilOptions error:&error];

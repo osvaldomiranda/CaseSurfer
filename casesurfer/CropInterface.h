@@ -48,7 +48,7 @@
 @property (nonatomic, strong) UIColor *shadowColor;
 //@property (nonatomic, strong) UIColor *borderColor;
 
-- (id)initWithFrame:(CGRect)frame Image:(UIImage *)image andRatio:(float)r;
+- (id)initWithFrame:(CGRect)frame Image:(UIImage *)image andRatio:(float)r andBorder:(BOOL) border;
 - (UIImage*)getCroppedImage;
 
 @end
