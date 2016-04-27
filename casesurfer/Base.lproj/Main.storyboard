@@ -609,8 +609,7 @@
                                                             <exclude reference="nUd-p6-2U2"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="80" y="11" width="169" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="nUd-p6-2U2"/>
                                                         </mask>
@@ -2757,11 +2756,11 @@ If images are find to not accomplish these specifications, they will be removed.
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-6Z-PmW">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="11" y="45" width="301" height="25"/>
+                                                        <rect key="frame" x="11" y="45" width="301" height="46"/>
                                                     </variation>
                                                 </label>
                                                 <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9th-XQ-QTX">
@@ -3069,10 +3068,10 @@ If images are find to not accomplish these specifications, they will be removed.
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="6" y="42" width="369" height="40"/>
+                                                        <rect key="frame" x="6" y="46" width="313" height="38"/>
                                                     </variation>
                                                 </textView>
                                             </subviews>
@@ -6144,8 +6143,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="Kg5-Yz-LXe"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="68" y="0.0" width="249" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Kg5-Yz-LXe"/>
                                                         </mask>
@@ -9412,8 +9410,7 @@ If images are find to not accomplish these specifications, they will be removed.
                                                             <exclude reference="uRP-gG-R8s"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="68" y="0.0" width="249" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="uRP-gG-R8s"/>
                                                         </mask>
